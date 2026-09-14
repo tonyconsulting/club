@@ -22,7 +22,7 @@ window.CLUB = {
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
   contactParDefaut: "mila",
   contacts: {
-    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  lien: "https://ig.me/m/mila.winsback" },
+    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr" },
   },
@@ -87,7 +87,7 @@ window.CLUB = {
 
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
   gratuitTitre: "Pourquoi c'est gratuit.",
-  gratuitPhoto: "mila-grande.jpg", // photo grande ; vide = la photo de profil du contact
+  // photo de la section = photoGrande du contact du lien, sinon sa photo de profil, sinon pas de photo
   gratuitTextes: [
     "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais au club, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
     "Tu ne me verses rien. Ton compte est à ton nom, je ne peux ni y déposer ni en retirer.",
