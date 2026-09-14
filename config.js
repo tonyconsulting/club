@@ -42,15 +42,15 @@ window.CLUB = {
     { titre: "On t'active ensemble", texte: "On t'installe dans les canaux, avec toi." },
   ],
 
-  // --- Le club en chiffres (3 cartes). Trois formes possibles :
-  //   { texte: "Gratuit", label: "..." }                → un mot en grand
-  //   { valeur: 200, suffixe: "", label: "membres" }    → compteur qui monte de 0 (null = "..." à remplir)
-  //   { stores: true, label: "..." }                    → badges App Store et Google Play (liens ci-dessous)
+  // --- Le club en chiffres (3 cartes). Formes possibles :
+  //   { texte: "Gratuit", label: "..." }                          → un mot en grand
+  //   { valeur: 200, prefixe: "+", suffixe: "", label: "membres" } → compteur qui monte de 0 (null = "..." à remplir)
+  //   ajouter stores: true à une carte → badges App Store et Google Play sous le libellé (liens ci-dessous)
   // Valeurs d'exemple pour le template : remplacer par des chiffres RÉELS et datés.
   chiffres: [
     { texte: "Gratuit", label: "aucun abonnement" },
-    { valeur: 200, suffixe: "", label: "membres" },
-    { stores: true, label: "application iOS et Android" },
+    { valeur: 200, prefixe: "+", suffixe: "", label: "membres" },
+    { valeur: 1, prefixe: "", suffixe: "", label: "application iOS et Android", stores: true },
   ],
   appStore: "",      // lien App Store quand l'appli est publiée (vide = badge sans lien)
   googlePlay: "",    // lien Google Play
