@@ -54,6 +54,22 @@ const majTop = () => { if (topbar) topbar.classList.toggle("scrolled", window.sc
 window.addEventListener("scroll", majTop, { passive: true });
 majTop();
 
+// Compteurs : les chiffres montent de 0 jusqu'à leur valeur quand la section apparaît
+const compte = (el) => {
+  const cible = parseInt(el.dataset.cible || "0", 10), suf = el.dataset.suffixe || "";
+  const debut = performance.now(), duree = 1400;
+  const pas = (t) => {
+    const p = Math.min(1, (t - debut) / duree), e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(cible * e) + suf;
+    if (p < 1) requestAnimationFrame(pas);
+  };
+  requestAnimationFrame(pas);
+};
+const obsStats = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.querySelectorAll("b[data-cible]").forEach(compte); obsStats.unobserve(e.target); } });
+}, { threshold: 0.3 });
+document.querySelectorAll(".stats").forEach((el) => obsStats.observe(el));
+
 // Apparition au scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); obs.unobserve(e.target); } });
