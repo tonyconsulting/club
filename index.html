@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 
@@ -20,6 +20,7 @@
 <main>
 
   <section class="hero" id="hero">
+    <div class="identite reveal" id="identite"></div>
     <div class="badge reveal" id="badge"><span class="dot"></span><span id="badgeTexte">Accès gratuit</span></div>
     <h1 class="reveal" id="h1"></h1>
     <p class="sous reveal" id="sousTitre"></p>
@@ -40,6 +41,7 @@
     <h2 class="reveal" id="temoignagesTitre"></h2>
     <p class="sous reveal" id="temoignagesSous"></p>
     <p class="note reveal" id="temoignagesNote"></p>
+    <div class="ticker" id="ticker"><div class="ttrack" id="ttrack"></div></div>
     <div class="marquee"><div class="track" id="track"></div></div>
   </section>
 
@@ -53,6 +55,11 @@
     <p class="kicker reveal">Étape 3</p>
     <h2 class="reveal">Comment ça se passe.</h2>
     <ol class="deroule" id="deroule"></ol>
+  </section>
+
+  <section class="etape" id="gratuitSection">
+    <p class="kicker reveal">Pourquoi c'est gratuit</p>
+    <div class="gratuit reveal"><div class="gphoto" id="gratuitPhoto"></div><div class="gtexte"><h2 id="gratuitTitre"></h2><div id="gratuitTextes"></div></div></div>
   </section>
 
   <section class="etape" id="faqSection">
@@ -79,7 +86,7 @@
 
 <div class="lightbox" id="lightbox" hidden><button class="fermer" id="fermer" aria-label="Fermer">×</button><div class="lbc" id="lightboxContenu"></div></div>
 
-<script src="config.js?v=15"></script>
-<script src="app.js?v=16"></script>
+<script src="config.js?v=17"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>
