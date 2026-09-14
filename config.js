@@ -29,25 +29,31 @@ window.CLUB = {
 
   // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
   acces: [
+    { titre: "L'application", texte: "Analyses, canaux et suivi au même endroit. iOS et Android." },
     { titre: "Les canaux d'analyses", texte: "Les analyses des traders du club, chaque jour de marché." },
     { titre: "L'accompagnement", texte: "Une personne pour t'installer et te répondre." },
-    { titre: "La communauté", texte: "Des membres à ton niveau, un live par semaine." },
-    { titre: "Les bases", texte: "Risque, taille de position, lecture d'un graphique." },
+    { titre: "La communauté", texte: "Des membres à ton niveau, 6 lives par semaine." },
   ],
 
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Trois minutes, tout est dedans." },
-    { titre: "Tu écris à {prenom}", texte: "Toutes tes questions, réponse franche." },
-    { titre: "On t'active ensemble", texte: "On t'installe dans les canaux, avec toi." },
+    { titre: "Tu m'écris, sur Insta", texte: "Je prends mon temps avec toi pour tes questions." },
+    { titre: "On te lance tranquillement ensemble", texte: "On t'aide à créer ton compte sur l'application." },
   ],
 
-  // --- Le club en chiffres : uniquement des chiffres RÉELS et datés. null = à remplir (affiche "...") ---
+  // --- Le club en chiffres (3 cartes). Trois formes possibles :
+  //   { texte: "Gratuit", label: "..." }                → un mot en grand
+  //   { valeur: 200, suffixe: "", label: "membres" }    → compteur qui monte de 0 (null = "..." à remplir)
+  //   { stores: true, label: "..." }                    → badges App Store et Google Play (liens ci-dessous)
+  // Valeurs d'exemple pour le template : remplacer par des chiffres RÉELS et datés.
   chiffres: [
-    { valeur: 0,    suffixe: "€", label: "d'abonnement" },
-    { valeur: null, suffixe: "",  label: "membres au [DATE]" },
-    { valeur: null, suffixe: "",  label: "lives par semaine" },
+    { texte: "Gratuit", label: "aucun abonnement" },
+    { valeur: 200, suffixe: "", label: "membres" },
+    { stores: true, label: "application iOS et Android" },
   ],
+  appStore: "",      // lien App Store quand l'appli est publiée (vide = badge sans lien)
+  googlePlay: "",    // lien Google Play
 
   // --- Témoignages façon Hans : cartes qui défilent, une vidéo par membre (call, partage d'écran...) ---
   // ATTENTION : les 6 cartes ci-dessous sont des EXEMPLES FICTIFS pour visualiser le rendu.
