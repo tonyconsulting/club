@@ -6,6 +6,12 @@
   const ytId = (v) => encodeURIComponent(String(v || "").trim());
   const CHARGE = performance.now();
 
+  // Au rechargement, la page repart toujours du haut (pas de retour à l'ancienne position)
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+  window.addEventListener("pageshow", () => window.scrollTo(0, 0));
+  window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
+
   // Couleur d'accent
   if (C.accent) document.documentElement.style.setProperty("--accent", C.accent);
 
