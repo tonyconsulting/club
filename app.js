@@ -21,7 +21,7 @@
   document.title = C.nom || document.title;
 
   // Hero
-  if (contacts[ref]) $("badgeTexte").textContent = `Page envoyée par ${contact.prenom}`;
+  $("badgeTexte").textContent = C.badge || "Accès gratuit";
   $("h1").innerHTML = `${esc(C.titre)}<br><em>${esc(C.titreAccent)}</em>`;
   $("sousTitre").textContent = C.sousTitre || "";
 
@@ -63,7 +63,7 @@
     entries.forEach((e) => { const el = e.target; if (!el.isConnected || !el.lance) return; if (e.isIntersecting) el.lance(); else if (el.querySelector("iframe")) el.pause(); });
   }, { threshold: 0.35 });
 
-  $("titreVideo").textContent = contacts[ref] ? `Regarde cette vidéo avant d'écrire à ${contact.prenom}.` : "Regarde cette vidéo avant d'aller plus loin.";
+  $("titreVideo").textContent = avecPrenom(C.titreVideo || "Regarde cette vidéo avant de m'écrire.");
   lecteurAuto($("videoHero"), (C.video || {}).youtube, "hero");
 
   // Badges App Store / Google Play (liens dans config.js : appStore, googlePlay)
@@ -158,7 +158,7 @@
   $("finalTexte").textContent = C.finalTexte || "";
   $("finalLignes").innerHTML = (C.finalLignes || []).map((l) => `<li><span class="case"></span>${esc(avecPrenom(l))}</li>`).join("");
   const cta = $("cta");
-  cta.textContent = avecPrenom(C.boutonTexte || "J'écris à {prenom}");
+  cta.textContent = avecPrenom(C.boutonTexte || "Écris-moi sur Insta");
   cta.href = contact.lien || "#";
   cta.addEventListener("click", () => mesure("clic-cta-" + (contacts[ref] ? ref : "defaut")));
   $("antiUrgence").textContent = C.antiUrgence || "";
