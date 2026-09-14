@@ -69,7 +69,7 @@ section{padding:72px 0}
 .card p{color:rgba(255,255,255,.75);font-size:13px;font-weight:300;line-height:21.125px}
 
 /* accès */
-.liste{margin:42px auto 21px;max-width:768px}
+.liste{margin:42px auto 15px;max-width:768px}
 .item{display:flex;padding:24px 0;border-bottom:1px solid var(--line)}
 .item:first-child{border-top:1px solid var(--line)}
 .item i{font-family:"JetBrains Mono",ui-monospace,monospace;font-style:normal;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;line-height:15.75px;padding-top:8px;flex:none;width:52px}
@@ -93,8 +93,8 @@ section{padding:72px 0}
 .manifeste p{color:rgba(255,255,255,.45);font-size:16px;font-weight:300;line-height:24px;margin:32px auto 0;max-width:576px}
 
 /* footer */
-footer{padding:24px 24px calc(48px + env(safe-area-inset-bottom));text-align:center}
-.foot-logo{width:226px;margin:0 auto 222px}
+footer{padding:51px 24px calc(48px + env(safe-area-inset-bottom));text-align:center}
+.foot-logo{width:170px;margin:0 auto 205px}
 .foot-nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:57px}
 .foot-nav a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:2.31px;color:rgba(255,255,255,.38)}
 .legal{color:rgba(255,255,255,.3);font-size:12px;line-height:19.5px;max-width:672px;margin:0 auto 12px}
@@ -121,30 +121,35 @@ footer{padding:24px 24px calc(48px + env(safe-area-inset-bottom));text-align:cen
   .burger{left:20px}
   .hero{padding-top:68px;padding-bottom:61px}
   .hero-logo{width:174px}
-  .hero h1{font-size:20px;line-height:22px;letter-spacing:-0.4px;margin-top:39px}
+  .hero h1{font-size:20px;line-height:22px;letter-spacing:-0.4px;margin-top:39px;padding:0 12px}
   .tag{font-size:14px;line-height:22.75px;margin-top:48px}
   .stats{margin-top:47px}
-  .stats>div{width:auto;flex:1;padding:0 4px}
+  .stats>div{width:auto;flex:0 0 113px;padding:0 4px}
+  .stats>div:first-child{flex-basis:117px}
+  .stats>div:last-child{flex-basis:105px}
   .stats b{font-size:24px;line-height:32px;letter-spacing:-0.72px}
-  .stats span{font-size:12px;line-height:19.5px}
+  .stats span{font-size:12px;line-height:19.5px;margin-top:9px}
   .intro{margin-top:32px;font-size:14px;line-height:22.75px}
   section{padding:52px 0}
   .temoignages{padding:52px 0}
   .temoignages h2,.acces h2,.faq h2{font-size:20px;line-height:20.8px;letter-spacing:-0.7px}
   .marquee{margin-top:40px}
-  .card{width:284px;height:300px}
-  .card .delta{font-size:16px;line-height:24px;letter-spacing:-0.4px;margin:14px 0 10px}
+  .card{width:284px;height:300px;padding:20px}
+  .card .ini{width:36px;height:36px}
+  .card .delta{font-size:16px;line-height:24px;letter-spacing:-0.4px;margin:18px 0 10px}
   .card p{font-size:12px;line-height:19.5px}
-  .liste{margin:31px auto 12px}
-  .item{padding:20px 0}
+  .liste{margin:31px auto 0}
+  .acces{padding-bottom:42px}
+  .item{padding:20px 0 21px}
   .item h3{font-size:18px;line-height:21.6px;letter-spacing:-0.36px}
   .faq h2{margin-bottom:56px}
   .q{padding:41px 0}
   .q h3{font-size:20px;line-height:23px;letter-spacing:-0.4px}
   .q .video{max-width:100%}
-  .manifeste{padding-top:120px}
+  .manifeste{padding-top:11px}
   .manifeste h2{font-size:20px;line-height:24px;letter-spacing:-0.4px}
   .manifeste p{font-size:14px;line-height:22.75px}
+  footer{padding:46px 20px calc(48px + env(safe-area-inset-bottom))}
   .foot-logo{width:136px;margin-bottom:135px}
   .page{padding-top:100px}
 }
