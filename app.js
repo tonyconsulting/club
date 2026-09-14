@@ -80,17 +80,15 @@
     const BADGE_PLAY = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .6.6 1 1.1.7L19.6 12 5.1 2.8C4.6 2.5 4 2.9 4 3.5z"/></svg>`;
     const badge = (lien, ico, petit, grand) => `<${lien ? `a href="${esc(lien)}" target="_blank" rel="noopener"` : "span"} class="store">${ico}<span><small>${petit}</small>${grand}</span></${lien ? "a" : "span"}>`;
     $("chiffres").innerHTML = chiffres.map((c) => {
-      let haut;
-      if (c.stores) haut = `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
-      else if (c.texte != null) haut = `<b>${esc(c.texte)}</b>`;
-      else haut = `<b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : "0" + esc(c.suffixe || "")}</b>`;
-      return `<div class="chiffre reveal">${haut}<span>${esc(c.label)}</span></div>`;
+      const haut = c.texte != null ? `<b>${esc(c.texte)}</b>` : `<b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-prefixe="${esc(c.prefixe || "")}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : esc(c.prefixe || "") + "0" + esc(c.suffixe || "")}</b>`;
+      const stores = c.stores ? `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>` : "";
+      return `<div class="chiffre reveal">${haut}<span>${esc(c.label)}</span>${stores}</div>`;
     }).join("");
   }
   const compte = (el) => {
     if (el.dataset.cible === "") return;
-    const cible = Number(el.dataset.cible), suf = el.dataset.suffixe || "", debut = performance.now(), duree = 1300;
-    const pas = (t) => { const p = Math.min(1, (t - debut) / duree), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(cible * e).toLocaleString("fr-FR") + suf; if (p < 1) requestAnimationFrame(pas); };
+    const cible = Number(el.dataset.cible), pre = el.dataset.prefixe || "", suf = el.dataset.suffixe || "", debut = performance.now(), duree = 1300;
+    const pas = (t) => { const p = Math.min(1, (t - debut) / duree), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(cible * e).toLocaleString("fr-FR") + suf; if (p < 1) requestAnimationFrame(pas); };
     requestAnimationFrame(pas);
   };
 
