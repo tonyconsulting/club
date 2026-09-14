@@ -23,7 +23,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 
 /* hero */
 .hero{padding:36px 0 8px;text-align:center}
-.identite{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;text-align:left}
+.identite{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:18px;text-align:left}
 .iavatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex:none}
 .inom{font-weight:700;font-size:15px;line-height:1.2}
 .isuite{color:var(--dim);font-size:12.5px;margin-top:2px}
