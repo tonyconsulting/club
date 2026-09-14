@@ -8,7 +8,7 @@ window.CLUB = {
   // --- Identité ---
   nom: "NOM DU CLUB",              // remplace par le vrai nom
   logo: "",                        // ex: "logo.png" (laisser vide = le nom s'affiche en texte)
-  accent: "#00C896",               // couleur d'accent (vert Hans par défaut)
+  accent: "#6E9BFF",               // couleur d'accent (bleu ; change-la librement)
   titre: "Apprends les marchés financiers,",
   titreAccent: "avec des gens autour de toi.",   // la partie du titre en couleur
   sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
@@ -33,17 +33,16 @@ window.CLUB = {
 
   // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
   acces: [
-    { titre: "L'application", texte: "Analyses, canaux et suivi au même endroit.", stores: true },   // stores: true = badges App Store et Google Play dans la carte
-    { titre: "Les canaux d'analyses", texte: "Les analyses des traders du club, chaque jour de marché." },
-    { titre: "L'accompagnement", texte: "Une personne pour t'installer et te répondre." },
-    { titre: "La communauté", texte: "Des membres à ton niveau, 6 lives par semaine." },
+    { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique : tout au même endroit.", stores: true },   // stores: true = badges App Store et Google Play dans la carte
+    { titre: "L'accompagnement", texte: "Je t'installe, je réponds à tes questions et je te dis par quoi commencer." },
+    { titre: "La communauté", texte: "Un support privé ultra réactif, des membres comme toi, de l'entraide au quotidien." },
   ],
 
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Tout est dedans.", temps: "3 min" },
     { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
-    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi.", temps: "20 min" },
+    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi.", temps: "5 min" },
   ],
 
   // --- Le club en chiffres (3 cartes). Formes possibles :
