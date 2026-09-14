@@ -67,26 +67,37 @@
       if (deja) { if (fichier) deja.play().catch(() => {}); else cmd("playVideo"); return; }
       let lecteur;
       if (fichier) {
-        // Fichier .mp4 : lecteur natif, muet, démarre seul ; le bouton relance du début avec le son (standard VSL)
+        // Fichier .mp4 : lecteur natif, muet, démarre seul ; le bouton relance du début avec le son (standard VSL).
+        // Attributs posés AVANT la source, et type déclaré explicitement (Safari refuse sinon un fichier servi sans type vidéo).
         lecteur = document.createElement("video");
-        lecteur.src = id; lecteur.muted = true; lecteur.autoplay = true; lecteur.playsInline = true; lecteur.controls = true; lecteur.preload = "metadata";
-        lecteur.setAttribute("playsinline", ""); lecteur.setAttribute("muted", "");
+        lecteur.muted = true; lecteur.defaultMuted = true; lecteur.autoplay = true; lecteur.playsInline = true; lecteur.preload = "auto";
+        lecteur.setAttribute("muted", ""); lecteur.setAttribute("playsinline", ""); lecteur.setAttribute("webkit-playsinline", ""); lecteur.setAttribute("autoplay", "");
         if (el.dataset.poster) lecteur.poster = el.dataset.poster;
+        const src = document.createElement("source"); src.src = id; src.type = /\.webm/i.test(id) ? "video/webm" : "video/mp4"; lecteur.appendChild(src);
       } else {
         lecteur = document.createElement("iframe");
         lecteur.src = `https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&mute=1&playsinline=1&enablejsapi=1&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}`;
         lecteur.title = "Vidéo"; lecteur.allow = "autoplay; encrypted-media; picture-in-picture"; lecteur.allowFullscreen = true;
       }
       el.innerHTML = ""; el.appendChild(lecteur);
-      if (fichier) lecteur.play().catch(() => {});
       const b = document.createElement("button"); b.type = "button"; b.className = "son"; b.innerHTML = ICONE_SON + "<span>Activer le son</span>";
-      b.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (fichier) { lecteur.currentTime = 0; lecteur.muted = false; lecteur.volume = 1; lecteur.play().catch(() => {}); }
+      const avecSon = () => {
+        if (fichier) { lecteur.currentTime = 0; lecteur.muted = false; lecteur.volume = 1; lecteur.controls = true; lecteur.play().catch(() => {}); }
         else { cmd("seekTo", [0, true]); cmd("unMute"); cmd("setVolume", [100]); cmd("playVideo"); }
-        b.remove(); mesure("son-" + nom);
-      });
+        b.remove(); const p = el.querySelector(".play"); if (p) p.remove(); mesure("son-" + nom);
+      };
+      b.addEventListener("click", (e) => { e.stopPropagation(); avecSon(); });
       el.appendChild(b);
+      if (fichier) {
+        // Si le navigateur refuse le démarrage automatique (Safari en économie d'énergie, etc.) : gros bouton lecture, un clic = lecture avec le son
+        lecteur.play().catch(() => {
+          if (el.querySelector(".play")) return;
+          const p = document.createElement("button"); p.type = "button"; p.className = "play"; p.setAttribute("aria-label", "Lire la vidéo");
+          p.addEventListener("click", (e) => { e.stopPropagation(); avecSon(); });
+          el.appendChild(p);
+        });
+        lecteur.addEventListener("click", () => { if (lecteur.muted) avecSon(); });
+      }
       mesure("auto-" + nom);
     };
     el.pause = () => { const v = el.querySelector("video"); if (v) v.pause(); else cmd("pauseVideo"); };
