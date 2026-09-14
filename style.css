@@ -55,7 +55,7 @@ section{padding:72px 0}
 .temoignages h2,.acces h2,.faq h2{text-align:center;font-size:52px;font-weight:700;line-height:1.04;letter-spacing:-1.82px;color:#fff}
 
 /* témoignages */
-.temoignages{padding:72px 0 104px}
+.temoignages{padding:72px 0 98px}
 .marquee{overflow:hidden;margin-top:46px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .track{display:flex;gap:16px;width:max-content;animation:defile 150s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
@@ -69,7 +69,7 @@ section{padding:72px 0}
 .card p{color:rgba(255,255,255,.75);font-size:13px;font-weight:300;line-height:21.125px}
 
 /* accès */
-.liste{margin:42px auto 15px;max-width:768px}
+.liste{margin:42px auto 21px;max-width:768px}
 .item{display:flex;padding:24px 0;border-bottom:1px solid var(--line)}
 .item:first-child{border-top:1px solid var(--line)}
 .item i{font-family:"JetBrains Mono",ui-monospace,monospace;font-style:normal;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;line-height:15.75px;padding-top:8px;flex:none;width:52px}
@@ -87,7 +87,7 @@ section{padding:72px 0}
 .q p{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;line-height:26px;margin:24px auto 0;max-width:576px}
 
 /* manifeste */
-.manifeste{text-align:center;padding:152px 0 0}
+.manifeste{text-align:center;padding:157px 0 0}
 .manifeste h2{font-size:30px;font-weight:600;line-height:36px;letter-spacing:-0.6px;color:#fff}
 .manifeste h2+h2{margin-top:12px}
 .manifeste p{color:rgba(255,255,255,.45);font-size:16px;font-weight:300;line-height:24px;margin:32px auto 0;max-width:576px}
@@ -98,7 +98,8 @@ footer{padding:24px 24px calc(48px + env(safe-area-inset-bottom));text-align:cen
 .foot-nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:57px}
 .foot-nav a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:2.31px;color:rgba(255,255,255,.38)}
 .legal{color:rgba(255,255,255,.3);font-size:12px;line-height:19.5px;max-width:672px;margin:0 auto 12px}
-.copy{font-family:"JetBrains Mono",ui-monospace,monospace;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;margin-top:12px}
+.legal+.legal{color:rgba(255,255,255,.25)}
+.copy{font-family:"JetBrains Mono",ui-monospace,monospace;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;margin-top:32px}
 
 /* pages internes */
 .page{max-width:768px;margin:0 auto;padding:130px 24px 80px}
@@ -114,20 +115,36 @@ footer{padding:24px 24px calc(48px + env(safe-area-inset-bottom));text-align:cen
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.track{animation:none}}
 
-/* mobile */
+/* mobile — valeurs mesurées sur keysclub.fr à 375px */
 @media (max-width:760px){
   main{padding:0 20px}
-  .hero{padding-top:110px}
-  .hero-logo{width:min(320px,82%)}
-  .hero h1{font-size:30px;line-height:36px;letter-spacing:-0.6px;margin-top:40px}
-  .tag{margin-top:48px}
-  .stats{margin-top:44px}
-  .stats>div{width:auto;flex:1;padding:0 6px}
-  .stats span{font-size:13px}
-  .temoignages h2,.acces h2,.faq h2{font-size:36px;letter-spacing:-1.2px}
-  .card{width:280px;height:auto;min-height:300px}
-  .item{padding:22px 0}
-  .item i{width:40px}
+  .burger{left:20px}
+  .hero{padding-top:68px;padding-bottom:61px}
+  .hero-logo{width:174px}
+  .hero h1{font-size:20px;line-height:22px;letter-spacing:-0.4px;margin-top:39px}
+  .tag{font-size:14px;line-height:22.75px;margin-top:48px}
+  .stats{margin-top:47px}
+  .stats>div{width:auto;flex:1;padding:0 4px}
+  .stats b{font-size:24px;line-height:32px;letter-spacing:-0.72px}
+  .stats span{font-size:12px;line-height:19.5px}
+  .intro{margin-top:32px;font-size:14px;line-height:22.75px}
+  section{padding:52px 0}
+  .temoignages{padding:52px 0}
+  .temoignages h2,.acces h2,.faq h2{font-size:20px;line-height:20.8px;letter-spacing:-0.7px}
+  .marquee{margin-top:40px}
+  .card{width:284px;height:300px}
+  .card .delta{font-size:16px;line-height:24px;letter-spacing:-0.4px;margin:14px 0 10px}
+  .card p{font-size:12px;line-height:19.5px}
+  .liste{margin:31px auto 12px}
+  .item{padding:20px 0}
+  .item h3{font-size:18px;line-height:21.6px;letter-spacing:-0.36px}
+  .faq h2{margin-bottom:56px}
+  .q{padding:41px 0}
+  .q h3{font-size:20px;line-height:23px;letter-spacing:-0.4px}
   .q .video{max-width:100%}
-  .manifeste h2{font-size:26px;line-height:32px}
+  .manifeste{padding-top:120px}
+  .manifeste h2{font-size:20px;line-height:24px;letter-spacing:-0.4px}
+  .manifeste p{font-size:14px;line-height:22.75px}
+  .foot-logo{width:136px;margin-bottom:135px}
+  .page{padding-top:100px}
 }
