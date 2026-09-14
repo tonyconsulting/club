@@ -4,6 +4,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const ytId = (v) => encodeURIComponent(String(v || "").trim());
+  const CHARGE = performance.now();
 
   // Couleur d'accent
   if (C.accent) document.documentElement.style.setProperty("--accent", C.accent);
@@ -129,7 +130,8 @@
     if (!id) { el.remove(); return; }
     el.classList.add("auto");
     // Fermée : rien n'est chargé. Ouverte : lecteur automatique (la première est ouverte au chargement et démarre quand elle arrive à l'écran).
-    const arme = () => { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); if (det.open) el.lance(); };
+    // Chrome envoie un "toggle" au chargement pour la question déjà ouverte : dans ce cas on laisse l'observateur démarrer la vidéo quand elle arrive à l'écran.
+    const arme = () => { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); if (det.open && performance.now() - CHARGE > 1500) el.lance(); };
     det.addEventListener("toggle", () => { if (det.open) arme(); else if (el.arrete) { obsAuto.unobserve(el); el.arrete(); el.lance = null; } });
     if (det.open) { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); }
   });
