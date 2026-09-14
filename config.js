@@ -49,33 +49,37 @@ window.CLUB = {
     { valeur: null, suffixe: "",  label: "lives par semaine" },
   ],
 
-  // --- Témoignages façon Kéo : captures brutes (format portrait 4:5), zoom au clic ---
-  // Mets les chemins des images ici, ex: "temoins/capture-1.jpg". Liste vide = section masquée.
-  // Uniquement des membres réels avec leur accord écrit, sans montant ni capture de compte.
+  // --- Témoignages façon Hans : cartes qui défilent, une vidéo par membre (call, partage d'écran...) ---
+  // ATTENTION : les 6 cartes ci-dessous sont des EXEMPLES FICTIFS pour visualiser le rendu.
+  // À remplacer par de vrais membres, avec leur accord écrit. Tant que "fictif" est à true,
+  // la page affiche "Exemple fictif" sur chaque carte et une note sous le titre.
   temoignagesTitre: "Ce que disent les membres.",
-  temoignagesSous: "Leurs messages, pris dans les canaux avec leur accord. Sur le club, pas sur leur compte.",
-  temoignages: ["placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],
+  temoignagesSous: "Les mêmes parcours, en vidéo. Clique pour écouter chaque membre.",
+  temoignagesNote: "Exemples fictifs pour le rendu, à remplacer par de vrais membres avec leur accord.",
+  temoignages: [
+    { prenom: "Nassim", nom: "B.", handle: "nassim.b", profil: "Débutant · Salarié", depart: "500 €", arrivee: "1 850 €", duree: "4 mois",
+      texte: "N'avait jamais ouvert de compte. Installé en une soirée, a suivi les bases avant les canaux.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+    { prenom: "Léa", nom: "M.", handle: "lea.mrt", profil: "Étudiante · 30 min le soir", depart: "300 €", arrivee: "920 €", duree: "3 mois",
+      texte: "Venue pour les signaux, restée pour la clarté des explications. Pose ses questions dans le canal.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+    { prenom: "Yanis", nom: "K.", handle: "yanis.k", profil: "Déjà un compte ailleurs", depart: "1 000 €", arrivee: "2 700 €", duree: "5 mois",
+      texte: "Avait 15 groupes Telegram ouverts. Aujourd'hui un seul canal et une routine simple.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+    { prenom: "Inès", nom: "D.", handle: "ines.dl", profil: "Débutante · Méfiante", depart: "250 €", arrivee: "610 €", duree: "2 mois",
+      texte: "A posé toutes ses questions avant d'ouvrir son compte. Personne ne lui a vendu du rêve.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+    { prenom: "Adam", nom: "R.", handle: "adam.r", profil: "Reprise après avoir tout arrêté", depart: "800 €", arrivee: "2 100 €", duree: "6 mois",
+      texte: "Avait perdu seul. Repart avec une gestion du risque et quelqu'un à qui écrire.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+    { prenom: "Sofia", nom: "T.", handle: "sofia.t", profil: "Débutante · Alternance", depart: "400 €", arrivee: "1 300 €", duree: "4 mois",
+      texte: "Suivait les lives du dimanche avant de se lancer. A été installée en 20 minutes.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+  ],
 
-  // --- Questions : réponse écrite obligatoire, vidéo facultative (identifiant YouTube ou "") ---
+  // --- Questions façon Hans : une étape par question, la vidéo d'abord, une ligne de texte maximum (peut être vide "") ---
+  faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
   faq: [
-    { q: "Que se passe-t-il une fois que j'ai écrit ?",
-      r: "Tu échanges avec la personne qui t'a envoyé la page. Elle t'explique le fonctionnement, la condition d'accès, et répond à tes questions. Ensuite tu décides.",
-      video: "5Y6GerIb7lU" },
-    { q: "Quelqu'un m'accompagne vraiment ?",
-      r: "Oui. L'installation se fait avec toi, et tu as une personne à qui écrire quand quelque chose n'est pas clair.",
-      video: "" },
-    { q: "Pourquoi c'est gratuit ? Qui vous paie ?",
-      r: "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est le broker qui reverse une partie de ses frais au club, en fonction du volume d'activité. Tu ne nous verses rien.",
-      video: "" },
-    { q: "Comment je sais que ce n'est pas une arnaque ?",
-      r: "Tu ne nous donnes pas d'argent. Ton compte est à ton nom, chez le broker, et nous ne pouvons ni y déposer ni en retirer. Fais vérifier cette page par quelqu'un en qui tu as confiance avant d'écrire.",
-      video: "" },
-    { q: "Je peux perdre de l'argent ?",
-      r: "Oui. Le trading comporte un risque de perte en capital, et l'effet de levier l'amplifie. Aucun signal, aucune analyse ne garantit un résultat. N'engage que ce que tu peux te permettre de perdre.",
-      video: "" },
-    { q: "Je débute, je vais suivre ?",
-      r: "Oui, si tu suis l'ordre : d'abord les bases, ensuite les canaux. Personne ne te demande de comprendre tout de suite.",
-      video: "" },
+    { q: "Que se passe-t-il une fois que j'ai écrit ?", r: "", video: "" },
+    { q: "Quelqu'un m'accompagne vraiment ?", r: "", video: "" },
+    { q: "Pourquoi c'est gratuit ? Qui vous paie ?", r: "Tu paies les mêmes frais qu'en direct chez le broker partenaire, c'est lui qui reverse une partie de ses frais au club.", video: "" },
+    { q: "Comment je sais que ce n'est pas une arnaque ?", r: "Tu ne nous donnes pas d'argent. Ton compte est à ton nom, chez le broker.", video: "" },
+    { q: "Je peux perdre de l'argent ?", r: "Oui. Le trading comporte un risque de perte en capital. N'engage que ce que tu peux te permettre de perdre.", video: "" },
+    { q: "Je débute, je vais suivre ?", r: "", video: "" },
   ],
 
   // --- Bloc final ---
@@ -92,7 +96,7 @@ window.CLUB = {
   // --- Mentions légales (obligatoire en France) ---
   editeur: "[ÉDITEUR À COMPLÉTER : nom, statut, adresse, email]",
   legal1: "Le club n'est pas un conseiller financier et ne fournit aucune recommandation d'investissement personnalisée. Il est rémunéré par le broker partenaire au titre d'apporteur d'affaires, sur le volume d'activité, et n'exécute aucune opération pour ton compte.",
-  legal2: "Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les informations de cette page sont fournies à titre informatif et éducatif uniquement. N'investis que des sommes que tu peux te permettre de perdre.",
+  legal2: "Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les témoignages sont des expériences individuelles et ne constituent pas une promesse de résultat. Les informations de cette page sont fournies à titre informatif et éducatif uniquement. N'investis que des sommes que tu peux te permettre de perdre.",
 
   // --- Mesure (facultatif) : adresse GoatCounter, ex: "https://tony.goatcounter.com/count". Vide = rien. ---
   goatcounter: "",
