@@ -8,7 +8,8 @@ window.CLUB = {
   // --- Identité ---
   nom: "NOM DU CLUB",              // remplace par le vrai nom
   logo: "",                        // ex: "logo.png" (laisser vide = le nom s'affiche en texte)
-  accent: "#6E9BFF",               // couleur d'accent (bleu ; change-la librement)
+  accent: "#D08FA8",               // couleur d'accent (rose Mila ; change-la librement)
+  theme: { bg: "#100c0e", surface: "#181214", surface2: "#1e1719", line: "#2a2024", line2: "#3a2c31" },   // fond sombre chaud ; supprimer la ligne = fond neutre
   titre: "Apprends les marchés financiers,",
   titreAccent: "avec des gens autour de toi.",   // la partie du titre en couleur
   sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
@@ -19,16 +20,18 @@ window.CLUB = {
   badge: "Accès gratuit",
   titreVideo: "Regarde cette vidéo avant de m'écrire.",
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
-  contactParDefaut: "sacha",
+  contactParDefaut: "mila",
   contacts: {
-    sacha: { prenom: "Sacha", nom: "Sacha Amoyel", handle: "sachaamoyel", abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
-    tony:  { prenom: "Tony",  nom: "Tony Rande",   handle: "",            abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr" },
+    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  lien: "https://ig.me/m/mila.winsback" },
+    sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
+    tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr" },
   },
 
-  // --- Étape 1 : la vidéo principale ---
+  // --- Étape 1 : la vidéo principale (identifiant YouTube OU adresse d'un fichier .mp4 hébergé) ---
   video: {
-    youtube: "D-b4-2rdsoU",        // vidéo de présentation (placeholder : vidéo de Sacha)
-    duree: "3 min",
+    youtube: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4",   // VSL de Mila (7 min 40, auto-hébergée)
+    poster: "mila-section.jpg",    // image affichée avant le démarrage (fichiers .mp4 uniquement)
+    duree: "8 min",
   },
 
   // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
@@ -69,22 +72,22 @@ window.CLUB = {
   ticker: [],   // phrases courtes qui défilent (retiré pour l'instant, à revoir plus tard)
   temoignages: [
     { prenom: "Nassim", nom: "B.", handle: "nassim.b", profil: "Débutant · Salarié", depart: "500 €", arrivee: "1 850 €", duree: "4 mois",
-      texte: "Jamais ouvert de compte avant. Installé en une soirée.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "Jamais ouvert de compte avant. Installé en une soirée.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
     { prenom: "Léa", nom: "M.", handle: "lea.mrt", profil: "Étudiante · 30 min le soir", depart: "300 €", arrivee: "920 €", duree: "3 mois",
-      texte: "Venue pour les signaux, restée pour les explications.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "Venue pour les signaux, restée pour les explications.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
     { prenom: "Yanis", nom: "K.", handle: "yanis.k", profil: "Déjà un compte ailleurs", depart: "1 000 €", arrivee: "2 700 €", duree: "5 mois",
-      texte: "15 groupes Telegram avant. Un seul canal aujourd'hui.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "15 groupes Telegram avant. Un seul canal aujourd'hui.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
     { prenom: "Inès", nom: "D.", handle: "ines.dl", profil: "Débutante · Méfiante", depart: "250 €", arrivee: "610 €", duree: "2 mois",
-      texte: "Toutes ses questions posées avant d'ouvrir son compte.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "Toutes ses questions posées avant d'ouvrir son compte.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
     { prenom: "Adam", nom: "R.", handle: "adam.r", profil: "Reprise après avoir tout arrêté", depart: "800 €", arrivee: "2 100 €", duree: "6 mois",
-      texte: "Avait perdu seul. Repart accompagné.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "Avait perdu seul. Repart accompagné.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
     { prenom: "Sofia", nom: "T.", handle: "sofia.t", profil: "Débutante · Alternance", depart: "400 €", arrivee: "1 300 €", duree: "4 mois",
-      texte: "Suivait les lives avant de se lancer. Installée en 20 minutes.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
+      texte: "Suivait les lives avant de se lancer. Installée en 20 minutes.", video: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4", capture: "placeholder", fictif: true },
   ],
 
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
   gratuitTitre: "Pourquoi c'est gratuit.",
-  gratuitPhoto: "",                // photo grande (ex: "sacha-grande.jpg") ; vide = la photo de profil du contact
+  gratuitPhoto: "mila-grande.jpg", // photo grande ; vide = la photo de profil du contact
   gratuitTextes: [
     "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais au club, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
     "Tu ne me verses rien. Ton compte est à ton nom, je ne peux ni y déposer ni en retirer.",
@@ -92,7 +95,7 @@ window.CLUB = {
   ],
 
   // --- Questions : dépliables, la vidéo dans chaque question, une ligne de texte maximum (peut être vide "") ---
-  faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
+  faqVideoDefaut: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : VSL de Mila)
   faq: [
     { q: "Où est le piège ?", r: "Il n'y en a pas : tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
     { q: "Que se passe-t-il une fois que j'ai écrit ?", r: "", video: "" },
