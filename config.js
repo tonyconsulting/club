@@ -18,10 +18,11 @@ window.CLUB = {
   //     Mets uniquement des liens publics (Instagram, page, formulaire). Jamais de numéro de téléphone.
   badge: "Accès gratuit",
   titreVideo: "Regarde cette vidéo avant de m'écrire.",
-  contactParDefaut: "tony",
+  identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
+  contactParDefaut: "sacha",
   contacts: {
-    tony:  { prenom: "Tony",  lien: "https://ig.me/m/tonyconsulting.fr" },
-    sacha: { prenom: "Sacha", lien: "https://ig.me/m/sachaamoyel" },
+    sacha: { prenom: "Sacha", nom: "Sacha Amoyel", handle: "sachaamoyel", abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
+    tony:  { prenom: "Tony",  nom: "Tony Rande",   handle: "",            abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr" },
   },
 
   // --- Étape 1 : la vidéo principale ---
@@ -40,9 +41,9 @@ window.CLUB = {
 
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
-    { titre: "Tu regardes la vidéo", texte: "Trois minutes, tout est dedans." },
-    { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche." },
-    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi." },
+    { titre: "Tu regardes la vidéo", texte: "Tout est dedans.", temps: "3 min" },
+    { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
+    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi.", temps: "20 min" },
   ],
 
   // --- Le club en chiffres (3 cartes). Formes possibles :
@@ -65,6 +66,15 @@ window.CLUB = {
   temoignagesTitre: "Ce que disent les membres.",
   temoignagesSous: "Clique pour écouter chaque membre.",
   temoignagesNote: "Exemples fictifs pour le rendu, à remplacer par de vrais membres avec leur accord.",
+  // Phrases courtes qui défilent au-dessus des cartes (une par membre, sur l'expérience, jamais de chiffres). Liste vide = rien.
+  ticker: [
+    "Installé en une soirée",
+    "Une question, une réponse dans la journée",
+    "15 groupes Telegram avant, un seul canal aujourd'hui",
+    "Personne ne m'a vendu du rêve",
+    "J'ai posé toutes mes questions avant d'ouvrir mon compte",
+    "Les lives m'ont donné envie de me lancer",
+  ],
   temoignages: [
     { prenom: "Nassim", nom: "B.", handle: "nassim.b", profil: "Débutant · Salarié", depart: "500 €", arrivee: "1 850 €", duree: "4 mois",
       texte: "Jamais ouvert de compte avant. Installé en une soirée.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
@@ -80,13 +90,22 @@ window.CLUB = {
       texte: "Suivait les lives avant de se lancer. Installée en 20 minutes.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
   ],
 
+  // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
+  gratuitTitre: "Pourquoi c'est gratuit.",
+  gratuitPhoto: "",                // photo grande (ex: "sacha-grande.jpg") ; vide = la photo de profil du contact
+  gratuitTextes: [
+    "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais au club, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
+    "Tu ne me verses rien. Ton compte est à ton nom, je ne peux ni y déposer ni en retirer.",
+    "Ce que j'y gagne : un membre bien installé, qui comprend ce qu'il fait, reste. J'ai donc intérêt à prendre le temps avec toi.",
+  ],
+
   // --- Questions : dépliables, la vidéo dans chaque question, une ligne de texte maximum (peut être vide "") ---
   faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
   faq: [
+    { q: "Où est le piège ?", r: "Il n'y en a pas : tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
     { q: "Que se passe-t-il une fois que j'ai écrit ?", r: "", video: "" },
     { q: "Quelqu'un m'accompagne vraiment ?", r: "", video: "" },
-    { q: "Pourquoi c'est gratuit ? Qui vous paie ?", r: "Tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
-    { q: "Comment je sais que ce n'est pas une arnaque ?", r: "Tu ne nous donnes pas d'argent. Ton compte est à ton nom.", video: "" },
+    { q: "Comment je sais que ce n'est pas une arnaque ?", r: "Tu ne me donnes pas d'argent. Ton compte est à ton nom.", video: "" },
     { q: "Je peux perdre de l'argent ?", r: "Oui. Le trading comporte un risque de perte en capital.", video: "" },
     { q: "Je débute, je vais suivre ?", r: "", video: "" },
   ],
