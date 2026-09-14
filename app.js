@@ -75,7 +75,18 @@
   // Chiffres : compteur qui monte de 0 ; null = "..." (à remplir)
   const chiffres = (C.chiffres || []).filter(Boolean);
   if (!chiffres.length) $("chiffresSection").remove();
-  else $("chiffres").innerHTML = chiffres.map((c) => `<div class="chiffre reveal"><b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : "0" + esc(c.suffixe || "")}</b><span>${esc(c.label)}</span></div>`).join("");
+  else {
+    const BADGE_APPLE = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.6-3.7zM14.2 5.9c.6-.8 1.1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1.1.1 2.1-.5 2.8-1.3z"/></svg>`;
+    const BADGE_PLAY = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .6.6 1 1.1.7L19.6 12 5.1 2.8C4.6 2.5 4 2.9 4 3.5z"/></svg>`;
+    const badge = (lien, ico, petit, grand) => `<${lien ? `a href="${esc(lien)}" target="_blank" rel="noopener"` : "span"} class="store">${ico}<span><small>${petit}</small>${grand}</span></${lien ? "a" : "span"}>`;
+    $("chiffres").innerHTML = chiffres.map((c) => {
+      let haut;
+      if (c.stores) haut = `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
+      else if (c.texte != null) haut = `<b>${esc(c.texte)}</b>`;
+      else haut = `<b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : "0" + esc(c.suffixe || "")}</b>`;
+      return `<div class="chiffre reveal">${haut}<span>${esc(c.label)}</span></div>`;
+    }).join("");
+  }
   const compte = (el) => {
     if (el.dataset.cible === "") return;
     const cible = Number(el.dataset.cible), suf = el.dataset.suffixe || "", debut = performance.now(), duree = 1300;
