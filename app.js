@@ -26,6 +26,12 @@
   marque.innerHTML = C.logo ? `<img src="${esc(C.logo)}" alt="${esc(C.nom)}">` : `<span class="dot"></span><span>${esc(C.nom)}</span>`;
   document.title = C.nom || document.title;
 
+  // Identité de la personne qui envoie (photo, nom, abonnés), façon Kéo
+  const ident = $("identite");
+  if (C.identite !== false && (contact.photo || contact.nom)) {
+    ident.innerHTML = `${contact.photo ? `<img class="iavatar" src="${esc(contact.photo)}" alt="">` : ""}<div><div class="inom">${esc(contact.nom || contact.prenom)}</div><div class="isuite">${contact.handle ? `@${esc(contact.handle)}` : ""}${contact.handle && contact.abonnes ? " · " : ""}${contact.abonnes ? `<b>${esc(contact.abonnes)} abonnés</b>` : ""}</div></div>`;
+  } else ident.remove();
+
   // Hero
   $("badgeTexte").textContent = C.badge || "Accès gratuit";
   $("h1").innerHTML = `${esc(C.titre)}<br><em>${esc(C.titreAccent)}</em>`;
@@ -82,7 +88,15 @@
   $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}</div>`).join("");
 
   // Étape 3 : déroulé
-  $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div></li>`).join("");
+  $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div class="dtexte"><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div>${d.temps ? `<span class="temps">${esc(d.temps)}</span>` : ""}</li>`).join("");
+
+  // Pourquoi c'est gratuit : le visage de la personne qui envoie + 2 ou 3 phrases à la première personne
+  const gPhoto = C.gratuitPhoto || contact.photo;
+  if ((C.gratuitTextes || []).length) {
+    $("gratuitTitre").textContent = C.gratuitTitre || "Pourquoi c'est gratuit.";
+    $("gratuitTextes").innerHTML = C.gratuitTextes.map((t) => `<p>${esc(avecPrenom(t))}</p>`).join("");
+    if (gPhoto) $("gratuitPhoto").innerHTML = `<img src="${esc(gPhoto)}" alt="${esc(contact.nom || "")}">${contact.nom ? `<span class="gnom">${esc(contact.nom)}</span>` : ""}`; else $("gratuitPhoto").remove();
+  } else $("gratuitSection").remove();
 
   // Chiffres : compteur qui monte de 0 ; null = "..." (à remplir)
   const chiffres = (C.chiffres || []).filter(Boolean);
@@ -124,6 +138,9 @@
     $("temoignagesSous").textContent = C.temoignagesSous || "";
     const note = $("temoignagesNote");
     if (temoins.some((t) => t.fictif) && C.temoignagesNote) note.textContent = C.temoignagesNote; else note.remove();
+    // Ticker : phrases courtes qui défilent
+    const tk = C.ticker || [];
+    if (tk.length) { const l = tk.map((t) => `<span class="titem"><span class="tdot"></span>${esc(t)}</span>`).join(""); $("ttrack").innerHTML = l + l; } else $("ticker").remove();
     const carte = (t, i) => {
       const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee, t.duree) : t.capture;
       const ini = (t.prenom || "?").charAt(0).toUpperCase();
