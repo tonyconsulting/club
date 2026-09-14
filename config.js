@@ -29,7 +29,7 @@ window.CLUB = {
 
   // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
   acces: [
-    { titre: "L'application", texte: "Analyses, canaux et suivi au même endroit. iOS et Android." },
+    { titre: "L'application", texte: "Analyses, canaux et suivi au même endroit.", stores: true },   // stores: true = badges App Store et Google Play dans la carte
     { titre: "Les canaux d'analyses", texte: "Les analyses des traders du club, chaque jour de marché." },
     { titre: "L'accompagnement", texte: "Une personne pour t'installer et te répondre." },
     { titre: "La communauté", texte: "Des membres à ton niveau, 6 lives par semaine." },
@@ -49,8 +49,8 @@ window.CLUB = {
   // Valeurs d'exemple pour le template : remplacer par des chiffres RÉELS et datés.
   chiffres: [
     { texte: "Gratuit", label: "aucun abonnement" },
-    { valeur: 200, prefixe: "+", suffixe: "", label: "membres" },
-    { valeur: 1, prefixe: "", suffixe: "", label: "application iOS et Android", stores: true },
+    { valeur: 200, prefixe: "+", suffixe: "", label: "membres accompagnés" },
+    { valeur: 6, prefixe: "+", suffixe: "", label: "lives par semaine" },
   ],
   appStore: "",      // lien App Store quand l'appli est publiée (vide = badge sans lien)
   googlePlay: "",    // lien Google Play
