@@ -4,6 +4,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const ytId = (v) => encodeURIComponent(String(v || "").trim());
+  const estFichier = (v) => /^https?:\/\/.+\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(String(v || "").trim());
   const CHARGE = performance.now();
 
   // Au rechargement, la page repart toujours du haut (pas de retour à l'ancienne position)
@@ -12,6 +13,8 @@
   window.addEventListener("pageshow", () => window.scrollTo(0, 0));
   window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
+  // Thème (fond, surfaces, lignes) si défini dans config.js
+  Object.entries(C.theme || {}).forEach(([k, v]) => { if (v) document.documentElement.style.setProperty("--" + k, v); });
   // Couleur d'accent (et sa version transparente pour les halos)
   const ACCENT = C.accent || "#6E9BFF";
   document.documentElement.style.setProperty("--accent", ACCENT);
@@ -57,28 +60,46 @@
     if (!el) return;
     if (!id) { el.remove(); return; }
     el.classList.add("auto");
+    const fichier = estFichier(id);
     const cmd = (func, args) => { const f = el.querySelector("iframe"); if (f && f.contentWindow) f.contentWindow.postMessage(JSON.stringify({ event: "command", func, args: args || [] }), "*"); };
     el.lance = () => {
-      if (el.querySelector("iframe")) { cmd("playVideo"); return; }
-      const f = document.createElement("iframe");
-      f.src = `https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&mute=1&playsinline=1&enablejsapi=1&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}`;
-      f.title = "Vidéo"; f.allow = "autoplay; encrypted-media; picture-in-picture"; f.allowFullscreen = true;
-      el.innerHTML = ""; el.appendChild(f);
+      const deja = el.querySelector("iframe, video");
+      if (deja) { if (fichier) deja.play().catch(() => {}); else cmd("playVideo"); return; }
+      let lecteur;
+      if (fichier) {
+        // Fichier .mp4 : lecteur natif, muet, démarre seul ; le bouton relance du début avec le son (standard VSL)
+        lecteur = document.createElement("video");
+        lecteur.src = id; lecteur.muted = true; lecteur.autoplay = true; lecteur.playsInline = true; lecteur.controls = true; lecteur.preload = "metadata";
+        lecteur.setAttribute("playsinline", ""); lecteur.setAttribute("muted", "");
+        if (el.dataset.poster) lecteur.poster = el.dataset.poster;
+      } else {
+        lecteur = document.createElement("iframe");
+        lecteur.src = `https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&mute=1&playsinline=1&enablejsapi=1&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}`;
+        lecteur.title = "Vidéo"; lecteur.allow = "autoplay; encrypted-media; picture-in-picture"; lecteur.allowFullscreen = true;
+      }
+      el.innerHTML = ""; el.appendChild(lecteur);
+      if (fichier) lecteur.play().catch(() => {});
       const b = document.createElement("button"); b.type = "button"; b.className = "son"; b.innerHTML = ICONE_SON + "<span>Activer le son</span>";
-      b.addEventListener("click", (e) => { e.stopPropagation(); cmd("seekTo", [0, true]); cmd("unMute"); cmd("setVolume", [100]); cmd("playVideo"); b.remove(); mesure("son-" + nom); });
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (fichier) { lecteur.currentTime = 0; lecteur.muted = false; lecteur.volume = 1; lecteur.play().catch(() => {}); }
+        else { cmd("seekTo", [0, true]); cmd("unMute"); cmd("setVolume", [100]); cmd("playVideo"); }
+        b.remove(); mesure("son-" + nom);
+      });
       el.appendChild(b);
       mesure("auto-" + nom);
     };
-    el.pause = () => cmd("pauseVideo");
+    el.pause = () => { const v = el.querySelector("video"); if (v) v.pause(); else cmd("pauseVideo"); };
     el.arrete = () => { el.innerHTML = ""; };
     obsAuto.observe(el);
   };
   // À l'écran : on lance (ou on reprend) ; hors écran : on met en pause
   const obsAuto = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { const el = e.target; if (!el.isConnected || !el.lance) return; if (e.isIntersecting) el.lance(); else if (el.querySelector("iframe")) el.pause(); });
+    entries.forEach((e) => { const el = e.target; if (!el.isConnected || !el.lance) return; if (e.isIntersecting) el.lance(); else if (el.querySelector("iframe, video")) el.pause(); });
   }, { threshold: 0.35 });
 
   $("titreVideo").textContent = avecPrenom(C.titreVideo || "Regarde cette vidéo avant de m'écrire.");
+  if ((C.video || {}).poster) $("videoHero").dataset.poster = C.video.poster;
   lecteurAuto($("videoHero"), (C.video || {}).youtube, "hero");
 
   // Badges App Store / Google Play (liens dans config.js : appStore, googlePlay)
@@ -121,7 +142,12 @@
   // Lightbox : image (capture) ou vidéo (iframe)
   const lb = $("lightbox"), lbContenu = $("lightboxContenu");
   const ouvreImage = (src) => { lbContenu.innerHTML = `<img src="${esc(src)}" alt="Capture">`; lb.hidden = false; };
-  const ouvreVideo = (id) => { lbContenu.innerHTML = `<div class="cadre"><iframe src="https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&rel=0&modestbranding=1" title="Vidéo témoignage" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`; lb.hidden = false; };
+  const ouvreVideo = (id) => {
+    lbContenu.innerHTML = estFichier(id)
+      ? `<div class="cadre"><video src="${esc(id)}" controls autoplay playsinline></video></div>`
+      : `<div class="cadre"><iframe src="https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&rel=0&modestbranding=1" title="Vidéo témoignage" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
+    lb.hidden = false;
+  };
   const ferme = () => { lb.hidden = true; lbContenu.innerHTML = ""; };
   $("fermer").addEventListener("click", ferme);
   lb.addEventListener("click", (e) => { if (e.target === lb) ferme(); });
