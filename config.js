@@ -38,8 +38,8 @@ window.CLUB = {
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Trois minutes, tout est dedans." },
-    { titre: "Tu m'écris, sur Insta", texte: "Je prends mon temps avec toi pour tes questions." },
-    { titre: "On te lance tranquillement ensemble", texte: "On t'aide à créer ton compte sur l'application." },
+    { titre: "Tu écris à {prenom}", texte: "Toutes tes questions, réponse franche." },
+    { titre: "On t'active ensemble", texte: "On t'installe dans les canaux, avec toi." },
   ],
 
   // --- Le club en chiffres (3 cartes). Trois formes possibles :
