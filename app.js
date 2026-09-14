@@ -12,8 +12,11 @@
   window.addEventListener("pageshow", () => window.scrollTo(0, 0));
   window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
-  // Couleur d'accent
-  if (C.accent) document.documentElement.style.setProperty("--accent", C.accent);
+  // Couleur d'accent (et sa version transparente pour les halos)
+  const ACCENT = C.accent || "#6E9BFF";
+  document.documentElement.style.setProperty("--accent", ACCENT);
+  const rgb = /^#([0-9a-f]{6})$/i.test(ACCENT) ? [1, 3, 5].map((i) => parseInt(ACCENT.slice(i, i + 2), 16)).join(",") : "110,155,255";
+  document.documentElement.style.setProperty("--accent-rgb", rgb);
 
   // Qui a envoyé la page (?r=prenom) : uniquement des liens publics déclarés dans config.js
   const ref = (new URLSearchParams(location.search).get("r") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
@@ -130,7 +133,7 @@
   const euros = (n) => n.toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g, "\u00a0") + "\u00a0€";
   const gainDe = (t) => { if (t.gain) return t.gain; const d = montant(t.depart), a = montant(t.arrivee); return d != null && a != null ? (a >= d ? "+" : "") + euros(a - d) : ""; };
   // Petit graphique fictif : solde de départ à gauche, solde actuel à droite
-  const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text><text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text><line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="#00C896" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="#00C896" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="#00C896">${esc(arrivee)}</text></svg>`);
+  const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text><text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text><line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="${ACCENT}" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="${ACCENT}">${esc(arrivee)}</text></svg>`);
   const temoins = C.temoignages || [];
   if (!temoins.length) $("temoignages").remove();
   else {
