@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -51,13 +51,11 @@
   <section class="etape temoignages" id="temoignages">
     <h2 class="reveal" id="temoignagesTitre"></h2>
     <p class="sous reveal" id="temoignagesSous"></p>
+    <p class="note reveal" id="temoignagesNote"></p>
     <div class="marquee"><div class="track" id="track"></div></div>
   </section>
 
-  <section class="etape" id="faqSection">
-    <p class="kicker reveal">Les questions qu'on nous pose avant d'entrer</p>
-    <div class="faq" id="faq"></div>
-  </section>
+  <div id="faq"></div>
 
   <section class="final reveal" id="final">
     <h2 id="finalTitre"></h2>
@@ -76,9 +74,9 @@
   <p class="copy" id="copy"></p>
 </footer>
 
-<div class="lightbox" id="lightbox" hidden><button class="fermer" id="fermer" aria-label="Fermer">×</button><img alt="" id="lightboxImg"></div>
+<div class="lightbox" id="lightbox" hidden><button class="fermer" id="fermer" aria-label="Fermer">×</button><div class="lbc" id="lightboxContenu"></div></div>
 
-<script src="config.js?v=1"></script>
-<script src="app.js?v=1"></script>
+<script src="config.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
