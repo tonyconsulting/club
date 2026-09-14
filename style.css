@@ -22,7 +22,12 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .marque .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 
 /* hero */
-.hero{padding:44px 0 8px;text-align:center}
+.hero{padding:36px 0 8px;text-align:center}
+.identite{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;text-align:left}
+.iavatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex:none}
+.inom{font-weight:700;font-size:15px;line-height:1.2}
+.isuite{color:var(--dim);font-size:12.5px;margin-top:2px}
+.isuite b{color:var(--accent);font-weight:600}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:99px;padding:8px 16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
 .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .hero .sous{margin-top:16px}
@@ -51,7 +56,9 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 
 /* déroulé */
 .deroule{list-style:none;max-width:720px;margin:0 auto;position:relative}
-.deroule li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.deroule li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.deroule .dtexte{flex:1}
+.deroule .temps{flex:none;margin-top:8px;color:var(--accent);border:1px solid rgba(0,200,150,.35);border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;white-space:nowrap}
 .deroule li:last-child{border-bottom:0}
 .deroule .num{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
 .deroule h3{font-size:17px;font-weight:600;margin-top:5px}
@@ -69,6 +76,22 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .store small{display:block;font-size:7.5px;letter-spacing:.02em;color:#cfcfcf;text-transform:uppercase;font-weight:500}
 .store span{font-size:12px;font-weight:600}
 .store:hover{border-color:var(--accent)}
+
+/* pourquoi c'est gratuit */
+.gratuit{display:flex;gap:28px;align-items:center;max-width:820px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px}
+.gphoto{flex:none;text-align:center}
+.gphoto img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);display:block;margin:0 auto}
+.gnom{display:block;margin-top:10px;font-size:13px;color:var(--dim)}
+.gtexte h2{text-align:left;font-size:clamp(22px,3vw,28px);margin-bottom:12px}
+.gtexte p{color:var(--dim);font-size:15px;line-height:1.55;margin-bottom:10px}
+.gtexte p:last-child{margin-bottom:0;color:var(--ink)}
+
+/* ticker de phrases courtes */
+.ticker{overflow:hidden;margin-top:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ttrack{display:flex;width:max-content;animation:defile 45s linear infinite}
+.ticker:hover .ttrack{animation-play-state:paused}
+.titem{display:inline-flex;align-items:center;gap:10px;color:var(--dim);font-size:13.5px;white-space:nowrap;padding:0 22px}
+.tdot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
 
 /* témoignages façon Hans : cartes qui défilent */
 .temoignages{padding-left:0;padding-right:0}
@@ -149,6 +172,9 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   .chiffres .chiffre:last-child{grid-column:1/-1}
   .store{padding:5px 9px}
   .tcard{width:280px}
+  .gratuit{flex-direction:column;text-align:center;padding:22px 18px}
+  .gtexte h2{text-align:center}
+  .deroule .temps{margin-top:6px;font-size:11px;padding:2px 8px}
   .final{padding:34px 18px}
   .faq summary{font-size:15px;padding:14px 16px}
   .faq .rep{padding:0 12px 12px}
