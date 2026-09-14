@@ -99,6 +99,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
 
 /* lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}
+.lightbox[hidden]{display:none}
 .lightbox img{max-height:90vh;max-width:92vw;border-radius:var(--radius);border:1px solid var(--line2)}
 .fermer{position:absolute;top:14px;right:16px;width:44px;height:44px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
 
