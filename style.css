@@ -60,26 +60,35 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .chiffre b{display:block;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--accent);letter-spacing:-.03em;line-height:1.1}
 .chiffre span{display:block;color:var(--dim);font-size:13px;margin-top:8px}
 
-/* témoignages façon Kéo : captures 4:5 qui défilent */
+/* témoignages façon Hans : cartes qui défilent */
 .temoignages{padding-left:0;padding-right:0}
-.marquee{overflow:hidden;margin-top:26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.track{display:flex;gap:12px;width:max-content;animation:defile 60s linear infinite}
+.note{color:var(--faint);font-size:12px;text-align:center;margin-top:8px}
+.marquee{overflow:hidden;margin-top:26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:defile 70s linear infinite;padding:4px 0}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.capture{width:220px;aspect-ratio:4/5;flex:none;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);cursor:zoom-in;transition:transform .2s,border-color .2s}
-.capture:hover{transform:translateY(-3px);border-color:var(--line2)}
-.capture img{width:100%;height:100%;object-fit:cover}
+.tcard{width:330px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s}
+.tcard:hover{border-color:var(--line2);transform:translateY(-2px)}
+.tqui{display:flex;align-items:center;gap:12px}
+.tavatar{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--ink);background:var(--surface2);overflow:hidden;flex:none}
+.tavatar img{width:100%;height:100%;object-fit:cover}
+.tnom{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tfictif{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line2);border-radius:99px;padding:2px 7px;font-weight:500}
+.thandle{color:var(--dim);font-size:12.5px}
+.tmetric{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.tmetric .fleche{color:var(--accent);margin:0 4px}
+.ttag{color:var(--accent);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-top:-6px}
+.tcapture{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#000;padding:0;cursor:zoom-in}
+.tcapture img{width:100%;height:100%;object-fit:cover}
+.ttexte{color:var(--dim);font-size:13.5px;line-height:1.5;flex:1}
+.tvideo{display:inline-flex;align-items:center;gap:10px;background:none;border:0;color:var(--ink);font-weight:600;font-size:14px;cursor:pointer;padding:0;font-family:inherit}
+.tplay{width:34px;height:34px;border-radius:50%;background:var(--accent);position:relative;flex:none}
+.tplay::after{content:"";position:absolute;left:55%;top:50%;transform:translate(-50%,-50%);border-left:10px solid #04120d;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.tvideo:hover .tplay{filter:brightness(1.1)}
 
-/* faq */
-.faq{max-width:760px;margin:0 auto}
-.faq details{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);margin-bottom:10px}
-.faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .chev{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--line2);position:relative;transition:transform .2s}
-.faq summary .chev::after{content:"";position:absolute;left:7px;top:5px;width:6px;height:6px;border-right:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);transform:rotate(45deg)}
-.faq details[open] summary .chev{transform:rotate(180deg)}
-.faq .rep{padding:0 20px 20px;color:var(--dim);font-size:15px;line-height:1.6}
-.faq .rep .video{max-width:520px;margin:14px auto 0;box-shadow:none}
+/* questions façon Hans : une étape par question, vidéo d'abord */
+.question .video{max-width:760px;margin:0 auto}
+.question .sous{margin-top:14px;font-size:14px}
 
 /* final */
 .final{margin:56px 0 0;background:linear-gradient(180deg,rgba(0,200,150,.08),transparent 70%),var(--surface);border:1px solid var(--line);border-radius:12px;padding:44px 24px;text-align:center}
@@ -100,7 +109,10 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
 /* lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}
 .lightbox[hidden]{display:none}
-.lightbox img{max-height:90vh;max-width:92vw;border-radius:var(--radius);border:1px solid var(--line2)}
+.lbc{width:min(92vw,960px)}
+.lightbox img{max-height:90vh;max-width:92vw;border-radius:var(--radius);border:1px solid var(--line2);margin:0 auto}
+.lightbox .cadre{position:relative;aspect-ratio:16/9;width:100%;background:#000;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line2)}
+.lightbox .cadre iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .fermer{position:absolute;top:14px;right:16px;width:44px;height:44px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
 
 /* apparition */
@@ -115,7 +127,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   .grille{grid-template-columns:1fr}
   .chiffres{grid-template-columns:1fr 1fr}
   .chiffres .chiffre:last-child{grid-column:1/-1}
-  .capture{width:180px}
+  .tcard{width:280px}
   .final{padding:34px 18px}
   .faq summary{font-size:16px;padding:16px}
 }
