@@ -93,9 +93,8 @@
     });
   }
 
-  // Questions façon Hans : une étape par question, la vidéo d'abord, une ligne de texte max
-  const debut = (C.deroule || []).length ? 4 : 3;
-  $("faq").innerHTML = (C.faq || []).map((f, i) => `<section class="question etape"><p class="kicker reveal">Étape ${debut + i}</p><h2 class="reveal">${esc(avecPrenom(f.q))}</h2><div class="video reveal" id="faqVideo${i}"></div>${f.r ? `<p class="sous reveal">${esc(avecPrenom(f.r))}</p>` : ""}</section>`).join("");
+  // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
+  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");
   (C.faq || []).forEach((f, i) => facade($("faqVideo" + i), f.video || C.faqVideoDefaut, "", "q" + (i + 1)));
 
   // Bloc final
