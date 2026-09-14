@@ -102,7 +102,12 @@
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") ferme(); });
 
   // Témoignages façon Hans : carte = qui, capital de départ → résultat, durée, capture, vidéo
-  const captureFictive = (depart, arrivee) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="52" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte (exemple fictif)</text><text x="36" y="86" font-family="Inter,Helvetica,Arial" font-size="26" font-weight="700" fill="#ededed">${esc(arrivee)}</text><polyline points="36,300 120,280 180,292 250,250 320,262 390,214 450,226 520,180 604,150" fill="none" stroke="#00C896" stroke-width="3" stroke-linejoin="round"/><line x1="36" y1="310" x2="604" y2="310" stroke="#262626"/><text x="36" y="332" font-family="Inter,Helvetica,Arial" font-size="12" fill="#5a5a5a">Départ ${esc(depart)}</text><text x="604" y="332" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#5a5a5a">Exemple fictif</text></svg>`);
+  // Montants : "1 850 €" → 1850 ; gain = arrivée moins départ, formaté "+1 350 €"
+  const montant = (s) => { const n = parseFloat(String(s == null ? "" : s).replace(/[^\d.,-]/g, "").replace(",", ".")); return isNaN(n) ? null : n; };
+  const euros = (n) => n.toLocaleString("fr-FR") + " €";
+  const gainDe = (t) => { if (t.gain) return t.gain; const d = montant(t.depart), a = montant(t.arrivee); return d != null && a != null ? (a >= d ? "+" : "") + euros(a - d) : ""; };
+  // Petit graphique fictif : solde de départ à gauche, solde actuel à droite
+  const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text><text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text><line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="#00C896" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="#00C896" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="#00C896">${esc(arrivee)}</text></svg>`);
   const temoins = C.temoignages || [];
   if (!temoins.length) $("temoignages").remove();
   else {
@@ -111,12 +116,12 @@
     const note = $("temoignagesNote");
     if (temoins.some((t) => t.fictif) && C.temoignagesNote) note.textContent = C.temoignagesNote; else note.remove();
     const carte = (t, i) => {
-      const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee) : t.capture;
+      const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee, t.duree) : t.capture;
       const ini = (t.prenom || "?").charAt(0).toUpperCase();
       return `<article class="tcard" data-i="${i}">
         <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom)} ${esc(t.nom || "")}${t.fictif ? ` <span class="tfictif">Exemple fictif</span>` : ""}</div>${t.handle ? `<div class="thandle">@${esc(t.handle)}</div>` : ""}</div></div>
-        <div class="tmetric">${esc(t.depart)} <span class="fleche">→</span> ${esc(t.arrivee)}</div>
-        <div class="ttag">${esc(t.duree ? "en " + t.duree : "")}${t.duree && t.profil ? " · " : ""}${esc(t.profil || "")}</div>
+        <div class="tmetric">${esc(gainDe(t))}${t.duree ? ` <span class="ten">en ${esc(t.duree)}</span>` : ""}</div>
+        <div class="tsolde">${esc(t.depart)} <span class="fleche">→</span> ${esc(t.arrivee)}${t.profil ? `<span class="tprofil"> · ${esc(t.profil)}</span>` : ""}</div>
         ${cap ? `<button class="tcapture" data-src="${esc(cap)}" aria-label="Voir la capture"><img src="${esc(cap)}" alt="Capture" loading="lazy"></button>` : ""}
         <p class="ttexte">${esc(t.texte || "")}</p>
         ${t.video ? `<button class="tvideo" data-video="${esc(t.video)}"><span class="tplay"></span>Voir la vidéo</button>` : ""}
