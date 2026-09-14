@@ -86,9 +86,17 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .tplay::after{content:"";position:absolute;left:55%;top:50%;transform:translate(-50%,-50%);border-left:10px solid #04120d;border-top:6px solid transparent;border-bottom:6px solid transparent}
 .tvideo:hover .tplay{filter:brightness(1.1)}
 
-/* questions façon Hans : une étape par question, vidéo d'abord */
-.question .video{max-width:760px;margin:0 auto}
-.question .sous{margin-top:14px;font-size:14px}
+/* faq : questions dépliables, vidéo dans la réponse */
+.faq{max-width:800px;margin:0 auto}
+.faq details{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);margin-bottom:10px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .chev{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line2);position:relative;transition:transform .2s}
+.faq summary .chev::after{content:"";position:absolute;left:8px;top:6px;width:6px;height:6px;border-right:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);transform:rotate(45deg)}
+.faq details[open] summary .chev{transform:rotate(180deg)}
+.faq .rep{padding:0 20px 20px}
+.faq .rep .video{box-shadow:none}
+.faq .rep p{color:var(--dim);font-size:14px;text-align:center;margin-top:12px}
 
 /* final */
 .final{margin:56px 0 0;background:linear-gradient(180deg,rgba(0,200,150,.08),transparent 70%),var(--surface);border:1px solid var(--line);border-radius:12px;padding:44px 24px;text-align:center}
@@ -129,5 +137,6 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   .chiffres .chiffre:last-child{grid-column:1/-1}
   .tcard{width:280px}
   .final{padding:34px 18px}
-  .faq summary{font-size:16px;padding:16px}
+  .faq summary{font-size:15px;padding:14px 16px}
+  .faq .rep{padding:0 12px 12px}
 }
