@@ -17,7 +17,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .sous{color:var(--dim);text-align:center;max-width:640px;margin:14px auto 0;font-size:16px}
 
 /* barre */
-.top{height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10}
+.top{height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10}
 .marque{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;font-size:15px}
 .marque img{height:22px;width:auto}
 .marque .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
@@ -40,7 +40,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 /* vidéo */
 .video{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--line2);border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 6px rgba(var(--accent-rgb),.06)}
 .video img{width:100%;height:100%;object-fit:cover;transform:scale(1.005)}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
 .play{position:absolute;left:50%;top:50%;width:72px;height:72px;transform:translate(-50%,-50%);border-radius:50%;border:0;background:#fff;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-left:20px solid #0a0a0a;border-top:12px solid transparent;border-bottom:12px solid transparent}
 .video.auto{cursor:default}
@@ -156,7 +156,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
 .lbc{width:min(92vw,960px)}
 .lightbox img{max-height:90vh;max-width:92vw;border-radius:var(--radius);border:1px solid var(--line2);margin:0 auto}
 .lightbox .cadre{position:relative;aspect-ratio:16/9;width:100%;background:#000;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line2)}
-.lightbox .cadre iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lightbox .cadre iframe,.lightbox .cadre video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
 .fermer{position:absolute;top:14px;right:16px;width:44px;height:44px;border:0;background:none;color:#fff;font-size:34px;cursor:pointer}
 
 /* apparition */
