@@ -35,8 +35,35 @@
       mesure("video-" + (nom || "faq"));
     });
   };
+  // Lecteur automatique : démarre en muet dès qu'il est à l'écran, bouton "Activer le son" qui relance du début avec le son
+  const ICONE_SON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const lecteurAuto = (el, id, nom) => {
+    if (!el) return;
+    if (!id) { el.remove(); return; }
+    el.classList.add("auto");
+    const cmd = (func, args) => { const f = el.querySelector("iframe"); if (f && f.contentWindow) f.contentWindow.postMessage(JSON.stringify({ event: "command", func, args: args || [] }), "*"); };
+    el.lance = () => {
+      if (el.querySelector("iframe")) { cmd("playVideo"); return; }
+      const f = document.createElement("iframe");
+      f.src = `https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&mute=1&playsinline=1&enablejsapi=1&rel=0&modestbranding=1&origin=${encodeURIComponent(location.origin)}`;
+      f.title = "Vidéo"; f.allow = "autoplay; encrypted-media; picture-in-picture"; f.allowFullscreen = true;
+      el.innerHTML = ""; el.appendChild(f);
+      const b = document.createElement("button"); b.type = "button"; b.className = "son"; b.innerHTML = ICONE_SON + "<span>Activer le son</span>";
+      b.addEventListener("click", (e) => { e.stopPropagation(); cmd("seekTo", [0, true]); cmd("unMute"); cmd("setVolume", [100]); cmd("playVideo"); b.remove(); mesure("son-" + nom); });
+      el.appendChild(b);
+      mesure("auto-" + nom);
+    };
+    el.pause = () => cmd("pauseVideo");
+    el.arrete = () => { el.innerHTML = ""; };
+    obsAuto.observe(el);
+  };
+  // À l'écran : on lance (ou on reprend) ; hors écran : on met en pause
+  const obsAuto = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { const el = e.target; if (!el.isConnected || !el.lance) return; if (e.isIntersecting) el.lance(); else if (el.querySelector("iframe")) el.pause(); });
+  }, { threshold: 0.35 });
+
   $("titreVideo").textContent = contacts[ref] ? `Regarde cette vidéo avant d'écrire à ${contact.prenom}.` : "Regarde cette vidéo avant d'aller plus loin.";
-  facade($("videoHero"), (C.video || {}).youtube, (C.video || {}).duree, "hero");
+  lecteurAuto($("videoHero"), (C.video || {}).youtube, "hero");
 
   // Étape 2 : accès
   $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p></div>`).join("");
@@ -95,7 +122,17 @@
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
   $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");
-  (C.faq || []).forEach((f, i) => facade($("faqVideo" + i), f.video || C.faqVideoDefaut, "", "q" + (i + 1)));
+  (C.faq || []).forEach((f, i) => {
+    const el = $("faqVideo" + i), det = el && el.closest("details");
+    if (!el) return;
+    const id = f.video || C.faqVideoDefaut;
+    if (!id) { el.remove(); return; }
+    el.classList.add("auto");
+    // Fermée : rien n'est chargé. Ouverte : lecteur automatique (la première est ouverte au chargement et démarre quand elle arrive à l'écran).
+    const arme = () => { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); if (det.open) el.lance(); };
+    det.addEventListener("toggle", () => { if (det.open) arme(); else if (el.arrete) { obsAuto.unobserve(el); el.arrete(); el.lance = null; } });
+    if (det.open) { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); }
+  });
 
   // Bloc final
   $("finalTitre").textContent = C.finalTitre || "";
