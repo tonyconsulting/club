@@ -13,8 +13,11 @@ window.CLUB = {
   titreAccent: "avec des gens autour de toi.",   // la partie du titre en couleur
   sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
 
-  // --- Qui envoie la page : lien ?r=prenom → badge + bouton "J'écris à ..." ---
-  // Mets uniquement des liens publics (Instagram, page, formulaire). Jamais de numéro de téléphone.
+  // --- La page parle à la première personne : c'est la personne qui l'envoie qui parle ("écris-moi").
+  //     Le lien ?r=prenom choisit vers quel Instagram le bouton renvoie (et compte les clics par personne).
+  //     Mets uniquement des liens publics (Instagram, page, formulaire). Jamais de numéro de téléphone.
+  badge: "Accès gratuit",
+  titreVideo: "Regarde cette vidéo avant de m'écrire.",
   contactParDefaut: "tony",
   contacts: {
     tony:  { prenom: "Tony",  lien: "https://ig.me/m/tonyconsulting.fr" },
@@ -38,8 +41,8 @@ window.CLUB = {
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Trois minutes, tout est dedans." },
-    { titre: "Tu écris à {prenom}", texte: "Toutes tes questions, réponse franche." },
-    { titre: "On t'active ensemble", texte: "On t'installe dans les canaux, avec toi." },
+    { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche." },
+    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi." },
   ],
 
   // --- Le club en chiffres (3 cartes). Formes possibles :
@@ -96,7 +99,7 @@ window.CLUB = {
     "Écrire à ton contact avec tes questions",
     "N'engager que ce que tu peux te permettre de perdre",
   ],
-  boutonTexte: "J'écris à {prenom}",        // {prenom} = la personne du lien ?r=
+  boutonTexte: "Écris-moi sur Insta",
   antiUrgence: "Pas de compte à rebours, pas d'offre qui expire. Cette page sera encore là demain.",
 
   // --- Mentions légales (obligatoire en France) ---
