@@ -44,6 +44,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .play{position:absolute;left:50%;top:50%;width:72px;height:72px;transform:translate(-50%,-50%);border-radius:50%;border:0;background:#fff;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.4)}
 .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-left:20px solid #0a0a0a;border-top:12px solid transparent;border-bottom:12px solid transparent}
 .video.auto{cursor:default}
+.video.auto video{cursor:pointer}
 .video .son{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(10,10,10,.88);border:1px solid var(--line2);color:#fff;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .video .son:hover{border-color:var(--accent)}
 .duree{position:absolute;right:12px;bottom:12px;background:rgba(10,10,10,.8);border:1px solid var(--line2);border-radius:6px;padding:4px 8px;font-size:12px;color:var(--ink)}
