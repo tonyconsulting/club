@@ -3,6 +3,7 @@
   const C = window.CLUB || {};
   const $ = (id) => document.getElementById(id);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const ytId = (v) => encodeURIComponent(String(v || "").trim());
 
   // Couleur d'accent
   if (C.accent) document.documentElement.style.setProperty("--accent", C.accent);
@@ -24,18 +25,18 @@
   $("sousTitre").textContent = C.sousTitre || "";
 
   // Vidéo : façade cliquable, le lecteur YouTube ne se charge qu'au clic
-  const facade = (el, id, duree) => {
+  const facade = (el, id, duree, nom) => {
     if (!el) return;
     if (!id) { el.remove(); return; }
-    el.innerHTML = `<img src="https://i.ytimg.com/vi/${encodeURIComponent(id)}/maxresdefault.jpg" alt="Aperçu vidéo" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg'"><button class="play" aria-label="Lire la vidéo"></button>${duree ? `<span class="duree">${esc(duree)}</span>` : ""}`;
+    el.innerHTML = `<img src="https://i.ytimg.com/vi/${ytId(id)}/maxresdefault.jpg" alt="Aperçu vidéo" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${ytId(id)}/hqdefault.jpg'"><button class="play" aria-label="Lire la vidéo"></button>${duree ? `<span class="duree">${esc(duree)}</span>` : ""}`;
     el.addEventListener("click", () => {
       if (el.querySelector("iframe")) return;
-      el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1" title="Vidéo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-      mesure("video-" + (el.id || "faq"));
+      el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&rel=0&modestbranding=1" title="Vidéo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      mesure("video-" + (nom || "faq"));
     });
   };
   $("titreVideo").textContent = contacts[ref] ? `Regarde cette vidéo avant d'écrire à ${contact.prenom}.` : "Regarde cette vidéo avant d'aller plus loin.";
-  facade($("videoHero"), (C.video || {}).youtube, (C.video || {}).duree);
+  facade($("videoHero"), (C.video || {}).youtube, (C.video || {}).duree, "hero");
 
   // Étape 2 : accès
   $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p></div>`).join("");
@@ -54,27 +55,48 @@
     requestAnimationFrame(pas);
   };
 
-  // Témoignages façon Kéo : captures 4:5, défilement, zoom au clic
-  const placeholder = (n) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="550" viewBox="0 0 440 550"><rect width="440" height="550" fill="#161616"/><rect x="24" y="24" width="392" height="502" rx="14" fill="#1d1d1d" stroke="#2a2a2a"/><circle cx="72" cy="80" r="20" fill="#2a2a2a"/><rect x="104" y="66" width="140" height="12" rx="6" fill="#2e2e2e"/><rect x="104" y="86" width="90" height="10" rx="5" fill="#262626"/><rect x="52" y="130" width="336" height="14" rx="7" fill="#2a2a2a"/><rect x="52" y="156" width="300" height="14" rx="7" fill="#2a2a2a"/><rect x="52" y="182" width="320" height="14" rx="7" fill="#2a2a2a"/><rect x="52" y="208" width="200" height="14" rx="7" fill="#2a2a2a"/><text x="220" y="330" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="22" fill="#6b6b6b">Capture témoignage ${n}</text><text x="220" y="362" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="14" fill="#4a4a4a">à remplacer dans config.js</text></svg>`);
-  const temoins = (C.temoignages || []).map((t, i) => (t === "placeholder" ? placeholder(i + 1) : t));
+  // Lightbox : image (capture) ou vidéo (iframe)
+  const lb = $("lightbox"), lbContenu = $("lightboxContenu");
+  const ouvreImage = (src) => { lbContenu.innerHTML = `<img src="${esc(src)}" alt="Capture">`; lb.hidden = false; };
+  const ouvreVideo = (id) => { lbContenu.innerHTML = `<div class="cadre"><iframe src="https://www.youtube-nocookie.com/embed/${ytId(id)}?autoplay=1&rel=0&modestbranding=1" title="Vidéo témoignage" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`; lb.hidden = false; };
+  const ferme = () => { lb.hidden = true; lbContenu.innerHTML = ""; };
+  $("fermer").addEventListener("click", ferme);
+  lb.addEventListener("click", (e) => { if (e.target === lb) ferme(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") ferme(); });
+
+  // Témoignages façon Hans : carte = qui, capital de départ → résultat, durée, capture, vidéo
+  const captureFictive = (depart, arrivee) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="52" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte (exemple fictif)</text><text x="36" y="86" font-family="Inter,Helvetica,Arial" font-size="26" font-weight="700" fill="#ededed">${esc(arrivee)}</text><polyline points="36,300 120,280 180,292 250,250 320,262 390,214 450,226 520,180 604,150" fill="none" stroke="#00C896" stroke-width="3" stroke-linejoin="round"/><line x1="36" y1="310" x2="604" y2="310" stroke="#262626"/><text x="36" y="332" font-family="Inter,Helvetica,Arial" font-size="12" fill="#5a5a5a">Départ ${esc(depart)}</text><text x="604" y="332" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#5a5a5a">Exemple fictif</text></svg>`);
+  const temoins = C.temoignages || [];
   if (!temoins.length) $("temoignages").remove();
   else {
     $("temoignagesTitre").textContent = C.temoignagesTitre || "Ce que disent les membres.";
     $("temoignagesSous").textContent = C.temoignagesSous || "";
-    const carte = (src, i) => `<figure class="capture" data-src="${esc(src)}"><img src="${esc(src)}" alt="Témoignage ${i + 1}" loading="lazy"></figure>`;
+    const note = $("temoignagesNote");
+    if (temoins.some((t) => t.fictif) && C.temoignagesNote) note.textContent = C.temoignagesNote; else note.remove();
+    const carte = (t, i) => {
+      const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee) : t.capture;
+      const ini = (t.prenom || "?").charAt(0).toUpperCase();
+      return `<article class="tcard" data-i="${i}">
+        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom)} ${esc(t.nom || "")}${t.fictif ? ` <span class="tfictif">Exemple fictif</span>` : ""}</div>${t.handle ? `<div class="thandle">@${esc(t.handle)}</div>` : ""}</div></div>
+        <div class="tmetric">${esc(t.depart)} <span class="fleche">→</span> ${esc(t.arrivee)}</div>
+        <div class="ttag">${esc(t.duree ? "en " + t.duree : "")}${t.duree && t.profil ? " · " : ""}${esc(t.profil || "")}</div>
+        ${cap ? `<button class="tcapture" data-src="${esc(cap)}" aria-label="Voir la capture"><img src="${esc(cap)}" alt="Capture" loading="lazy"></button>` : ""}
+        <p class="ttexte">${esc(t.texte || "")}</p>
+        ${t.video ? `<button class="tvideo" data-video="${esc(t.video)}"><span class="tplay"></span>Voir la vidéo</button>` : ""}
+      </article>`;
+    };
     const liste = temoins.map(carte).join("");
     $("track").innerHTML = liste + liste;
-    const lb = $("lightbox"), lbImg = $("lightboxImg");
-    $("track").addEventListener("click", (e) => { const f = e.target.closest(".capture"); if (!f) return; lbImg.src = f.dataset.src; lb.hidden = false; mesure("zoom-temoignage"); });
-    const ferme = () => { lb.hidden = true; lbImg.src = ""; };
-    $("fermer").addEventListener("click", ferme);
-    lb.addEventListener("click", (e) => { if (e.target === lb) ferme(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") ferme(); });
+    $("track").addEventListener("click", (e) => {
+      const v = e.target.closest(".tvideo"); if (v) { ouvreVideo(v.dataset.video); mesure("temoignage-video"); return; }
+      const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); }
+    });
   }
 
-  // FAQ : accordéon natif, réponse écrite, vidéo facultative
-  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><p>${esc(avecPrenom(f.r))}</p>${f.video ? `<div class="video" id="faqVideo${i}"></div>` : ""}</div></details>`).join("");
-  (C.faq || []).forEach((f, i) => { if (f.video) facade($("faqVideo" + i), f.video, ""); });
+  // Questions façon Hans : une étape par question, la vidéo d'abord, une ligne de texte max
+  const debut = (C.deroule || []).length ? 4 : 3;
+  $("faq").innerHTML = (C.faq || []).map((f, i) => `<section class="question etape"><p class="kicker reveal">Étape ${debut + i}</p><h2 class="reveal">${esc(avecPrenom(f.q))}</h2><div class="video reveal" id="faqVideo${i}"></div>${f.r ? `<p class="sous reveal">${esc(avecPrenom(f.r))}</p>` : ""}</section>`).join("");
+  (C.faq || []).forEach((f, i) => facade($("faqVideo" + i), f.video || C.faqVideoDefaut, "", "q" + (i + 1)));
 
   // Bloc final
   $("finalTitre").textContent = C.finalTitre || "";
