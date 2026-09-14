@@ -3,130 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Keys Club</title>
-<meta name="description" content="Découvre les marchés financiers, avec le bon environnement autour de toi.">
+<meta name="robots" content="noindex">
+<title>Le club</title>
+<meta name="description" content="Un environnement gratuit pour apprendre les marchés financiers, accompagné.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
-<a id="top"></a>
 
-<header class="top" id="topbar">
-  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-  <a href="#top" class="toplogo" id="toplogo"><img src="logo.png?v=4" alt="Keys Club"></a>
+<header class="top">
+  <a href="#" class="marque" id="marque"></a>
 </header>
-
-<nav class="menu" id="menu">
-  <button class="menu-close" id="menuClose" aria-label="Fermer">×</button>
-  <a href="#top">ACCUEIL</a>
-  <a href="#hero-video">DÉCOUVRIR</a>
-  <a href="#temoignages">TÉMOIGNAGES</a>
-  <a href="#acces">CONTENU</a>
-  <a href="#faq">FAQ</a>
-  <div class="menu-sep"></div>
-  <a href="a-propos.html" class="menu-small">À PROPOS</a>
-  <a href="contact.html" class="menu-small">CONTACT</a>
-</nav>
 
 <main>
 
-  <section class="hero">
-    <img class="hero-logo reveal" src="logo.png?v=4" alt="Keys Club">
-    <h1 class="reveal">Découvre les marchés financiers,<br>avec le bon environnement autour de toi.</h1>
-    <p class="tag reveal">Apprendre. Comprendre. Analyser. Progresser.</p>
-
-    <div class="stats reveal">
-      <div><b data-cible="0" data-suffixe="€">0€</b><span>D'ABONNEMENT KEYS</span></div>
-      <div><b data-cible="200" data-suffixe="+">200+</b><span>MEMBRES</span></div>
-      <div><b data-cible="0" data-suffixe="">0</b><span>EXPÉRIENCE REQUISE</span></div>
-    </div>
-
-    <p class="intro reveal">Avant d'aller plus loin, découvre pourquoi KEYS Club a été créé.<br>Notre vision. Notre fonctionnement. Et ce que nous avons construit.</p>
-    <a href="#hero-video" class="arrow reveal" aria-label="Découvrir">↓</a>
-
-    <div class="video reveal" id="hero-video" data-yt="D-b4-2rdsoU">
-      <img src="https://i.ytimg.com/vi/D-b4-2rdsoU/hqdefault.jpg" alt="Aperçu vidéo">
-      <button class="play" aria-label="Lire la vidéo"></button>
-    </div>
+  <section class="hero" id="hero">
+    <div class="badge reveal" id="badge"><span class="dot"></span><span id="badgeTexte">Accès gratuit</span></div>
+    <h1 class="reveal" id="h1"></h1>
+    <p class="sous reveal" id="sousTitre"></p>
   </section>
 
-  <div class="sep"></div>
-
-  <section class="temoignages" id="temoignages">
-    <h2 class="reveal">Ce que disent nos membres.</h2>
-    <div class="marquee">
-      <div class="track" id="track"></div>
-    </div>
+  <section class="etape" id="etape1">
+    <p class="kicker reveal">Étape 1</p>
+    <h2 class="reveal" id="titreVideo"></h2>
+    <div class="video reveal" id="videoHero"></div>
   </section>
 
-  <div class="sep"></div>
-
-  <section class="acces" id="acces">
-    <h2 class="reveal">Ce à quoi tu as accès.</h2>
-    <div class="liste">
-      <div class="item reveal"><i>01</i><div><h3>Un environnement pour avancer plus simplement</h3><p>Communautés, live et ressources réunis au même endroit.</p></div></div>
-      <div class="item reveal"><i>02</i><div><h3>Des experts reconnus et des signaux de qualité</h3><p>83% winrate depuis 2 ans.</p></div></div>
-      <div class="item reveal"><i>03</i><div><h3>Les bases pour mieux comprendre le trading</h3><p>Risk management, prise de position et ressources pour progresser plus sereinement.</p></div></div>
-    </div>
+  <section class="etape" id="etape2">
+    <p class="kicker reveal">Étape 2</p>
+    <h2 class="reveal">Ce que tu trouves dans le club, concrètement.</h2>
+    <div class="grille" id="acces"></div>
   </section>
 
-  <div class="sep"></div>
-
-  <section class="faq" id="faq">
-    <h2 class="reveal">Les questions fréquentes.</h2>
-
-    <div class="q reveal">
-      <h3>Que se passe-t-il une fois que j'ai démarré ?</h3>
-      <div class="video" data-yt="5Y6GerIb7lU"><img src="https://i.ytimg.com/vi/5Y6GerIb7lU/hqdefault.jpg" alt="Aperçu vidéo"><button class="play" aria-label="Lire la vidéo"></button></div>
-      <p>Une fois démarré, tu accèdes à l'environnement complet : ressources, accompagnement et communauté. Tu évolues à ton rythme.</p>
-    </div>
-    <div class="q reveal">
-      <h3>Concrètement à quoi ai-je accès en rejoignant KEYS CLUB ?</h3>
-      <div class="video" data-yt="5Y6GerIb7lU"><img src="https://i.ytimg.com/vi/5Y6GerIb7lU/hqdefault.jpg" alt="Aperçu vidéo"><button class="play" aria-label="Lire la vidéo"></button></div>
-      <p>Un environnement centralisé, une communauté privée, un accompagnement, des ressources et l'accès aux canaux de signaux de Kleos Elite Club.</p>
-    </div>
-    <div class="q reveal">
-      <h3>Est-ce que je dois déjà connaître le trading pour rejoindre KEYS CLUB ?</h3>
-      <div class="video" data-yt="5Y6GerIb7lU"><img src="https://i.ytimg.com/vi/5Y6GerIb7lU/hqdefault.jpg" alt="Aperçu vidéo"><button class="play" aria-label="Lire la vidéo"></button></div>
-      <p>Non. L'accompagnement est justement pensé pour t'aider à comprendre les bases avant de commencer.</p>
-    </div>
-    <div class="q reveal">
-      <h3>Est-ce que les signaux garantissent des gains ?</h3>
-      <div class="video" data-yt="5Y6GerIb7lU"><img src="https://i.ytimg.com/vi/5Y6GerIb7lU/hqdefault.jpg" alt="Aperçu vidéo"><button class="play" aria-label="Lire la vidéo"></button></div>
-      <p>Non. Aucun signal ne garantit un résultat. Le trading comporte un risque de perte en capital.</p>
-    </div>
-    <div class="q reveal">
-      <h3>Est-ce que je suis obligé de suivre les analyses et les signaux ?</h3>
-      <div class="video" data-yt="5Y6GerIb7lU"><img src="https://i.ytimg.com/vi/5Y6GerIb7lU/hqdefault.jpg" alt="Aperçu vidéo"><button class="play" aria-label="Lire la vidéo"></button></div>
-      <p>Non. Les signaux et analyses sont une information, pas une obligation. Tu gardes le contrôle de tes décisions et de ta gestion du risque.</p>
-    </div>
+  <section class="etape" id="etape3">
+    <p class="kicker reveal">Étape 3</p>
+    <h2 class="reveal">Comment ça se passe.</h2>
+    <ol class="deroule" id="deroule"></ol>
   </section>
 
-  <div class="sep"></div>
+  <section class="etape" id="chiffresSection">
+    <p class="kicker reveal">Le club en chiffres</p>
+    <div class="chiffres" id="chiffres"></div>
+  </section>
 
-  <section class="manifeste reveal">
-    <h2>On ne te promet pas le résultat.</h2>
-    <h2>On construit l'environnement.</h2>
-    <p>Comprendre les marchés. Accéder aux bonnes ressources. S'entourer. Décider par soi-même.</p>
+  <section class="etape temoignages" id="temoignages">
+    <h2 class="reveal" id="temoignagesTitre"></h2>
+    <p class="sous reveal" id="temoignagesSous"></p>
+    <div class="marquee"><div class="track" id="track"></div></div>
+  </section>
+
+  <section class="etape" id="faqSection">
+    <p class="kicker reveal">Les questions qu'on nous pose avant d'entrer</p>
+    <div class="faq" id="faq"></div>
+  </section>
+
+  <section class="final reveal" id="final">
+    <h2 id="finalTitre"></h2>
+    <p class="sous" id="finalTexte"></p>
+    <ul class="lignes" id="finalLignes"></ul>
+    <a class="cta" id="cta" href="#" target="_blank" rel="noopener"></a>
+    <p class="anti" id="antiUrgence"></p>
   </section>
 
 </main>
 
 <footer>
-  <a href="#top"><img src="logo.png?v=4" alt="Keys Club" class="foot-logo"></a>
-  <nav class="foot-nav">
-    <a href="a-propos.html">À PROPOS</a>
-    <a href="contact.html">CONTACT</a>
-    <a href="#faq">FAQ</a>
-    <a href="#hero-video">DÉCOUVRIR</a>
-  </nav>
-  <p class="legal">Keys Club n'est pas un conseiller financier et ne fournit pas de recommandations d'investissement personnalisées.</p>
-  <p class="legal">Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les informations présentées sur ce site sont fournies à titre informatif et éducatif uniquement. N'investissez que des sommes que vous pouvez vous permettre de perdre.</p>
-  <p class="copy">© 2026 KEYS CLUB — TOUS DROITS RÉSERVÉS</p>
+  <p class="legal" id="legal1"></p>
+  <p class="legal" id="legal2"></p>
+  <p class="legal editeur" id="editeur"></p>
+  <p class="copy" id="copy"></p>
 </footer>
 
-<script src="app.js?v=4"></script>
+<div class="lightbox" id="lightbox" hidden><button class="fermer" id="fermer" aria-label="Fermer">×</button><img alt="" id="lightboxImg"></div>
+
+<script src="config.js?v=1"></script>
+<script src="app.js?v=1"></script>
 </body>
 </html>
