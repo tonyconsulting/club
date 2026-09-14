@@ -55,8 +55,8 @@ section{padding:72px 0}
 .temoignages h2,.acces h2,.faq h2{text-align:center;font-size:52px;font-weight:700;line-height:1.04;letter-spacing:-1.82px;color:#fff}
 
 /* témoignages */
-.temoignages{padding-left:0;padding-right:0}
-.marquee{overflow:hidden;margin-top:40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.temoignages{padding:72px 0 104px}
+.marquee{overflow:hidden;margin-top:46px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .track{display:flex;gap:16px;width:max-content;animation:defile 150s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -65,11 +65,11 @@ section{padding:72px 0}
 .card .ini{width:40px;height:40px;border-radius:50%;border:1px solid rgba(229,199,138,.7);display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;font-weight:400;color:#fff;flex:none}
 .card .nom{font-weight:600;font-size:13px;line-height:19.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card .at{color:rgba(255,255,255,.4);font-size:11px;line-height:16.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .delta{font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:28px;letter-spacing:-0.45px;margin:14px 0 10px}
+.card .delta{font-family:Inter,sans-serif;font-weight:700;font-size:18px;line-height:28px;letter-spacing:-0.45px;margin:16px 0 10px}
 .card p{color:rgba(255,255,255,.75);font-size:13px;font-weight:300;line-height:21.125px}
 
 /* accès */
-.liste{margin:42px auto 0;max-width:768px}
+.liste{margin:42px auto 15px;max-width:768px}
 .item{display:flex;padding:24px 0;border-bottom:1px solid var(--line)}
 .item:first-child{border-top:1px solid var(--line)}
 .item i{font-family:"JetBrains Mono",ui-monospace,monospace;font-style:normal;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;line-height:15.75px;padding-top:8px;flex:none;width:52px}
@@ -79,7 +79,7 @@ section{padding:72px 0}
 
 /* faq */
 .faq h2{margin-bottom:72px}
-.q{max-width:768px;margin:0 auto;padding:48px 0;border-bottom:1px solid var(--line);text-align:center}
+.q{max-width:768px;margin:0 auto;padding:53px 0;border-bottom:1px solid var(--line);text-align:center}
 .q:first-of-type{padding-top:0}
 .q:last-child{border-bottom:none}
 .q h3{font-size:24px;font-weight:600;line-height:32px;letter-spacing:-0.48px;color:#fff;margin-bottom:24px}
@@ -87,18 +87,18 @@ section{padding:72px 0}
 .q p{color:rgba(255,255,255,.55);font-size:16px;font-weight:300;line-height:26px;margin:24px auto 0;max-width:576px}
 
 /* manifeste */
-.manifeste{text-align:center;padding:96px 0}
+.manifeste{text-align:center;padding:152px 0 0}
 .manifeste h2{font-size:30px;font-weight:600;line-height:36px;letter-spacing:-0.6px;color:#fff}
 .manifeste h2+h2{margin-top:12px}
 .manifeste p{color:rgba(255,255,255,.45);font-size:16px;font-weight:300;line-height:24px;margin:32px auto 0;max-width:576px}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding:72px 24px calc(48px + env(safe-area-inset-bottom));text-align:center}
-.foot-logo{width:226px;margin:0 auto 72px}
-.foot-nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:56px}
+footer{padding:24px 24px calc(48px + env(safe-area-inset-bottom));text-align:center}
+.foot-logo{width:226px;margin:0 auto 222px}
+.foot-nav{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:57px}
 .foot-nav a{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:2.31px;color:rgba(255,255,255,.38)}
 .legal{color:rgba(255,255,255,.3);font-size:12px;line-height:19.5px;max-width:672px;margin:0 auto 12px}
-.copy{font-family:"JetBrains Mono",ui-monospace,monospace;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;margin-top:56px}
+.copy{font-family:"JetBrains Mono",ui-monospace,monospace;color:rgba(255,255,255,.38);font-size:10.5px;font-weight:500;letter-spacing:2.31px;margin-top:12px}
 
 /* pages internes */
 .page{max-width:768px;margin:0 auto;padding:130px 24px 80px}
