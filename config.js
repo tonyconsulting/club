@@ -67,14 +67,7 @@ window.CLUB = {
   temoignagesSous: "Clique pour écouter chaque membre.",
   temoignagesNote: "Exemples fictifs pour le rendu, à remplacer par de vrais membres avec leur accord.",
   // Phrases courtes qui défilent au-dessus des cartes (une par membre, sur l'expérience, jamais de chiffres). Liste vide = rien.
-  ticker: [
-    "Installé en une soirée",
-    "Une question, une réponse dans la journée",
-    "15 groupes Telegram avant, un seul canal aujourd'hui",
-    "Personne ne m'a vendu du rêve",
-    "J'ai posé toutes mes questions avant d'ouvrir mon compte",
-    "Les lives m'ont donné envie de me lancer",
-  ],
+  ticker: [],   // phrases courtes qui défilent (retiré pour l'instant, à revoir plus tard)
   temoignages: [
     { prenom: "Nassim", nom: "B.", handle: "nassim.b", profil: "Débutant · Salarié", depart: "500 €", arrivee: "1 850 €", duree: "4 mois",
       texte: "Jamais ouvert de compte avant. Installé en une soirée.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
