@@ -126,7 +126,7 @@
   $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div class="dtexte"><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div>${d.temps ? `<span class="temps">${esc(d.temps)}</span>` : ""}</li>`).join("");
 
   // Pourquoi c'est gratuit : le visage de la personne qui envoie + 2 ou 3 phrases à la première personne
-  const gPhoto = C.gratuitPhoto || contact.photo;
+  const gPhoto = contact.photoGrande || contact.photo || C.gratuitPhoto;
   if ((C.gratuitTextes || []).length) {
     $("gratuitTitre").textContent = C.gratuitTitre || "Pourquoi c'est gratuit.";
     $("gratuitTextes").innerHTML = C.gratuitTextes.map((t) => `<p>${esc(avecPrenom(t))}</p>`).join("");
