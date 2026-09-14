@@ -66,8 +66,14 @@
   $("titreVideo").textContent = contacts[ref] ? `Regarde cette vidéo avant d'écrire à ${contact.prenom}.` : "Regarde cette vidéo avant d'aller plus loin.";
   lecteurAuto($("videoHero"), (C.video || {}).youtube, "hero");
 
+  // Badges App Store / Google Play (liens dans config.js : appStore, googlePlay)
+  const BADGE_APPLE = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.6-3.7zM14.2 5.9c.6-.8 1.1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1.1.1 2.1-.5 2.8-1.3z"/></svg>`;
+  const BADGE_PLAY = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .6.6 1 1.1.7L19.6 12 5.1 2.8C4.6 2.5 4 2.9 4 3.5z"/></svg>`;
+  const badge = (lien, ico, petit, grand) => `<${lien ? `a href="${esc(lien)}" target="_blank" rel="noopener"` : "span"} class="store">${ico}<span><small>${petit}</small>${grand}</span></${lien ? "a" : "span"}>`;
+  const storesHTML = () => `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
+
   // Étape 2 : accès
-  $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p></div>`).join("");
+  $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}</div>`).join("");
 
   // Étape 3 : déroulé
   $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div></li>`).join("");
@@ -76,12 +82,9 @@
   const chiffres = (C.chiffres || []).filter(Boolean);
   if (!chiffres.length) $("chiffresSection").remove();
   else {
-    const BADGE_APPLE = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.6-3.7zM14.2 5.9c.6-.8 1.1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1.1.1 2.1-.5 2.8-1.3z"/></svg>`;
-    const BADGE_PLAY = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .6.6 1 1.1.7L19.6 12 5.1 2.8C4.6 2.5 4 2.9 4 3.5z"/></svg>`;
-    const badge = (lien, ico, petit, grand) => `<${lien ? `a href="${esc(lien)}" target="_blank" rel="noopener"` : "span"} class="store">${ico}<span><small>${petit}</small>${grand}</span></${lien ? "a" : "span"}>`;
     $("chiffres").innerHTML = chiffres.map((c) => {
       const haut = c.texte != null ? `<b>${esc(c.texte)}</b>` : `<b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-prefixe="${esc(c.prefixe || "")}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : esc(c.prefixe || "") + "0" + esc(c.suffixe || "")}</b>`;
-      const stores = c.stores ? `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>` : "";
+      const stores = c.stores ? storesHTML() : "";
       return `<div class="chiffre reveal">${haut}<span>${esc(c.label)}</span>${stores}</div>`;
     }).join("");
   }
