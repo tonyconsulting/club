@@ -120,7 +120,7 @@
   const storesHTML = () => `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
 
   // Étape 2 : accès
-  $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}</div>`).join("");
+  $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}${a.canal && C.lienCanal ? `<a class="carte-lien" href="${esc(C.lienCanal)}" target="_blank" rel="noopener">${esc(C.canalTexte || "Voir le canal")}</a>` : ""}</div>`).join("");
 
   // Étape 3 : déroulé
   $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div class="dtexte"><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div>${d.temps ? `<span class="temps">${esc(d.temps)}</span>` : ""}</li>`).join("");
