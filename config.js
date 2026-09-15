@@ -7,7 +7,7 @@ window.CLUB = {
 
   // --- Identité ---
   nom: "Unlock",                   // logo PNG à mettre dans "logo" dès reçu
-  logo: "",                        // ex: "logo.png" (laisser vide = le nom s'affiche en texte)
+  logo: "logo.jpg",                // logo Unlock (fond noir fondu dans la barre) ; vide = le nom en texte
   accent: "#6E9BFF",               // couleur d'accent (bleu ; change-la librement)
   // theme: { bg: "#100c0e", surface: "#181214", surface2: "#1e1719", line: "#2a2024", line2: "#3a2c31" },   // exemple de fond chaud ; sans cette ligne = noir neutre
   titre: "Apprends les marchés financiers,",
@@ -51,8 +51,8 @@ window.CLUB = {
   // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
   acces: [
     { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique : tout au même endroit.", stores: true },   // stores: true = badges App Store et Google Play dans la carte
-    { titre: "L'accompagnement", texte: "Je t'installe, je réponds à tes questions et je te dis par quoi commencer." },
-    { titre: "La communauté", texte: "Un support privé ultra réactif, des membres comme toi, de l'entraide au quotidien." },
+    { titre: "L'accompagnement", texte: "Je t'installe pas à pas, je réponds à tes questions en privé, je te donne l'ordre exact par quoi commencer, et je reste là après, pas seulement au début." },
+    { titre: "La communauté", texte: "Un support privé ultra réactif, des membres comme toi, de l'entraide au quotidien.", canal: true },   // canal: true = lien vers le canal Insta (lienCanal) dans la carte
   ],
 
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
