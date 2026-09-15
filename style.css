@@ -112,8 +112,8 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .note{color:var(--faint);font-size:12px;text-align:center;margin-top:8px}
 /* carrousel manuel façon Kéo */
 .carrousel{margin-top:26px}
-.piste{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px calc(50% - 165px) 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.piste::-webkit-scrollbar{display:none}
+.piste{position:relative;overflow:hidden;padding:10px 0 18px;touch-action:pan-y;user-select:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.piste .tcard{position:absolute;left:50%;top:10px}
 .nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
 .fl{width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);cursor:pointer;position:relative;transition:border-color .2s}
 .fl:hover{border-color:var(--accent)}
@@ -123,7 +123,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .points{display:flex;gap:8px}
 .pt{width:7px;height:7px;border-radius:50%;border:0;background:var(--line2);cursor:pointer;padding:0;transition:background .2s,transform .2s}
 .pt.on{background:var(--accent);transform:scale(1.35)}
-.tcard{width:330px;flex:none;scroll-snap-align:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;opacity:.4;transform:scale(.93);filter:blur(1.2px);transition:opacity .35s,transform .35s,filter .35s,border-color .2s;cursor:pointer}
+.tcard{width:330px;flex:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:opacity .4s,transform .4s,filter .4s,border-color .2s;cursor:pointer;will-change:transform}
 .tcard.active{opacity:1;transform:none;filter:none;border-color:var(--line2);cursor:default}
 .tqui{display:flex;align-items:center;gap:12px}
 .tavatar{width:44px;height:44px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--ink);background:var(--surface2);overflow:hidden;flex:none}
@@ -201,7 +201,6 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   .chiffres .chiffre:last-child{grid-column:1/-1}
   .store{padding:5px 9px}
   .tcard{width:280px}
-  .piste{padding-left:calc(50% - 140px);padding-right:calc(50% - 140px)}
   .gratuit{flex-direction:column;text-align:center;padding:22px 18px}
   .gtexte h2{text-align:center}
   .deroule .temps{margin-top:6px;font-size:11px;padding:2px 8px}
