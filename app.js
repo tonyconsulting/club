@@ -204,12 +204,37 @@
         ${t.video ? `<button class="tvideo" data-video="${esc(t.video)}"><span class="tplay"></span>Voir la vidéo</button>` : ""}
       </article>`;
     };
-    const liste = temoins.map(carte).join("");
-    $("track").innerHTML = liste + liste;
-    $("track").addEventListener("click", (e) => {
+    const piste = $("track");
+    piste.innerHTML = temoins.map(carte).join("");
+    piste.addEventListener("click", (e) => {
       const v = e.target.closest(".tvideo"); if (v) { ouvreVideo(v.dataset.video); mesure("temoignage-video"); return; }
-      const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); }
+      const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); return; }
+      const k = e.target.closest(".tcard"); if (k && !k.classList.contains("active")) k.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     });
+    // Carrousel manuel façon Kéo : la carte la plus proche du centre est nette, les autres estompées ; flèches, points, glissement au doigt
+    const cartes = [...piste.querySelectorAll(".tcard")];
+    const points = $("points");
+    points.innerHTML = cartes.map((_, i) => `<button class="pt" data-i="${i}" aria-label="Témoignage ${i + 1}"></button>`).join("");
+    const versCarte = (i) => { const k = cartes[Math.max(0, Math.min(cartes.length - 1, i))]; if (k) k.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }); };
+    let actif = 0, tick = false;
+    const majActif = () => {
+      tick = false;
+      const centre = piste.getBoundingClientRect().left + piste.clientWidth / 2;
+      let best = 0, dist = Infinity;
+      cartes.forEach((k, i) => { const r = k.getBoundingClientRect(); const d = Math.abs(r.left + r.width / 2 - centre); if (d < dist) { dist = d; best = i; } });
+      if (best !== actif || !cartes[best].classList.contains("active")) {
+        actif = best;
+        cartes.forEach((k, i) => k.classList.toggle("active", i === actif));
+        points.querySelectorAll(".pt").forEach((p, i) => p.classList.toggle("on", i === actif));
+      }
+    };
+    piste.addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(majActif); } }, { passive: true });
+    window.addEventListener("resize", majActif);
+    $("flG").addEventListener("click", () => versCarte(actif - 1));
+    $("flD").addEventListener("click", () => versCarte(actif + 1));
+    points.addEventListener("click", (e) => { const p = e.target.closest(".pt"); if (p) versCarte(Number(p.dataset.i)); });
+    // Démarrage : première carte centrée
+    requestAnimationFrame(() => { cartes[0] && cartes[0].scrollIntoView({ inline: "center", block: "nearest" }); majActif(); });
   }
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
