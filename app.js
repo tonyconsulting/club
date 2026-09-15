@@ -126,7 +126,7 @@
     let href = a.canal ? C.lienCanal : (a.lien || "");
     if (href && /^[a-z0-9_-]+\.html$/i.test(href)) href += q;
     const ext = /^https?:/i.test(href);
-    const dedans = `<i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}`;
+    const dedans = `${a.nouveau ? `<span class="pill-new">Nouveau</span>` : ""}<i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.statut ? `<span class="statut"><span class="sdot"></span>${esc(a.statut)}</span>` : ""}${a.preinscription ? `<p class="preins">${esc(avecPrenom(a.preinscription))}</p>` : ""}${a.stores ? storesHTML() : ""}`;
     return href
       ? `<a class="carte carte-clic reveal" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""} data-pos="acces-${i + 1}">${dedans}</a>`
       : `<div class="carte reveal">${dedans}</div>`;
