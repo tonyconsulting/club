@@ -48,7 +48,7 @@ window.CLUB = {
     duree: "3 min",
   },
 
-  // --- Étape 2 : les trois accès (le contenu du club est expliqué dans la vidéo, ici ce sont des liens) ---
+  // --- (section « trois accès » retirée de la page le 15/09 : pas d'appli tout de suite, lien canal capricieux sur ordinateur ; la config reste pour plus tard) ---
   //   stores: true = badges App Store / Google Play ; canal: true = renvoie vers lienCanal ; lien: "preuves.html" ou une adresse https (ex : compte Insta témoignages)
   accesTitre: "Trois accès, tout est là.",
   acces: [
@@ -103,6 +103,14 @@ window.CLUB = {
     { prenom: "Sofia", nom: "T.", handle: "sofia.t", profil: "Débutante · Alternance", depart: "400 €", arrivee: "1 300 €", duree: "4 mois",
       texte: "Suivait les lives avant de se lancer. Installée en 20 minutes.", video: "D-b4-2rdsoU", capture: "placeholder", fictif: true },
   ],
+
+  // --- Résultats façon Kéo : grille de captures prises dans le canal (sous « Pourquoi c'est gratuit ») ---
+  //   Chemins d'images portrait (ex: "resultats/1.jpg"). "placeholder" = tuile d'exemple. resultatsVisibles = nombre affiché avant « Voir plus ».
+  resultatsTitre: "Ce qui se passe dans le canal.",
+  resultatsSous: "Captures prises dans le canal, avec l'accord des membres.",
+  resultatsNote: "Exemples pour le rendu, à remplacer par de vraies captures.",
+  resultatsVisibles: 8,
+  resultats: ["placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],
 
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
   gratuitTitre: "Pourquoi c'est gratuit.",
