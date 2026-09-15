@@ -148,6 +148,8 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .cta{display:inline-block;margin-top:24px;background:var(--accent);color:#0a0b10;font-weight:700;padding:16px 30px;border-radius:99px;font-size:16px;transition:transform .15s,filter .15s;box-shadow:0 10px 30px rgba(var(--accent-rgb),.28)}
 .cta:hover{transform:translateY(-1px);filter:brightness(1.06)}
 .anti{color:var(--faint);font-size:13px;margin-top:14px}
+.cta-inline{text-align:center;margin-top:26px}
+.cta-inline .cta{margin-top:0}
 .final .actions{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:24px}
 .final .actions .cta{margin-top:0}
 .btn2{display:inline-block;border:1px solid var(--line2);color:var(--ink);padding:15px 24px;border-radius:99px;font-weight:600;font-size:15px}
