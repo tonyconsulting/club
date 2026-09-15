@@ -225,6 +225,9 @@
   cta.href = contact.lien || "#";
   cta.addEventListener("click", () => mesure("clic-cta-" + (contacts[ref] ? ref : "defaut")));
   $("antiUrgence").textContent = C.antiUrgence || "";
+  // Lien du canal Insta (preuves) à côté du bouton, dès qu'il est renseigné dans config.js
+  const canalIndex = $("canalIndex");
+  if (C.lienCanal) { canalIndex.href = C.lienCanal; canalIndex.textContent = C.canalTexte || "Voir le canal"; canalIndex.hidden = false; canalIndex.addEventListener("click", () => mesure("clic-canal")); }
 
   // Footer
   $("legal1").textContent = C.legal1 || "";
