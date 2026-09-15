@@ -21,6 +21,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .marque{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;font-size:15px}
 .marque img{height:22px;width:auto}
 .marque .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.wordmark{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:.32em;color:#fff;padding-left:.32em}
 
 /* hero */
 .hero{padding:36px 0 8px;text-align:center}
