@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=25">
+<link rel="stylesheet" href="style.css?v=27">
 <style>
 .hub{max-width:520px;margin:0 auto;padding:40px 20px 60px;text-align:center}
 .hub .identite{margin-bottom:22px}
@@ -29,7 +29,7 @@
   <div id="portes"></div>
   <p class="legal" id="legal"></p>
 </main>
-<script src="config.js?v=25"></script>
+<script src="config.js?v=27"></script>
 <script>
 (function(){
   const C=window.CLUB||{}, esc=(t)=>String(t==null?"":t).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -39,7 +39,7 @@
   const ref=(new URLSearchParams(location.search).get("r")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"");
   const contacts=C.contacts||{}, contact=contacts[ref]||contacts[C.contactParDefaut]||Object.values(contacts)[0]||{prenom:"",lien:"#"};
   const q=contacts[ref]?"?r="+ref:"";
-  document.getElementById("marque").innerHTML=C.logo?`<img src="${esc(C.logo)}" alt="${esc(C.nom)}">`:`<span class="dot"></span><span>${esc(C.nom)}</span>`;
+  document.getElementById("marque").innerHTML=C.logo?`<img src="${esc(C.logo)}" alt="${esc(C.nom)}">`:`<span class="wordmark">${esc(String(C.nom||"").toUpperCase())}</span>`;
   document.title=(contact.nom||C.nom)+" · "+C.nom;
   const id=document.getElementById("identite");
   if(contact.photo||contact.nom) id.innerHTML=`${contact.photo?`<img class="iavatar" src="${esc(contact.photo)}" alt="">`:""}<div><div class="inom">${esc(contact.nom||contact.prenom)}</div><div class="isuite">${contact.handle?"@"+esc(contact.handle):""}${contact.handle&&contact.abonnes?" · ":""}${contact.abonnes?`<b>${esc(contact.abonnes)} abonnés</b>`:""}</div></div>`; else id.remove();
