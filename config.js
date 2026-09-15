@@ -75,7 +75,7 @@ window.CLUB = {
   chiffres: [
     { valeur: 200, prefixe: "+", suffixe: "", label: "membres accompagnés" },
     { texte: "Gratuit", label: "aucun abonnement" },
-    { valeur: 1, prefixe: "", suffixe: "", label: "application iOS et Android" },
+    { valeur: 6, prefixe: "+", suffixe: "", label: "lives par semaine" },   // exemple ; « 1 application iOS et Android » à remettre quand l'appli sort
   ],
   appStore: "",      // lien App Store quand l'appli est publiée (vide = badge sans lien)
   googlePlay: "",    // lien Google Play
