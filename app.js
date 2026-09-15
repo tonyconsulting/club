@@ -119,8 +119,19 @@
   const badge = (lien, ico, petit, grand) => `<${lien ? `a href="${esc(lien)}" target="_blank" rel="noopener"` : "span"} class="store">${ico}<span><small>${petit}</small>${grand}</span></${lien ? "a" : "span"}>`;
   const storesHTML = () => `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
 
-  // Étape 2 : accès
-  $("acces").innerHTML = (C.acces || []).map((a, i) => `<div class="carte reveal"><i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}${a.canal && C.lienCanal ? `<a class="carte-lien" href="${esc(C.lienCanal)}" target="_blank" rel="noopener">${esc(C.canalTexte || "Voir le canal")}</a>` : ""}</div>`).join("");
+  // Étape 2 : les trois accès. Une carte avec un lien (canal, page preuves, adresse https) est cliquable en entier.
+  if (C.accesTitre) $("accesTitre").textContent = C.accesTitre;
+  const q = contacts[ref] ? "?r=" + ref : "";
+  $("acces").innerHTML = (C.acces || []).map((a, i) => {
+    let href = a.canal ? C.lienCanal : (a.lien || "");
+    if (href && /^[a-z0-9_-]+\.html$/i.test(href)) href += q;
+    const ext = /^https?:/i.test(href);
+    const dedans = `<i>${String(i + 1).padStart(2, "0")}</i><h3>${esc(a.titre)}</h3><p>${esc(a.texte)}</p>${a.stores ? storesHTML() : ""}`;
+    return href
+      ? `<a class="carte carte-clic reveal" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""} data-pos="acces-${i + 1}">${dedans}</a>`
+      : `<div class="carte reveal">${dedans}</div>`;
+  }).join("");
+  $("acces").addEventListener("click", (e) => { const l = e.target.closest(".carte-clic"); if (l) mesure("clic-" + l.dataset.pos); });
 
   // Étape 3 : déroulé
   $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div class="dtexte"><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div>${d.temps ? `<span class="temps">${esc(d.temps)}</span>` : ""}</li>`).join("");
