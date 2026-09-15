@@ -209,32 +209,42 @@
     piste.addEventListener("click", (e) => {
       const v = e.target.closest(".tvideo"); if (v) { ouvreVideo(v.dataset.video); mesure("temoignage-video"); return; }
       const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); return; }
-      const k = e.target.closest(".tcard"); if (k && !k.classList.contains("active")) k.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     });
-    // Carrousel manuel façon Kéo : la carte la plus proche du centre est nette, les autres estompées ; flèches, points, glissement au doigt
-    const cartes = [...piste.querySelectorAll(".tcard")];
+    // Carrousel en boucle façon Kéo : la carte active au centre, la précédente à gauche, la suivante à droite (même au début et à la fin), flèches, points, glissement au doigt
+    const cartes = [...piste.querySelectorAll(".tcard")], n = cartes.length;
     const points = $("points");
     points.innerHTML = cartes.map((_, i) => `<button class="pt" data-i="${i}" aria-label="Témoignage ${i + 1}"></button>`).join("");
-    const versCarte = (i) => { const k = cartes[Math.max(0, Math.min(cartes.length - 1, i))]; if (k) k.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }); };
-    let actif = 0, tick = false;
-    const majActif = () => {
-      tick = false;
-      const centre = piste.getBoundingClientRect().left + piste.clientWidth / 2;
-      let best = 0, dist = Infinity;
-      cartes.forEach((k, i) => { const r = k.getBoundingClientRect(); const d = Math.abs(r.left + r.width / 2 - centre); if (d < dist) { dist = d; best = i; } });
-      if (best !== actif || !cartes[best].classList.contains("active")) {
-        actif = best;
-        cartes.forEach((k, i) => k.classList.toggle("active", i === actif));
-        points.querySelectorAll(".pt").forEach((p, i) => p.classList.toggle("on", i === actif));
-      }
+    let actif = 0;
+    const place = () => {
+      const w = cartes[0].offsetWidth, gap = 16, ecart = w + gap;
+      let hmax = 0;
+      cartes.forEach((k, i) => {
+        let d = (i - actif + n) % n; if (d > n / 2) d -= n;          // -1 = à gauche, 0 = centre, 1 = à droite
+        k.classList.toggle("active", d === 0);
+        k.dataset.d = d;
+        const visible = Math.abs(d) <= 1 || (n >= 5 && Math.abs(d) === 2);
+        k.style.transform = `translateX(calc(-50% + ${d * ecart}px)) scale(${d === 0 ? 1 : 0.93})`;
+        k.style.opacity = d === 0 ? 1 : (Math.abs(d) === 1 ? 0.4 : 0);
+        k.style.filter = d === 0 ? "none" : "blur(1.2px)";
+        k.style.pointerEvents = visible ? "auto" : "none";
+        k.style.zIndex = d === 0 ? 3 : (Math.abs(d) === 1 ? 2 : 1);
+        hmax = Math.max(hmax, k.offsetHeight);
+      });
+      piste.style.height = hmax + "px";
+      points.querySelectorAll(".pt").forEach((p, i) => p.classList.toggle("on", i === actif));
     };
-    piste.addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(majActif); } }, { passive: true });
-    window.addEventListener("resize", majActif);
-    $("flG").addEventListener("click", () => versCarte(actif - 1));
-    $("flD").addEventListener("click", () => versCarte(actif + 1));
-    points.addEventListener("click", (e) => { const p = e.target.closest(".pt"); if (p) versCarte(Number(p.dataset.i)); });
-    // Démarrage : première carte centrée
-    requestAnimationFrame(() => { cartes[0] && cartes[0].scrollIntoView({ inline: "center", block: "nearest" }); majActif(); });
+    const va = (i) => { actif = (i + n) % n; place(); mesure("temoignage-nav"); };
+    $("flG").addEventListener("click", () => va(actif - 1));
+    $("flD").addEventListener("click", () => va(actif + 1));
+    points.addEventListener("click", (e) => { const p = e.target.closest(".pt"); if (p) va(Number(p.dataset.i)); });
+    piste.addEventListener("click", (e) => { const k = e.target.closest(".tcard"); if (k && k.dataset.d !== "0" && !e.target.closest(".tvideo, .tcapture")) va(actif + Number(k.dataset.d)); });
+    // Glissement au doigt ou à la souris
+    let x0 = null;
+    piste.addEventListener("pointerdown", (e) => { x0 = e.clientX; });
+    piste.addEventListener("pointerup", (e) => { if (x0 == null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) va(actif + (dx < 0 ? 1 : -1)); });
+    piste.addEventListener("pointercancel", () => { x0 = null; });
+    window.addEventListener("resize", place);
+    place(); setTimeout(place, 400); setTimeout(place, 1500);
   }
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
