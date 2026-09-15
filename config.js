@@ -17,7 +17,8 @@ window.CLUB = {
   sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
 
   // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
-  lienCanal: "",                   // lien du canal de diffusion Insta Unlock (les preuves) : à coller dès que tu l'as
+  lienCanal: "",                   // lien du canal de diffusion Insta Unlock (les preuves) : à coller dès que tu l'as → bouton « Voir le canal » sur la page et sur preuves.html
+  canalTexte: "Voir le canal",
   hubTitre: "Par où tu veux commencer ?",
   hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
     { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
