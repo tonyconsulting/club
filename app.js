@@ -120,9 +120,9 @@
   const storesHTML = () => `<div class="stores">${badge(C.appStore, BADGE_APPLE, "Télécharger sur", "App Store")}${badge(C.googlePlay, BADGE_PLAY, "Disponible sur", "Google Play")}</div>`;
 
   // Étape 2 : les trois accès. Une carte avec un lien (canal, page preuves, adresse https) est cliquable en entier.
-  if (C.accesTitre) $("accesTitre").textContent = C.accesTitre;
   const q = contacts[ref] ? "?r=" + ref : "";
-  $("acces").innerHTML = (C.acces || []).map((a, i) => {
+  if ($("accesTitre") && C.accesTitre) $("accesTitre").textContent = C.accesTitre;
+  if ($("acces")) $("acces").innerHTML = (C.acces || []).map((a, i) => {
     let href = a.canal ? C.lienCanal : (a.lien || "");
     if (href && /^[a-z0-9_-]+\.html$/i.test(href)) href += q;
     const ext = /^https?:/i.test(href);
@@ -131,7 +131,7 @@
       ? `<a class="carte carte-clic reveal" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ""} data-pos="acces-${i + 1}">${dedans}</a>`
       : `<div class="carte reveal">${dedans}</div>`;
   }).join("");
-  $("acces").addEventListener("click", (e) => { const l = e.target.closest(".carte-clic"); if (l) mesure("clic-" + l.dataset.pos); });
+  if ($("acces")) $("acces").addEventListener("click", (e) => { const l = e.target.closest(".carte-clic"); if (l) mesure("clic-" + l.dataset.pos); });
 
   // Étape 3 : déroulé
   $("deroule").innerHTML = (C.deroule || []).map((d, i) => `<li class="reveal"><span class="num">${i + 1}</span><div class="dtexte"><h3>${esc(avecPrenom(d.titre))}</h3><p>${esc(avecPrenom(d.texte))}</p></div>${d.temps ? `<span class="temps">${esc(d.temps)}</span>` : ""}</li>`).join("");
@@ -143,6 +143,21 @@
     $("gratuitTextes").innerHTML = C.gratuitTextes.map((t) => `<p>${esc(avecPrenom(t))}</p>`).join("");
     if (gPhoto) $("gratuitPhoto").innerHTML = `<img src="${esc(gPhoto)}" alt="${esc(contact.nom || "")}">${contact.nom ? `<span class="gnom">${esc(contact.nom)}</span>` : ""}`; else $("gratuitPhoto").remove();
   } else $("gratuitSection").remove();
+
+  // Résultats façon Kéo : grille de captures du canal, zoom au clic, « Voir plus » déplie le reste
+  const tuileFictive = (n) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="550" viewBox="0 0 440 550"><rect width="440" height="550" fill="#13141b"/><rect x="24" y="24" width="392" height="502" rx="14" fill="#1a1b24" stroke="#2a2c38"/><circle cx="72" cy="80" r="20" fill="#2a2c38"/><rect x="104" y="66" width="140" height="12" rx="6" fill="#30323f"/><rect x="104" y="86" width="90" height="10" rx="5" fill="#262833"/><rect x="52" y="130" width="336" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="156" width="300" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="182" width="320" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="208" width="200" height="14" rx="7" fill="#2a2c38"/><text x="220" y="330" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="22" fill="#6b6e7c">Capture du canal ${n}</text><text x="220" y="362" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="14" fill="#4a4c58">exemple, à remplacer</text></svg>`);
+  const res = (C.resultats || []).map((p, i) => (p === "placeholder" ? tuileFictive(i + 1) : p));
+  if (!res.length) $("resultatsSection").remove();
+  else {
+    $("resultatsTitre").textContent = C.resultatsTitre || "Ce qui se passe dans le canal.";
+    $("resultatsSous").textContent = C.resultatsSous || "";
+    const note = $("resultatsNote"); if ((C.resultats || []).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove();
+    const nb = C.resultatsVisibles || 8;
+    $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
+    $("resultats").addEventListener("click", (e) => { const t = e.target.closest(".tuile"); if (t) { ouvreImage(t.dataset.src); mesure("resultat-capture"); } });
+    const plus = $("resultatsPlus");
+    if (res.length > nb) { plus.hidden = false; plus.addEventListener("click", () => { $("resultats").querySelectorAll(".tuile[hidden]").forEach((t) => { t.hidden = false; t.classList.add("in"); }); plus.remove(); mesure("resultats-plus"); }); }
+  }
 
   // Chiffres : compteur qui monte de 0 ; null = "..." (à remplir)
   const chiffres = (C.chiffres || []).filter(Boolean);
