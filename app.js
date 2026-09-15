@@ -224,6 +224,8 @@
   cta.textContent = avecPrenom(C.boutonTexte || "Écris-moi sur Insta");
   cta.href = contact.lien || "#";
   cta.addEventListener("click", () => mesure("clic-cta-" + (contacts[ref] ? ref : "defaut")));
+  // Boutons intermédiaires (sous les témoignages, sous « pourquoi c'est gratuit ») : même texte, même lien, comptés séparément
+  document.querySelectorAll(".cta-plus").forEach((b) => { b.textContent = cta.textContent; b.href = cta.href; b.addEventListener("click", () => mesure("clic-cta-" + b.dataset.pos)); });
   $("antiUrgence").textContent = C.antiUrgence || "";
   // Lien du canal Insta (preuves) à côté du bouton, dès qu'il est renseigné dans config.js
   const canalIndex = $("canalIndex");
