@@ -48,11 +48,13 @@ window.CLUB = {
     duree: "3 min",
   },
 
-  // --- Étape 2 : ce que tu trouves dans le club (3 à 4 blocs) ---
+  // --- Étape 2 : les trois accès (le contenu du club est expliqué dans la vidéo, ici ce sont des liens) ---
+  //   stores: true = badges App Store / Google Play ; canal: true = renvoie vers lienCanal ; lien: "preuves.html" ou une adresse https (ex : compte Insta témoignages)
+  accesTitre: "Trois accès, tout est là.",
   acces: [
-    { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique : tout au même endroit.", stores: true },   // stores: true = badges App Store et Google Play dans la carte
-    { titre: "L'accompagnement", texte: "Je t'installe pas à pas, je réponds à tes questions en privé, je te donne l'ordre exact par quoi commencer, et je reste là après, pas seulement au début." },
-    { titre: "La communauté", texte: "Un support privé ultra réactif, des membres comme toi, de l'entraide au quotidien.", canal: true },   // canal: true = lien vers le canal Insta (lienCanal) dans la carte
+    { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique.", stores: true },
+    { titre: "Le canal Insta", texte: "Les nouvelles du club et les preuves, en direct.", canal: true },
+    { titre: "Les témoignages", texte: "Ce que disent les membres, en captures et en vidéo.", lien: "preuves.html" },   // plus tard : le compte Insta témoignages ou les avis de l'appli
   ],
 
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
