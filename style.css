@@ -177,7 +177,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .cta-inline .cta{margin-top:0}
 .final .actions{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:24px}
 .final .actions .cta{margin-top:0}
-.btn2{display:inline-block;border:1px solid var(--line2);color:var(--ink);padding:15px 24px;border-radius:99px;font-weight:600;font-size:15px}
+.btn2{display:inline-block;border:1px solid var(--line2);background:transparent;color:var(--ink);padding:15px 24px;border-radius:99px;font-weight:600;font-size:15px;font-family:inherit;cursor:pointer;line-height:1.2}
 .btn2:hover{border-color:var(--accent)}
 
 /* footer */
