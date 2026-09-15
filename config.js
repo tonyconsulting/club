@@ -52,7 +52,10 @@ window.CLUB = {
   //   stores: true = badges App Store / Google Play ; canal: true = renvoie vers lienCanal ; lien: "preuves.html" ou une adresse https (ex : compte Insta témoignages)
   accesTitre: "Trois accès, tout est là.",
   acces: [
-    { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique.", stores: true },
+    { titre: "L'application", texte: "Canaux d'analyses, lives, académie, boutique.", stores: true,
+      nouveau: true,                                                  // pastille « Nouveau » sur la carte (à retirer quand ce n'est plus nouveau)
+      statut: "Sortie iOS le 22 septembre",                           // état réel et daté ; vide = rien
+      preinscription: "Écris-moi « APP » et je te préviens le jour J." },   // la pré-inscription passe par la conversation, pas par un formulaire
     { titre: "Le canal Insta", texte: "Les nouvelles du club et les preuves, en direct.", canal: true },
     { titre: "Les témoignages", texte: "Ce que disent les membres, en captures et en vidéo.", lien: "preuves.html" },   // plus tard : le compte Insta témoignages ou les avis de l'appli
   ],
