@@ -10,11 +10,24 @@ window.CLUB = {
   // --- Identité ---
   nom: "Unlock",                   // nom annoncé le 14/09 (logo et DA Unlock à venir)
   logo: "",                        // ex: "logo.png" (laisser vide = le nom s'affiche en texte)
-  accent: "#D08FA8",               // couleur d'accent (rose Mila ; change-la librement)
-  theme: { bg: "#100c0e", surface: "#181214", surface2: "#1e1719", line: "#2a2024", line2: "#3a2c31" },   // fond sombre chaud ; supprimer la ligne = fond neutre
+  accent: "#6E9BFF",               // couleur d'accent (bleu ; change-la librement)
+  // theme: { bg: "#100c0e", surface: "#181214", surface2: "#1e1719", line: "#2a2024", line2: "#3a2c31" },   // exemple de fond chaud (Mila) ; sans cette ligne = noir neutre
   titre: "Apprends les marchés financiers,",
   titreAccent: "avec des gens autour de toi.",   // la partie du titre en couleur
   sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
+
+  // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
+  lienCanal: "",                   // lien du canal de diffusion Insta Unlock (les preuves) : à coller dès que tu l'as
+  hubTitre: "Par où tu veux commencer ?",
+  hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
+    { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
+    { titre: "Les preuves", texte: "Ce que disent les membres, en captures.", lien: "preuves.html" },
+    { titre: "Développer un business avec moi", texte: "Si tu veux aller plus loin que le trading.", mlm: true },
+  ],
+  preuvesTitre: "Ce que disent les membres.",
+  preuvesSous: "Captures prises dans le canal, avec leur accord.",
+  preuvesNote: "Exemples fictifs pour le rendu, à remplacer par de vraies captures.",
+  preuves: ["placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],   // chemins d'images (ex: "preuves/1.jpg"), format portrait
 
   // --- La page parle à la première personne : c'est la personne qui l'envoie qui parle ("écris-moi").
   //     Le lien ?r=prenom choisit vers quel Instagram le bouton renvoie (et compte les clics par personne).
@@ -26,13 +39,13 @@ window.CLUB = {
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
-    tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr" },   // handle, abonnés et photo à compléter
+    tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
   // --- Étape 1 : la vidéo principale (identifiant YouTube OU adresse d'un fichier .mp4 hébergé) ---
   video: {
-    youtube: "https://github.com/tonyconsulting/mila/releases/download/vsl/vsl-mila-720.mp4",   // PLACEHOLDER (VSL Mila) : à remplacer par LA vidéo générique du club (3 min), la même pour tous les IB
-    poster: "mila-section.jpg",
+    youtube: "D-b4-2rdsoU",        // VSL de Sacha : la même vidéo pour tous les IB (identifiant YouTube ou adresse .mp4)
+    poster: "",
     duree: "3 min",
   },
 
