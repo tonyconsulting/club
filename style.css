@@ -20,7 +20,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 /* barre */
 .top{height:56px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10}
 .marque{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em;font-size:15px}
-.marque img{height:22px;width:auto}
+.marque img{height:24px;width:auto;mix-blend-mode:screen}
 .marque .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .wordmark{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:.32em;color:#fff;padding-left:.32em}
 
@@ -57,6 +57,8 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .carte i{display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:var(--accent);font-size:12px;font-weight:700;width:30px;height:30px;border-radius:50%;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.3);margin-bottom:12px}
 .carte h3{font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
 .carte p{color:var(--dim);font-size:14px}
+.carte-lien{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px}
+.carte-lien::after{content:"";width:7px;height:7px;border-right:1.5px solid var(--accent);border-top:1.5px solid var(--accent);transform:rotate(45deg)}
 
 /* déroulé */
 .deroule{list-style:none;max-width:720px;margin:0 auto;position:relative}
