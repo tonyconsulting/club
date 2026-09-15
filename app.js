@@ -29,7 +29,7 @@
 
   // Marque
   const marque = $("marque");
-  marque.innerHTML = C.logo ? `<img src="${esc(C.logo)}" alt="${esc(C.nom)}">` : `<span class="dot"></span><span>${esc(C.nom)}</span>`;
+  marque.innerHTML = C.logo ? `<img src="${esc(C.logo)}" alt="${esc(C.nom)}">` : `<span class="wordmark">${esc(String(C.nom || "").toUpperCase())}</span>`;
   document.title = C.nom || document.title;
 
   // Identité de la personne qui envoie (photo, nom, abonnés), façon Kéo
