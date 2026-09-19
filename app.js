@@ -324,7 +324,7 @@
   // Footer
   $("legal1").textContent = C.legal1 || "";
   $("legal2").textContent = C.legal2 || "";
-  $("editeur").textContent = C.editeur ? "Éditeur : " + C.editeur : "";
+  if (C.editeur) $("editeur").textContent = "Éditeur : " + C.editeur; else $("editeur").remove();   // vide = la ligne disparaît, sans laisser d'espace
   $("copy").textContent = `© ${new Date().getFullYear()} ${C.nom || ""}. Tous droits réservés.`;
 
   // Apparition au scroll (cascade 80 ms entre voisins) + compteurs
