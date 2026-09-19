@@ -15,9 +15,9 @@ window.CLUB = {
   sousTitre: "",   // retiré le 19/09 à la demande de Tony (avant : « Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo. ») ; vide = la ligne disparaît
 
   // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
-  lienCanal: "https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/",   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
+  lienCanal: "https://taap.it/IYSHixf",   // lien direct Taap.it vers le canal (destination vérifiée : https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/)   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
   canalTexte: "Voir le canal",
-  canalEnBas: false,               // bouton « Voir le canal » dans le bloc final : retiré le 19/09 à la demande de Tony (true pour le remettre)
+  canalEnBas: true,                // bouton « Voir le canal » dans le bloc final, à côté de « Écris-moi » (remis le 19/09 avec le lien Taap.it ; false pour le retirer)
   hubTitre: "Par où tu veux commencer ?",
   hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
     { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
