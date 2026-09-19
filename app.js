@@ -158,9 +158,28 @@
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
-    // Chaque case prend la couleur du bas de sa capture : la case prolonge l'image, quel que soit l'appli ou le thème de la capture
+    // Harmonisation des captures : toutes les cases ont le même fond sombre, et une capture plus claire que les autres
+    // (fond d'écran gris au lieu de noir) est assombrie par une courbe gamma calculée sur SON fond : les blancs restent blancs, le texte reste lisible.
+    const svgNS = "http://www.w3.org/2000/svg"; let svgFiltres = null;
+    const filtreGamma = (exp) => {
+      if (!svgFiltres) { svgFiltres = document.createElementNS(svgNS, "svg"); svgFiltres.setAttribute("width", "0"); svgFiltres.setAttribute("height", "0"); svgFiltres.style.position = "absolute"; document.body.appendChild(svgFiltres); }
+      const id = "gamma" + Math.round(exp * 100); if (document.getElementById(id)) return id;
+      const f = document.createElementNS(svgNS, "filter"); f.setAttribute("id", id); f.setAttribute("color-interpolation-filters", "sRGB");
+      const t = document.createElementNS(svgNS, "feComponentTransfer");
+      ["R", "G", "B"].forEach((c) => { const fn = document.createElementNS(svgNS, "feFunc" + c); fn.setAttribute("type", "gamma"); fn.setAttribute("exponent", String(exp)); fn.setAttribute("amplitude", "1"); fn.setAttribute("offset", "0"); t.appendChild(fn); });
+      f.appendChild(t); svgFiltres.appendChild(f); return id;
+    };
     $("resultats").querySelectorAll(".tuile:not(.ex) img").forEach((img) => {
-      const teinte = () => { try { const cv = document.createElement("canvas"); cv.width = 8; cv.height = 4; const x = cv.getContext("2d"); x.drawImage(img, 0, img.naturalHeight - 14, img.naturalWidth, 14, 0, 0, 8, 4); const d = x.getImageData(0, 0, 8, 4).data; let r = 0, g = 0, bl = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; bl += d[i + 2]; } const n = d.length / 4; img.closest(".tuile").style.setProperty("--cap-bg", `rgb(${Math.round(r / n)},${Math.round(g / n)},${Math.round(bl / n)})`); } catch (e) {} };
+      const teinte = () => { try {
+        const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16; const x = cv.getContext("2d");
+        const moyenne = (sx, sy, sw, sh) => { x.drawImage(img, sx, sy, sw, sh, 0, 0, 16, 16); const d = x.getImageData(0, 0, 16, 16).data; let r = 0, g = 0, b = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; b += d[i + 2]; } const n = d.length / 4; r /= n; g /= n; b /= n; return { r, g, b, l: 0.2126 * r + 0.7152 * g + 0.0722 * b }; };
+        const W = img.naturalWidth, H = img.naturalHeight, tuile = img.closest(".tuile");
+        const fond = moyenne(W * 0.86, H * 0.2, W * 0.14, H * 0.5);   // bande de droite = fond d'écran de la discussion
+        const CIBLE = 14;   // luminosité du fond des captures sombres de référence
+        if (fond.l > 19 && fond.l < 110) { const exp = Math.min(1.45, Math.max(1, Math.log(CIBLE / 255) / Math.log(fond.l / 255))); img.style.filter = "url(#" + filtreGamma(exp) + ")"; }
+        const bas = moyenne(0, H - 14, W, 14);
+        tuile.style.setProperty("--cap-bg", bas.l < 110 ? "#0d0d0d" : `rgb(${Math.round(bas.r)},${Math.round(bas.g)},${Math.round(bas.b)})`);   // capture claire (thème clair) : la case garde sa couleur
+      } catch (e) {} };
       if (img.complete && img.naturalWidth) teinte(); else img.addEventListener("load", teinte);
     });
     $("resultats").addEventListener("click", (e) => { const t = e.target.closest(".tuile"); if (t) { ouvreImage(t.dataset.src); mesure("resultat-capture"); } });
@@ -276,13 +295,13 @@
   (C.faq || []).forEach((f, i) => {
     const el = $("faqVideo" + i), det = el && el.closest("details");
     if (!el) return;
-    const id = f.video || C.faqVideoDefaut;
+    const id = (contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut;   // contact.faqVideos = les réponses vidéo de la personne, dans l'ordre des questions
     if (!id) { el.remove(); return; }
     el.classList.add("auto");
     // Fermée : rien n'est chargé. Ouverte : lecteur automatique (la première est ouverte au chargement et démarre quand elle arrive à l'écran).
     // Chrome envoie un "toggle" au chargement pour la question déjà ouverte : dans ce cas on laisse l'observateur démarrer la vidéo quand elle arrive à l'écran.
     const arme = () => { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); if (det.open && performance.now() - CHARGE > 1500) el.lance(); };
-    det.addEventListener("toggle", () => { if (det.open) arme(); else if (el.arrete) { obsAuto.unobserve(el); el.arrete(); el.lance = null; } });
+    det.addEventListener("toggle", () => { if (det.open) { $("faq").querySelectorAll("details[open]").forEach((o) => { if (o !== det) o.open = false; }); arme(); } else if (el.arrete) { obsAuto.unobserve(el); el.arrete(); el.lance = null; } });
     if (det.open) { if (!el.lance) lecteurAuto(el, id, "q" + (i + 1)); }
   });
 
