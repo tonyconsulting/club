@@ -73,7 +73,7 @@ window.CLUB = {
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Tout est dedans.", temps: "3 min" },
     { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
-    { titre: "On t'active ensemble", texte: "Je t'installe dans les canaux, avec toi.", temps: "5 min" },
+    { titre: "On te lance ensemble", texte: "On t'installe dans l'écosystème.", temps: "5 min" },
   ],
 
   // --- Le club en chiffres (3 cartes). Formes possibles :
@@ -124,6 +124,7 @@ window.CLUB = {
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
   gratuitTitre: "Pourquoi c'est gratuit.",
   // photo de la section = photoGrande du contact du lien, sinon sa photo de profil, sinon pas de photo
+  gratuitAffiche: false,           // section « Pourquoi c'est gratuit » retirée le 19/09 à la demande de Tony (true pour la remettre, les textes ci-dessous sont conservés)
   gratuitTextes: [
     "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais au club, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
     "Tu ne me verses rien. Ton compte est à ton nom, je ne peux ni y déposer ni en retirer.",
