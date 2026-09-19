@@ -161,15 +161,6 @@
     $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
     // Harmonisation des captures : toutes les cases ont le même fond sombre, et une capture plus claire que les autres
     // (fond d'écran gris au lieu de noir) est assombrie par une courbe gamma calculée sur SON fond : les blancs restent blancs, le texte reste lisible.
-    const svgNS = "http://www.w3.org/2000/svg"; let svgFiltres = null;
-    const filtreGamma = (exp) => {
-      if (!svgFiltres) { svgFiltres = document.createElementNS(svgNS, "svg"); svgFiltres.setAttribute("width", "0"); svgFiltres.setAttribute("height", "0"); svgFiltres.style.position = "absolute"; document.body.appendChild(svgFiltres); }
-      const id = "gamma" + Math.round(exp * 100); if (document.getElementById(id)) return id;
-      const f = document.createElementNS(svgNS, "filter"); f.setAttribute("id", id); f.setAttribute("color-interpolation-filters", "sRGB");
-      const t = document.createElementNS(svgNS, "feComponentTransfer");
-      ["R", "G", "B"].forEach((c) => { const fn = document.createElementNS(svgNS, "feFunc" + c); fn.setAttribute("type", "gamma"); fn.setAttribute("exponent", String(exp)); fn.setAttribute("amplitude", "1"); fn.setAttribute("offset", "0"); t.appendChild(fn); });
-      f.appendChild(t); svgFiltres.appendChild(f); return id;
-    };
     $("resultats").querySelectorAll(".tuile:not(.ex) img").forEach((img) => {
       const teinte = () => { try {
         const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16; const x = cv.getContext("2d");
@@ -177,7 +168,13 @@
         const W = img.naturalWidth, H = img.naturalHeight, tuile = img.closest(".tuile");
         const fond = moyenne(W * 0.86, H * 0.2, W * 0.14, H * 0.5);   // bande de droite = fond d'écran de la discussion
         const CIBLE = 14;   // luminosité du fond des captures sombres de référence
-        if (fond.l > 19 && fond.l < 110) { const exp = Math.min(1.45, Math.max(1, Math.log(CIBLE / 255) / Math.log(fond.l / 255))); img.style.filter = "url(#" + filtreGamma(exp) + ")"; }
+        if (fond.l > 19 && fond.l < 110 && !img.dataset.gamma) {   // capture trop claire : assombrie UNE fois (courbe gamma sur un canvas), puis affichée comme une image normale : rien à recalculer au défilement
+          const exp = Math.min(1.45, Math.max(1, Math.log(CIBLE / 255) / Math.log(fond.l / 255)));
+          const c2 = document.createElement("canvas"); c2.width = W; c2.height = H; const x2 = c2.getContext("2d"); x2.drawImage(img, 0, 0);
+          const im = x2.getImageData(0, 0, W, H), px = im.data, lut = new Uint8ClampedArray(256); for (let v = 0; v < 256; v++) lut[v] = Math.round(255 * Math.pow(v / 255, exp));
+          for (let k = 0; k < px.length; k += 4) { px[k] = lut[px[k]]; px[k + 1] = lut[px[k + 1]]; px[k + 2] = lut[px[k + 2]]; }
+          x2.putImageData(im, 0, 0); img.dataset.gamma = "1"; img.src = c2.toDataURL("image/jpeg", 0.88);
+        }
         const bas = moyenne(0, H - 14, W, 14);
         tuile.style.setProperty("--cap-bg", bas.l < 110 ? "#0d0d0d" : `rgb(${Math.round(bas.r)},${Math.round(bas.g)},${Math.round(bas.b)})`);   // capture claire (thème clair) : la case garde sa couleur
       } catch (e) {} };
