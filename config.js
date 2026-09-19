@@ -40,9 +40,9 @@ window.CLUB = {
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
     maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",
              video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
-             resultats: ["resultats/maxim-1.jpg", "resultats/maxim-2.jpg"],   // captures de SES membres, en-têtes WhatsApp retirés
+             resultats: ["resultats/maxim-1.jpg", "resultats/maxim-2.jpg", "resultats/maxim-3.jpg", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],   // captures de SES membres (en-têtes WhatsApp retirés), puis les cases à remplir
              resultatsTitre: "Ce que les membres m'écrivent.",
-             resultatsSous: "Messages reçus de membres, publiés avec leur accord." },
+             resultatsSous: "Messages reçus de membres, publiés avec leur accord. Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
