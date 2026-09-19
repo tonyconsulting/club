@@ -111,7 +111,7 @@
 
   $("titreVideo").textContent = avecPrenom(C.titreVideo || "Regarde cette vidéo avant de m'écrire.");
   if ((C.video || {}).poster) $("videoHero").dataset.poster = C.video.poster;
-  lecteurAuto($("videoHero"), (C.video || {}).youtube, "hero");
+  lecteurAuto($("videoHero"), contact.video || (C.video || {}).youtube, "hero");   // contact.video = la VSL de la personne, sinon la vidéo commune
 
   // Badges App Store / Google Play (liens dans config.js : appStore, googlePlay)
   const BADGE_APPLE = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.2 1.8-3.3 1.9-3.3-1-1.5-2.6-1.7-3.2-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.6-3.7zM14.2 5.9c.6-.8 1.1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1.1.1 2.1-.5 2.8-1.3z"/></svg>`;
@@ -146,12 +146,14 @@
 
   // Résultats façon Kéo : grille de captures du canal, zoom au clic, « Voir plus » déplie le reste
   const tuileFictive = (n) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="550" viewBox="0 0 440 550"><rect width="440" height="550" fill="#13141b"/><rect x="24" y="24" width="392" height="502" rx="14" fill="#1a1b24" stroke="#2a2c38"/><circle cx="72" cy="80" r="20" fill="#2a2c38"/><rect x="104" y="66" width="140" height="12" rx="6" fill="#30323f"/><rect x="104" y="86" width="90" height="10" rx="5" fill="#262833"/><rect x="52" y="130" width="336" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="156" width="300" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="182" width="320" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="208" width="200" height="14" rx="7" fill="#2a2c38"/><text x="220" y="330" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="22" fill="#6b6e7c">Capture du canal ${n}</text><text x="220" y="362" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="14" fill="#4a4c58">exemple, à remplacer</text></svg>`);
-  const res = (C.resultats || []).map((p, i) => (p === "placeholder" ? tuileFictive(i + 1) : p));
+  const listeRes = contact.resultats || C.resultats || [];   // contact.resultats = les captures des membres de cette personne, sinon la liste commune
+  const res = listeRes.map((p, i) => (p === "placeholder" ? tuileFictive(i + 1) : p));
   if (!res.length) $("resultatsSection").remove();
   else {
-    $("resultatsTitre").textContent = C.resultatsTitre || "Ce qui se passe dans le canal.";
-    $("resultatsSous").textContent = C.resultatsSous || "";
-    const note = $("resultatsNote"); if ((C.resultats || []).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove();
+    $("resultatsTitre").textContent = (contact.resultats ? contact.resultatsTitre : "") || C.resultatsTitre || "Ce qui se passe dans le canal.";
+    $("resultatsSous").textContent = (contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || "";
+    const note = $("resultatsNote"); if (listeRes.includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove();
+    if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
     $("resultats").addEventListener("click", (e) => { const t = e.target.closest(".tuile"); if (t) { ouvreImage(t.dataset.src); mesure("resultat-capture"); } });
