@@ -131,14 +131,13 @@ window.CLUB = {
 
   // --- Questions : dépliables, la vidéo dans chaque question, une ligne de texte maximum (peut être vide "") ---
   faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
-  faq: [
+  faq: [   // 4 questions fixées par Tony le 19/09/2026. Les 6 anciennes sont gardées en commentaire sous la liste.
     { q: "Où est le piège ?", r: "Il n'y en a pas : tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
-    { q: "Que se passe-t-il une fois que j'ai écrit ?", r: "", video: "" },
-    { q: "Quelqu'un m'accompagne vraiment ?", r: "", video: "" },
-    { q: "Comment je sais que ce n'est pas une arnaque ?", r: "Tu ne me donnes pas d'argent. Ton compte est à ton nom.", video: "" },
-    { q: "Je peux perdre de l'argent ?", r: "Oui. Le trading comporte un risque de perte en capital.", video: "" },
-    { q: "Je débute, je vais suivre ?", r: "", video: "" },
+    { q: "Pour qui est fait Unlock ?", r: "Pour celui qui débute et veut comprendre avant de se lancer, et pour celui qui a déjà un compte et se sent seul. Pas pour celui qui cherche de l'argent facile.", video: "" },
+    { q: "J'ai peu de temps libre, je vais y arriver ?", r: "Vingt minutes le soir suffisent pour suivre et apprendre à ton rythme. Personne ne peut te promettre un résultat, mais le temps n'est pas ce qui bloque.", video: "" },
+    { q: "Est-ce que j'ai besoin de compétences techniques ou d'expérience ?", r: "Non. Je t'installe pas à pas et tout est expliqué depuis zéro. Il te faut un téléphone et l'envie d'apprendre.", video: "" },
   ],
+  // Anciennes questions (avant le 19/09) : « Que se passe-t-il une fois que j'ai écrit ? », « Quelqu'un m'accompagne vraiment ? », « Comment je sais que ce n'est pas une arnaque ? », « Je peux perdre de l'argent ? », « Je débute, je vais suivre ? »
 
   // --- Bloc final ---
   finalTitre: "On se voit dans le club.",
