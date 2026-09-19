@@ -13,19 +13,21 @@
   window.addEventListener("pageshow", () => window.scrollTo(0, 0));
   window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
-  // Thème (fond, surfaces, lignes) si défini dans config.js
-  Object.entries(C.theme || {}).forEach(([k, v]) => { if (v) document.documentElement.style.setProperty("--" + k, v); });
-  // Couleur d'accent (et sa version transparente pour les halos)
-  const ACCENT = C.accent || "#6E9BFF";
-  document.documentElement.style.setProperty("--accent", ACCENT);
-  const rgb = /^#([0-9a-f]{6})$/i.test(ACCENT) ? [1, 3, 5].map((i) => parseInt(ACCENT.slice(i, i + 2), 16)).join(",") : "110,155,255";
-  document.documentElement.style.setProperty("--accent-rgb", rgb);
-
   // Qui a envoyé la page (?r=prenom) : uniquement des liens publics déclarés dans config.js
   const ref = (new URLSearchParams(location.search).get("r") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
   const contacts = C.contacts || {};
   const contact = contacts[ref] || contacts[C.contactParDefaut] || Object.values(contacts)[0] || { prenom: "nous", lien: "#" };
   const avecPrenom = (t) => String(t || "").replace(/\{prenom\}/g, contact.prenom);
+
+  // Thème et couleurs : ceux de la personne (contact.theme, contact.accent, contact.accent2) passent avant ceux de config.js
+  const hexRgb = (h, d) => (/^#([0-9a-f]{6})$/i.test(h || "") ? [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(",") : d);
+  Object.entries(Object.assign({}, C.theme || {}, contact.theme || {})).forEach(([k, v]) => { if (v) document.documentElement.style.setProperty("--" + k, v); });
+  const ACCENT = contact.accent || C.accent || "#6E9BFF";
+  document.documentElement.style.setProperty("--accent", ACCENT);
+  document.documentElement.style.setProperty("--accent-rgb", hexRgb(ACCENT, "110,155,255"));
+  const ACCENT2 = contact.accent2 || C.accent2 || "";   // seconde couleur facultative : dégradé du titre et bouton principal
+  if (ACCENT2) { document.documentElement.style.setProperty("--accent2", ACCENT2); document.documentElement.style.setProperty("--accent2-rgb", hexRgb(ACCENT2, "246,196,83")); }
+  if (contact.theme || contact.accent) document.documentElement.classList.add("theme-perso");
 
   // Marque
   const marque = $("marque");
