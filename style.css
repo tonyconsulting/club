@@ -105,7 +105,7 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .grille-res.peu{grid-template-columns:repeat(auto-fit,minmax(180px,250px));justify-content:center}
 .tuile{aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--cap-bg,#0c1013);cursor:zoom-in;padding:0;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .2s,border-color .2s}   /* --cap-bg = couleur du bas de la capture, posée par app.js : la case prolonge la capture, aucune bande noire */
 .tuile:hover{transform:translateY(-3px);border-color:var(--line2)}
-.tuile img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:top center;display:block;-webkit-mask-image:linear-gradient(#000 calc(100% - 30px),transparent);mask-image:linear-gradient(#000 calc(100% - 30px),transparent)}   /* capture entière, calée en haut comme un écran de discussion, fondue dans la case en bas */
+.tuile img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:top center;display:block;-webkit-mask-image:linear-gradient(#000 calc(100% - 6px),transparent);mask-image:linear-gradient(#000 calc(100% - 6px),transparent)}   /* capture entière, calée en haut comme un écran de discussion, fondu de 6 px seulement : le dernier message reste entièrement lisible */
 .tuile.ex{background:var(--surface)}.tuile.ex img{height:100%;object-fit:cover;-webkit-mask-image:none;mask-image:none}
 #resultatsPlus{margin-top:0}
 @media (max-width:640px){.grille-res{grid-template-columns:repeat(2,1fr);gap:10px}}
