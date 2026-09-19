@@ -6,6 +6,7 @@
   const ytId = (v) => encodeURIComponent(String(v || "").trim());
   const estFichier = (v) => /^https?:\/\/.+\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(String(v || "").trim());
   const CHARGE = performance.now();
+  const APERCU = new URLSearchParams(location.search).get("apercu") === "1";   // ?apercu=1 : rendu final sans aucune mention « exemple » ni case à remplir (pour juger la page, pas pour la diffuser)
 
   // Au rechargement, la page repart toujours du haut (pas de retour à l'ancienne position)
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -148,15 +149,15 @@
 
   // Résultats façon Kéo : grille de captures du canal, zoom au clic, « Voir plus » déplie le reste
   const tuileFictive = (n) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="550" viewBox="0 0 440 550"><rect width="440" height="550" fill="#13141b"/><rect x="24" y="24" width="392" height="502" rx="14" fill="#1a1b24" stroke="#2a2c38"/><circle cx="72" cy="80" r="20" fill="#2a2c38"/><rect x="104" y="66" width="140" height="12" rx="6" fill="#30323f"/><rect x="104" y="86" width="90" height="10" rx="5" fill="#262833"/><rect x="52" y="130" width="336" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="156" width="300" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="182" width="320" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="208" width="200" height="14" rx="7" fill="#2a2c38"/><text x="220" y="330" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="22" fill="#6b6e7c">Capture du canal ${n}</text><text x="220" y="362" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="14" fill="#4a4c58">exemple, à remplacer</text></svg>`);
-  const listeRes = contact.resultats || C.resultats || [];   // contact.resultats = les captures des membres de cette personne, sinon la liste commune
+  const listeRes = (contact.resultats || C.resultats || []).filter((p) => !(APERCU && p === "placeholder"));   // contact.resultats = les captures des membres de cette personne, sinon la liste commune
   const res = listeRes.map((p, i) => (p === "placeholder" ? tuileFictive(i + 1) : p));
   if (!res.length) $("resultatsSection").remove();
   else {
     $("resultatsTitre").textContent = (contact.resultats ? contact.resultatsTitre : "") || C.resultatsTitre || "Ce qui se passe dans le canal.";
     $("resultatsSous").textContent = (contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || "";
-    const note = $("resultatsNote"); if (listeRes.includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove();
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
+    { const note = $("resultatsNote"); if (!APERCU && listeRes.slice(0, nb).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove(); }   // la note ne s'affiche que si une case à remplir est visible sans cliquer
     $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
     // Harmonisation des captures : toutes les cases ont le même fond sombre, et une capture plus claire que les autres
     // (fond d'écran gris au lieu de noir) est assombrie par une courbe gamma calculée sur SON fond : les blancs restent blancs, le texte reste lisible.
@@ -224,14 +225,14 @@
   const euros = (n) => n.toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g, "\u00a0") + "\u00a0€";
   const gainDe = (t) => { if (t.gain) return t.gain; const d = montant(t.depart), a = montant(t.arrivee); return d != null && a != null ? (a >= d ? "+" : "") + euros(a - d) : ""; };
   // Petit graphique fictif : solde de départ à gauche, solde actuel à droite
-  const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text><text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text><line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="${ACCENT}" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="${ACCENT}">${esc(arrivee)}</text></svg>`);
+  const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text>${APERCU ? "" : `<text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text>`}<line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="${ACCENT}" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="${ACCENT}">${esc(arrivee)}</text></svg>`);
   const temoins = C.temoignages || [];
   if (!temoins.length) $("temoignages").remove();
   else {
     $("temoignagesTitre").textContent = C.temoignagesTitre || "Ce que disent les membres.";
     $("temoignagesSous").textContent = C.temoignagesSous || "";
     const note = $("temoignagesNote");
-    if (temoins.some((t) => t.fictif) && C.temoignagesNote) note.textContent = C.temoignagesNote; else note.remove();
+    if (!APERCU && temoins.some((t) => t.fictif) && C.temoignagesNote) note.textContent = C.temoignagesNote; else note.remove();
     // Ticker : phrases courtes qui défilent
     const tk = C.ticker || [];
     if (tk.length) { const l = tk.map((t) => `<span class="titem"><span class="tdot"></span>${esc(t)}</span>`).join(""); $("ttrack").innerHTML = l + l; } else $("ticker").remove();
@@ -239,7 +240,7 @@
       const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee, t.duree) : t.capture;
       const ini = (t.prenom || "?").charAt(0).toUpperCase();
       return `<article class="tcard" data-i="${i}">
-        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom)} ${esc(t.nom || "")}${t.fictif ? ` <span class="tfictif">Exemple fictif</span>` : ""}</div>${t.handle ? `<div class="thandle">@${esc(t.handle)}</div>` : ""}</div></div>
+        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom)} ${esc(t.nom || "")}${t.fictif && !APERCU ? ` <span class="tfictif">Exemple fictif</span>` : ""}</div>${t.handle ? `<div class="thandle">@${esc(t.handle)}</div>` : ""}</div></div>
         <div class="tmetric">${esc(gainDe(t))}${t.duree ? ` <span class="ten">en ${esc(t.duree)}</span>` : ""}</div>
         <div class="tsolde">${esc(t.depart)} <span class="fleche">→</span> ${esc(t.arrivee)}${t.profil ? `<span class="tprofil"> · ${esc(t.profil)}</span>` : ""}</div>
         ${cap ? `<button class="tcapture" data-src="${esc(cap)}" aria-label="Voir la capture"><img src="${esc(cap)}" alt="Capture" loading="lazy"></button>` : ""}
