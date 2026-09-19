@@ -13,7 +13,7 @@ main{max-width:var(--max);margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:Manrope,Inter,"Helvetica Neue",Helvetica,Arial,sans-serif}
 h1,h2{font-weight:700;letter-spacing:-.03em;line-height:1.08}
 h1{font-size:clamp(30px,6vw,52px);text-align:center}
-h1 em{font-style:normal;color:var(--accent)}
+h1 em{font-style:normal;color:var(--accent);background:linear-gradient(90deg,var(--accent),var(--accent2,var(--accent)));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .sous{color:var(--dim);text-align:center;max-width:640px;margin:14px auto 0;font-size:16px}
 
@@ -172,7 +172,8 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .lignes{list-style:none;max-width:420px;margin:22px auto 0;text-align:left}
 .lignes li{display:flex;gap:12px;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:8px;font-size:14px}
 .lignes .case{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--accent)}
-.cta{display:inline-block;margin-top:24px;background:var(--accent);color:#0a0b10;font-weight:700;padding:16px 30px;border-radius:99px;font-size:16px;transition:transform .15s,filter .15s;box-shadow:0 10px 30px rgba(var(--accent-rgb),.28)}
+.cta{display:inline-block;margin-top:24px;background:var(--accent2,var(--accent));color:#0a0b10;font-weight:700;padding:16px 30px;border-radius:99px;font-size:16px;transition:transform .15s,filter .15s;box-shadow:0 10px 30px rgba(var(--accent2-rgb,var(--accent-rgb)),.28)}
+html.theme-perso body{background:radial-gradient(1100px 620px at 50% -8%,rgba(var(--accent-rgb),.16),transparent 62%),radial-gradient(900px 520px at 100% 38%,rgba(var(--accent2-rgb,var(--accent-rgb)),.07),transparent 60%),var(--bg)}
 .cta:hover{transform:translateY(-1px);filter:brightness(1.06)}
 .anti{color:var(--faint);font-size:13px;margin-top:14px}
 .cta-inline{text-align:center;margin-top:26px}
