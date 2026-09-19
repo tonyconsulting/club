@@ -44,7 +44,7 @@
   // Hero
   $("badgeTexte").textContent = C.badge || "Accès gratuit";
   $("h1").innerHTML = `${esc(C.titre)}<br><em>${esc(C.titreAccent)}</em>`;
-  $("sousTitre").textContent = C.sousTitre || "";
+  if (C.sousTitre) $("sousTitre").textContent = C.sousTitre; else $("sousTitre").remove();
 
   // Vidéo : façade cliquable, le lecteur YouTube ne se charge qu'au clic
   const facade = (el, id, duree, nom) => {
