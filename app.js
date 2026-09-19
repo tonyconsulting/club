@@ -158,6 +158,11 @@
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
+    // Chaque case prend la couleur du bas de sa capture : la case prolonge l'image, quel que soit l'appli ou le thème de la capture
+    $("resultats").querySelectorAll(".tuile:not(.ex) img").forEach((img) => {
+      const teinte = () => { try { const cv = document.createElement("canvas"); cv.width = 8; cv.height = 4; const x = cv.getContext("2d"); x.drawImage(img, 0, img.naturalHeight - 14, img.naturalWidth, 14, 0, 0, 8, 4); const d = x.getImageData(0, 0, 8, 4).data; let r = 0, g = 0, bl = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; bl += d[i + 2]; } const n = d.length / 4; img.closest(".tuile").style.setProperty("--cap-bg", `rgb(${Math.round(r / n)},${Math.round(g / n)},${Math.round(bl / n)})`); } catch (e) {} };
+      if (img.complete && img.naturalWidth) teinte(); else img.addEventListener("load", teinte);
+    });
     $("resultats").addEventListener("click", (e) => { const t = e.target.closest(".tuile"); if (t) { ouvreImage(t.dataset.src); mesure("resultat-capture"); } });
     const plus = $("resultatsPlus");
     if (res.length > nb) { plus.hidden = false; plus.addEventListener("click", () => { $("resultats").querySelectorAll(".tuile[hidden]").forEach((t) => { t.hidden = false; t.classList.add("in"); }); plus.remove(); mesure("resultats-plus"); }); }
