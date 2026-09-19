@@ -17,6 +17,7 @@ window.CLUB = {
   // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
   lienCanal: "https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/",   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
   canalTexte: "Voir le canal",
+  canalEnBas: false,               // bouton « Voir le canal » dans le bloc final : retiré le 19/09 à la demande de Tony (true pour le remettre)
   hubTitre: "Par où tu veux commencer ?",
   hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
     { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
