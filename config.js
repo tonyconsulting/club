@@ -152,7 +152,7 @@ window.CLUB = {
   antiUrgence: "Pas de compte à rebours, pas d'offre qui expire. Cette page sera encore là demain.",
 
   // --- Mentions légales (obligatoire en France) ---
-  editeur: "[ÉDITEUR À COMPLÉTER : nom, statut, adresse, email]",
+  editeur: "",   // vide = rien ne s'affiche. À remplir plus tard : nom de la structure, statut, adresse, e-mail de contact
   legal1: "Le club n'est pas un conseiller financier et ne fournit aucune recommandation d'investissement personnalisée. Il est rémunéré par le broker partenaire au titre d'apporteur d'affaires, sur le volume d'activité, et n'exécute aucune opération pour ton compte.",
   legal2: "Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les témoignages sont des expériences individuelles et ne constituent pas une promesse de résultat. Les informations de cette page sont fournies à titre informatif et éducatif uniquement. N'investis que des sommes que tu peux te permettre de perdre.",
 
