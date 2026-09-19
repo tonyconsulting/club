@@ -141,7 +141,7 @@
 
   // Pourquoi c'est gratuit : le visage de la personne qui envoie + 2 ou 3 phrases à la première personne
   const gPhoto = contact.photoGrande || contact.photo || C.gratuitPhoto;
-  if ((C.gratuitTextes || []).length) {
+  if (C.gratuitAffiche !== false && (C.gratuitTextes || []).length) {
     $("gratuitTitre").textContent = C.gratuitTitre || "Pourquoi c'est gratuit.";
     $("gratuitTextes").innerHTML = C.gratuitTextes.map((t) => `<p>${esc(avecPrenom(t))}</p>`).join("");
     if (gPhoto) $("gratuitPhoto").innerHTML = `<img src="${esc(gPhoto)}" alt="${esc(contact.nom || "")}">${contact.nom ? `<span class="gnom">${esc(contact.nom)}</span>` : ""}`; else $("gratuitPhoto").remove();
