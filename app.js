@@ -176,7 +176,7 @@
   const compte = (el) => {
     if (el.dataset.cible === "") return;
     const cible = Number(el.dataset.cible), pre = el.dataset.prefixe || "", suf = el.dataset.suffixe || "", debut = performance.now(), duree = 1300;
-    const pas = (t) => { const p = Math.min(1, (t - debut) / duree), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(cible * e).toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g, "\u00a0") + suf; if (p < 1) requestAnimationFrame(pas); };
+    const pas = (t) => { const p = Math.max(0, Math.min(1, (t - debut) / duree)), e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(cible * e).toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g, "\u00a0") + suf; if (p < 1) requestAnimationFrame(pas); };
     requestAnimationFrame(pas);
   };
 
