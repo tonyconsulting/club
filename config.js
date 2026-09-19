@@ -80,7 +80,7 @@ window.CLUB = {
   //   ajouter stores: true à une carte → badges App Store et Google Play sous le libellé (liens ci-dessous)
   // Valeurs d'exemple pour le template : remplacer par des chiffres RÉELS et datés.
   chiffres: [
-    { valeur: 200, prefixe: "+", suffixe: "", label: "membres accompagnés" },
+    { valeur: 350, prefixe: "+", suffixe: "", label: "membres accompagnés" },   // chiffre donné par Tony le 19/09/2026
     { texte: "Gratuit", label: "aucun abonnement" },
     { valeur: 6, prefixe: "+", suffixe: "", label: "lives par semaine" },   // exemple ; « 1 application iOS et Android » à remettre quand l'appli sort
   ],
