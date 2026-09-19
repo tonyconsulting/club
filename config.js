@@ -12,7 +12,7 @@ window.CLUB = {
   // theme: { bg: "#100c0e", surface: "#181214", surface2: "#1e1719", line: "#2a2024", line2: "#3a2c31" },   // exemple de fond chaud ; sans cette ligne = noir neutre
   titre: "Apprends les marchés financiers,",
   titreAccent: "avec des gens autour de toi.",   // la partie du titre en couleur
-  sousTitre: "Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo.",
+  sousTitre: "",   // retiré le 19/09 à la demande de Tony (avant : « Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo. ») ; vide = la ligne disparaît
 
   // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
   lienCanal: "https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/",   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
