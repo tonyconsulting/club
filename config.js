@@ -133,6 +133,7 @@ window.CLUB = {
 
   // --- Questions : dépliables, la vidéo dans chaque question, une ligne de texte maximum (peut être vide "") ---
   faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
+  faqTextes: false,                // pas de résumé écrit sous la vidéo de chaque question (retiré le 19/09 à la demande de Tony ; true pour le remettre, les textes « r » ci-dessous sont conservés)
   faq: [   // 4 questions fixées par Tony le 19/09/2026. Les 6 anciennes sont gardées en commentaire sous la liste.
     { q: "Où est le piège ?", r: "Il n'y en a pas : tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
     { q: "Pour qui est fait Unlock ?", r: "Pour celui qui débute et veut comprendre avant de se lancer, et pour celui qui a déjà un compte et se sent seul. Pas pour celui qui cherche de l'argent facile.", video: "" },
