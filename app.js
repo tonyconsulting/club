@@ -291,7 +291,7 @@
   }
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
-  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");
+  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r && (C.faqTextes !== false || !((contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut)) ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");   // faqTextes: false = la vidéo seule ; le texte ne revient que si une question n'a aucune vidéo
   (C.faq || []).forEach((f, i) => {
     const el = $("faqVideo" + i), det = el && el.closest("details");
     if (!el) return;
