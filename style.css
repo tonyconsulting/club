@@ -239,7 +239,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
 html.duo{--duo:linear-gradient(90deg,var(--accent),var(--accent2))}
 html.duo body{background:radial-gradient(1100px 620px at 50% -8%,rgba(var(--accent-rgb),.16),transparent 62%),radial-gradient(900px 560px at 100% 30%,rgba(var(--accent2-rgb),.08),transparent 60%),radial-gradient(900px 560px at 0% 58%,rgba(var(--accent-rgb),.09),transparent 60%),radial-gradient(1000px 600px at 100% 82%,rgba(var(--accent2-rgb),.07),transparent 60%),var(--bg)}
 html.duo .badge .dot{background:var(--accent2)}
-html.duo .kicker{background:var(--duo);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;border-color:rgba(var(--accent2-rgb),.32);box-shadow:inset 0 0 0 99px rgba(var(--accent2-rgb),.04)}
+html.duo .kicker{background:var(--duo);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;border-color:rgba(var(--accent2-rgb),.32)}
 html.duo .iavatar,html.duo .gphoto img,html.duo .tavatar{border-color:transparent;background:linear-gradient(135deg,var(--accent),var(--accent2)) border-box}
 html.duo .tavatar{background:linear-gradient(var(--surface2),var(--surface2)) padding-box,linear-gradient(135deg,var(--accent),var(--accent2)) border-box}
 html.duo .chiffre b,html.duo .tmetric,html.duo .final h2{background:var(--duo);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -256,3 +256,5 @@ html.duo .faq details[open] summary .chev{border-color:var(--accent2)}
 html.duo .faq details[open] summary .chev::after{border-color:var(--accent2)}
 html.duo .final{background:radial-gradient(120% 80% at 50% 0%,rgba(var(--accent-rgb),.16),transparent 60%),radial-gradient(90% 70% at 50% 100%,rgba(var(--accent2-rgb),.10),transparent 60%),var(--surface)}
 html.duo .lignes .case{border-color:var(--accent2)}
+/* Téléphone : deux halos au lieu de quatre sur toute la hauteur de la page (moins de peinture au défilement sur iPhone) */
+@media (max-width:640px){html.duo body,html.theme-perso body{background:radial-gradient(700px 480px at 50% -6%,rgba(var(--accent-rgb),.16),transparent 62%),radial-gradient(600px 420px at 100% 100%,rgba(var(--accent2-rgb,var(--accent-rgb)),.08),transparent 60%),var(--bg)}}
