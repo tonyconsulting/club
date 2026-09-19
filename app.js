@@ -155,7 +155,7 @@
     const note = $("resultatsNote"); if (listeRes.includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove();
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
-    $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
+    $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
     $("resultats").addEventListener("click", (e) => { const t = e.target.closest(".tuile"); if (t) { ouvreImage(t.dataset.src); mesure("resultat-capture"); } });
     const plus = $("resultatsPlus");
     if (res.length > nb) { plus.hidden = false; plus.addEventListener("click", () => { $("resultats").querySelectorAll(".tuile[hidden]").forEach((t) => { t.hidden = false; t.classList.add("in"); }); plus.remove(); mesure("resultats-plus"); }); }
