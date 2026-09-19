@@ -209,7 +209,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   /* Téléphone : haut de page resserré pour que la vidéo soit visible dès le premier écran, même sur un petit iPhone */
   .hero{padding-top:18px}
   .identite{margin-bottom:12px}
-  .badge{padding:6px 12px;font-size:10px}
+  .badge{padding:6px 12px;font-size:11px}
   h1{font-size:27px}
   .hero .sous{margin-top:10px;font-size:15px}
   .etape{padding-top:34px}
