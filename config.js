@@ -15,7 +15,7 @@ window.CLUB = {
   sousTitre: "",   // retiré le 19/09 à la demande de Tony (avant : « Gratuit, sans formation à acheter. Tout est expliqué dans la vidéo. ») ; vide = la ligne disparaît
 
   // --- Lien groupé (liens.html) et page témoignages (preuves.html) ---
-  lienCanal: "https://taap.it/IYSHixf",   // lien direct Taap.it vers le canal (destination vérifiée : https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/)   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
+  lienCanal: "https://www.instagram.com/channel/6xKu9QoZi1m4MzRU/",   // lien DIRECT vers le canal (même raison : pas de Taap.it, taap.it/IYSHixf testé le 19/09)   // canal de diffusion Insta « KEYSCLUB x UNLOCK » → bouton « Voir le canal » (page, carte communauté, preuves.html)
   canalTexte: "Voir le canal",
   canalEnBas: true,                // bouton « Voir le canal » dans le bloc final, à côté de « Écris-moi » (remis le 19/09 avec le lien Taap.it ; false pour le retirer)
   hubTitre: "Par où tu veux commencer ?",
@@ -39,12 +39,12 @@ window.CLUB = {
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
-    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://taap.it/wt6i1YC",   // lien direct Taap.it (ouvre l'appli Instagram sur la conversation ; destination : https://ig.me/m/maxim.hrtt)
+    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",   // lien DIRECT : sur iPhone seul un vrai tap sur un lien Instagram ouvre l'appli. Testé le 19/09 : Taap.it (taap.it/wt6i1YC) redirige en JavaScript et fait atterrir sur la connexion web d'Instagram, à ne pas utiliser ici
              video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
              faqVideos: ["HVuh2EdflCE", "EuAOUfofyeU", "FtCrOmHyBio", "C4cuZzo4k0o"],   // ses 4 réponses vidéo, dans l'ordre des questions : piège, pour qui, peu de temps, compétences
              accent: "#B794F6", accent2: "#F6C453",                  // violet et jaune, les tons de sa vidéo
              theme: { bg: "#0c0914", surface: "#151021", surface2: "#1b152b", line: "#2b2142", line2: "#3c2f5c" },
-             resultats: ["resultats/maxim-1.jpg?v=50", "resultats/maxim-2.jpg?v=50", "resultats/maxim-3.jpg?v=50", "resultats/maxim-4.jpg?v=50", "resultats/maxim-5.jpg?v=52", "resultats/maxim-6.jpg?v=59", "resultats/maxim-7.jpg?v=52", "resultats/maxim-8.jpg?v=52", "placeholder", "placeholder", "placeholder", "placeholder"],   // captures ENTIÈRES de ses membres, prénom et photo visibles (demande de Tony le 19/09 : accord de chaque membre à avoir), puis les cases à remplir
+             resultats: ["resultats/maxim-1.jpg?v=50", "resultats/maxim-2.jpg?v=50", "resultats/maxim-3.jpg?v=50", "resultats/maxim-4.jpg?v=50", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "placeholder", "placeholder", "placeholder", "placeholder"],   // captures ENTIÈRES de ses membres, prénom et photo visibles (demande de Tony le 19/09 : accord de chaque membre à avoir), puis les cases à remplir
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
