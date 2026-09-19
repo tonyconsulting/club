@@ -163,7 +163,7 @@
     // (fond d'écran gris au lieu de noir) est assombrie par une courbe gamma calculée sur SON fond : les blancs restent blancs, le texte reste lisible.
     $("resultats").querySelectorAll(".tuile:not(.ex) img").forEach((img) => {
       const teinte = () => { try {
-        const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16; const x = cv.getContext("2d");
+        const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16; const x = cv.getContext("2d", { willReadFrequently: true });
         const moyenne = (sx, sy, sw, sh) => { x.drawImage(img, sx, sy, sw, sh, 0, 0, 16, 16); const d = x.getImageData(0, 0, 16, 16).data; let r = 0, g = 0, b = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; b += d[i + 2]; } const n = d.length / 4; r /= n; g /= n; b /= n; return { r, g, b, l: 0.2126 * r + 0.7152 * g + 0.0722 * b }; };
         const W = img.naturalWidth, H = img.naturalHeight, tuile = img.closest(".tuile");
         const fond = moyenne(W * 0.86, H * 0.2, W * 0.14, H * 0.5);   // bande de droite = fond d'écran de la discussion
