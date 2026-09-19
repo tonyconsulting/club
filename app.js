@@ -26,7 +26,7 @@
   document.documentElement.style.setProperty("--accent", ACCENT);
   document.documentElement.style.setProperty("--accent-rgb", hexRgb(ACCENT, "110,155,255"));
   const ACCENT2 = contact.accent2 || C.accent2 || "";   // seconde couleur facultative : dégradé du titre et bouton principal
-  if (ACCENT2) { document.documentElement.style.setProperty("--accent2", ACCENT2); document.documentElement.style.setProperty("--accent2-rgb", hexRgb(ACCENT2, "246,196,83")); }
+  if (ACCENT2) { document.documentElement.style.setProperty("--accent2", ACCENT2); document.documentElement.style.setProperty("--accent2-rgb", hexRgb(ACCENT2, "246,196,83")); document.documentElement.classList.add("duo"); }
   if (contact.theme || contact.accent) document.documentElement.classList.add("theme-perso");
 
   // Marque
@@ -294,7 +294,7 @@
   $("antiUrgence").textContent = C.antiUrgence || "";
   // Lien du canal Insta (preuves) à côté du bouton, dès qu'il est renseigné dans config.js
   const canalIndex = $("canalIndex");
-  if (C.lienCanal) { canalIndex.href = C.lienCanal; canalIndex.textContent = C.canalTexte || "Voir le canal"; canalIndex.hidden = false; canalIndex.addEventListener("click", () => mesure("clic-canal")); }
+  if (C.lienCanal && C.canalEnBas !== false) { canalIndex.href = C.lienCanal; canalIndex.textContent = C.canalTexte || "Voir le canal"; canalIndex.hidden = false; canalIndex.addEventListener("click", () => mesure("clic-canal")); }
 
   // Footer
   $("legal1").textContent = C.legal1 || "";
