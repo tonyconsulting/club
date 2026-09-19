@@ -39,7 +39,7 @@ window.CLUB = {
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
-    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",
+    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://taap.it/wt6i1YC",   // lien direct Taap.it (ouvre l'appli Instagram sur la conversation ; destination : https://ig.me/m/maxim.hrtt)
              video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
              faqVideos: ["HVuh2EdflCE", "EuAOUfofyeU", "FtCrOmHyBio", "C4cuZzo4k0o"],   // ses 4 réponses vidéo, dans l'ordre des questions : piège, pour qui, peu de temps, compétences
              accent: "#B794F6", accent2: "#F6C453",                  // violet et jaune, les tons de sa vidéo
