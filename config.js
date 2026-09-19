@@ -38,6 +38,11 @@ window.CLUB = {
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
+    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",
+             video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
+             resultats: ["resultats/maxim-1.jpg", "resultats/maxim-2.jpg"],   // captures de SES membres, en-têtes WhatsApp retirés
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Messages reçus de membres, publiés avec leur accord." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
