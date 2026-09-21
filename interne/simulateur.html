@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Simulateur Unlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0b10;--surface:#12141c;--surface2:#181b25;--line:#242835;--line2:#333a4d;--ink:#f3f5fa;--dim:#aab3c7;--faint:#7c869c;--accent:#6E9BFF;--accent2:#A9C4FF;--ok:#4ade80}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.45}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.marque{font-family:Manrope,Inter,sans-serif;font-weight:800;letter-spacing:.38em;font-size:14px}
+.tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line);border-radius:99px;padding:5px 10px}
+h1{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;line-height:1.1;margin:0 0 6px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sous{color:var(--dim);margin:0 0 26px;max-width:640px}
+.grille{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+@media (max-width:820px){.grille{grid-template-columns:1fr}}
+.carte{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.carte h2{font-family:Manrope,Inter,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 16px;font-weight:700}
+.champ{margin-bottom:20px}
+.champ label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:14px;margin-bottom:8px}
+.champ label b{font-family:Manrope,Inter,sans-serif;font-size:22px;font-weight:800;color:var(--accent2);letter-spacing:-.02em}
+input[type=range]{width:100%;accent-color:var(--accent);height:34px;cursor:pointer}
+.ligne{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ligne input[type=number],select{background:var(--surface2);border:1px solid var(--line2);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;font-size:15px}
+.ligne input[type=number]{width:120px}
+select{min-width:150px}
+.bascule{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;font-size:14px;font-weight:600}
+.bascule input{display:none}
+.bascule .pist{width:48px;height:28px;border-radius:99px;background:var(--line2);position:relative;transition:background .2s}
+.bascule .pist::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s}
+.bascule input:checked + .pist{background:var(--accent)}
+.bascule input:checked + .pist::after{left:23px}
+.note{color:var(--faint);font-size:12.5px;margin-top:6px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chiffre{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.chiffre span{display:block;color:var(--faint);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.chiffre b{display:block;font-family:Manrope,Inter,sans-serif;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.chiffre small{display:block;color:var(--dim);font-size:12.5px;margin-top:3px}
+.chiffre.grand{grid-column:1 / -1;background:linear-gradient(135deg,rgba(110,155,255,.16),rgba(169,196,255,.06));border-color:var(--line2)}
+.chiffre.grand b{font-size:40px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.objectif{margin-top:16px;padding:14px 16px;border:1px dashed var(--line2);border-radius:14px;color:var(--dim);font-size:14px}
+.objectif b{color:var(--ink)}
+details{margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:12px 16px;background:var(--surface)}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--dim)}
+.regl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+.regl label{display:block;font-size:12.5px;color:var(--faint);margin-bottom:5px}
+.regl input{width:100%;background:var(--surface2);border:1px solid var(--line2);color:var(--ink);border-radius:10px;padding:9px 11px;font:inherit}
+footer{margin-top:26px;color:var(--faint);font-size:12.5px;line-height:1.55}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><span class="marque">UNLOCK</span><span class="tag">Interne · Simulateur</span></header>
+<h1>Ce que génèrent <em>tes dépôts.</em></h1>
+<p class="sous">Bouge le curseur du dépôt, active ou non le bonus, choisis ton contrat. Tout le reste se calcule : les lots par jour, et ce que ça te rapporte par jour, par semaine et par mois. Théorique, sur l'or uniquement.</p>
+
+<div class="grille">
+  <section class="carte">
+    <h2>Tes paramètres</h2>
+    <div class="champ">
+      <label>Dépôt par client <b id="vDepot">500 €</b></label>
+      <input type="range" id="depot" min="100" max="5000" step="50" value="500">
+      <div class="ligne" style="margin-top:8px">
+        <label class="bascule"><input type="checkbox" id="bonus" checked><span class="pist"></span>Bonus activé</label>
+        <span class="note" id="nBonus"></span>
+      </div>
+    </div>
+    <div class="champ">
+      <label>Nombre de dépôts <b id="vNb">10</b></label>
+      <input type="range" id="nb" min="1" max="150" step="1" value="10">
+    </div>
+    <div class="champ">
+      <label>Ton contrat <b id="vContrat">7 $ / lot</b></label>
+      <div class="ligne">
+        <select id="contrat">
+          <option value="7" selected>7 $ par lot</option>
+          <option value="8">8 $ par lot</option>
+          <option value="9">9 $ par lot</option>
+          <option value="10">10 $ par lot</option>
+          <option value="12">12 $ par lot</option>
+          <option value="autre">Autre</option>
+        </select>
+        <input type="number" id="contratAutre" min="1" max="40" step="0.5" value="7" hidden>
+      </div>
+    </div>
+  </section>
+
+  <section class="carte">
+    <h2>Ce que ça donne</h2>
+    <div class="res">
+      <div class="chiffre"><span>Capital par client</span><b id="rCapital"></b><small id="rCapitalSous"></small></div>
+      <div class="chiffre"><span>Lots par jour</span><b id="rLots"></b><small id="rLotsSous"></small></div>
+      <div class="chiffre"><span>Par jour</span><b id="rJour"></b><small id="rJourD"></small></div>
+      <div class="chiffre"><span>Par semaine</span><b id="rSemaine"></b><small id="rSemaineD"></small></div>
+      <div class="chiffre grand"><span>Par mois</span><b id="rMois"></b><small id="rMoisD"></small></div>
+    </div>
+    <div class="objectif" id="objectif"></div>
+  </section>
+</div>
+
+<details>
+  <summary>Hypothèses de calcul</summary>
+  <div class="regl">
+    <div><label>Lots par jour pour 500 € de capital</label><input type="number" id="hLots" value="2" min="0.5" max="10" step="0.5"></div>
+    <div><label>Jours de marché par mois</label><input type="number" id="hJours" value="23" min="15" max="23" step="1"></div>
+    <div><label>Bonus sur le premier dépôt (%)</label><input type="number" id="hBonus" value="150" min="0" max="200" step="10"></div>
+    <div><label>Plafond du bonus ($)</label><input type="number" id="hPlafond" value="2000" min="0" max="10000" step="100"></div>
+    <div><label>Taux $ vers €</label><input type="number" id="hTaux" value="1.16" min="1" max="1.5" step="0.01"></div>
+    <div><label>Objectif mensuel (€)</label><input type="number" id="hObjectif" value="10000" min="1000" max="500000" step="500"></div>
+  </div>
+</details>
+
+<footer>Outil interne à l'équipe Unlock. Chiffres théoriques : ils supposent des comptes actifs tous les jours de marché et au-dessus de leur seuil de crédit. Le rebate est payé au lot tradé, que le client gagne ou perde. Rien ici n'est une promesse de résultat pour un client.</footer>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const eur = (n) => Math.round(n).toLocaleString("fr-FR") + " €";
+const usd = (n) => Math.round(n).toLocaleString("fr-FR") + " $";
+const calc = () => {
+  const depot = +$("depot").value, nb = +$("nb").value, bonusOn = $("bonus").checked;
+  const lotsPar500 = +$("hLots").value || 2, jours = +$("hJours").value || 23, pct = (+$("hBonus").value || 0) / 100, plafond$ = +$("hPlafond").value || 0, taux = +$("hTaux").value || 1.16, objectif = +$("hObjectif").value || 10000;
+  const sel = $("contrat").value; $("contratAutre").hidden = sel !== "autre";
+  const contrat = sel === "autre" ? (+$("contratAutre").value || 0) : +sel;
+  const plafondEur = plafond$ / taux;
+  const bonus = bonusOn ? Math.min(depot * pct, plafondEur) : 0;
+  const capital = depot + bonus;
+  const lotsCompte = capital / 500 * lotsPar500, lots = lotsCompte * nb;
+  const jour$ = lots * contrat, jourE = jour$ / taux;
+  $("vDepot").textContent = eur(depot); $("vNb").textContent = nb + (nb > 1 ? " clients" : " client"); $("vContrat").textContent = contrat + " $ / lot";
+  $("nBonus").textContent = bonusOn ? (bonus < depot * pct - 1 ? "Plafond atteint : " + eur(bonus) + " de bonus" : "+" + eur(bonus) + " de bonus") : "Sans bonus";
+  $("rCapital").textContent = eur(capital); $("rCapitalSous").textContent = bonusOn ? eur(depot) + " déposés + " + eur(bonus) + " de bonus" : "dépôt seul";
+  $("rLots").textContent = lots.toLocaleString("fr-FR", { maximumFractionDigits: 1 }); $("rLotsSous").textContent = lotsCompte.toLocaleString("fr-FR", { maximumFractionDigits: 1 }) + " lot" + (lotsCompte > 1 ? "s" : "") + " par client et par jour";
+  $("rJour").textContent = eur(jourE); $("rJourD").textContent = usd(jour$);
+  $("rSemaine").textContent = eur(jourE * 5); $("rSemaineD").textContent = usd(jour$ * 5) + " · 5 jours de marché";
+  $("rMois").textContent = eur(jourE * jours); $("rMoisD").textContent = usd(jour$ * jours) + " · " + jours + " jours de marché";
+  const parClientMois = (lotsCompte * contrat / taux) * jours;
+  const besoin = parClientMois > 0 ? Math.ceil(objectif / parClientMois) : 0;
+  $("objectif").innerHTML = "Pour <b>" + eur(objectif) + " par mois</b> à ce contrat et ce dépôt, il te faut <b>" + besoin + " client" + (besoin > 1 ? "s" : "") + "</b> actif" + (besoin > 1 ? "s" : "") + ", soit <b>" + eur(besoin * depot) + "</b> de dépôts en tout. Chaque client à " + eur(depot) + " te rapporte environ <b>" + eur(parClientMois) + "</b> par mois.";
+};
+document.querySelectorAll("input, select").forEach((el) => { el.addEventListener("input", calc); el.addEventListener("change", calc); });
+calc();
+</script>
+</body>
+</html>
