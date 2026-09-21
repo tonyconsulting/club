@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Board Unlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--ink:#f4f6fb;--dim:#a9b2c8;--faint:#76809a;--accent:#6E9BFF;--accent2:#B9D0FF;--duo:linear-gradient(90deg,#6E9BFF,#B9D0FF);--vert:#4ade80;--jaune:#ffc857;--rose:#ff6fb0;--violet:#b794f6;--bleu:#6E9BFF;--cyan:#35e0ff;--orange:#ffb067}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+#scene{position:fixed;inset:0;cursor:grab;background-color:var(--bg);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px;touch-action:none}
+#scene.drag{cursor:grabbing}
+#monde{position:absolute;left:0;top:0;width:3600px;height:2200px;transform-origin:0 0;will-change:transform}
+.halo{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;pointer-events:none}
+.cadre{position:absolute;border:1.5px solid rgba(255,255,255,.10);border-radius:26px;background:rgba(14,16,24,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.cadre > .titre{position:absolute;left:18px;top:-17px;display:flex;align-items:center;gap:10px;padding:6px 14px;border-radius:99px;background:#0b0d14;border:1.5px solid var(--c,var(--accent));font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.cadre > .titre i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--accent));box-shadow:0 0 12px var(--c,var(--accent))}
+.cadre > .sous{position:absolute;left:24px;top:22px;color:var(--faint);font-size:13px}
+.post{position:absolute;width:250px;padding:16px 16px 14px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);box-shadow:0 18px 40px rgba(0,0,0,.45);font-size:13.5px;line-height:1.45;color:var(--dim);transition:transform .2s}
+.post::before{content:"";position:absolute;left:14px;right:14px;top:0;height:3px;border-radius:0 0 4px 4px;background:var(--c,var(--accent))}
+.post:hover{transform:translateY(-3px) rotate(0) !important;z-index:5}
+.post b{display:block;color:var(--ink);font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:15.5px;margin-bottom:5px;letter-spacing:-.01em}
+.post.r1{transform:rotate(-1.2deg)}.post.r2{transform:rotate(.9deg)}.post.r3{transform:rotate(-.6deg)}
+.post.fait::after{content:"FAIT";position:absolute;right:12px;top:12px;font-size:10px;letter-spacing:.14em;color:var(--vert);border:1px solid rgba(74,222,128,.45);border-radius:99px;padding:2px 7px;font-weight:700}
+.post.grand{width:300px}
+.gros{position:absolute;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,rgba(110,155,255,.18),rgba(185,208,255,.04));border:1px solid rgba(110,155,255,.35)}
+.gros span{display:block;color:var(--faint);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-family:Manrope,Inter,sans-serif;font-weight:700;margin-bottom:6px}
+.gros b{display:block;font-family:Manrope,Inter,sans-serif;font-size:34px;font-weight:800;letter-spacing:-.02em;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.gros small{display:block;color:var(--dim);font-size:12.5px;margin-top:6px}
+.palier{position:absolute;width:300px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.palier b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;color:var(--c,var(--rose));line-height:1}
+.palier em{display:block;font-style:normal;color:var(--faint);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin:4px 0 8px;font-family:Manrope,Inter,sans-serif;font-weight:700}
+.palier span{color:var(--dim);font-size:13.5px;line-height:1.45}
+table{position:absolute;border-collapse:collapse;font-size:14px;background:rgba(255,255,255,.02);border-radius:16px;overflow:hidden}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+th{color:var(--faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:Manrope,Inter,sans-serif;background:rgba(255,255,255,.03)}
+td b{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:16px}
+td.fort{color:var(--accent2);font-weight:700}
+.jalon{position:absolute;width:190px;text-align:center}
+.jalon i{display:block;width:18px;height:18px;border-radius:50%;background:var(--c,var(--accent));box-shadow:0 0 0 6px rgba(255,255,255,.06),0 0 18px var(--c,var(--accent));margin:0 auto 10px}
+.jalon b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:15px}
+.jalon span{color:var(--dim);font-size:12.5px}
+.ligne{position:absolute;height:2px;background:linear-gradient(90deg,var(--vert),var(--jaune),var(--rose),var(--violet),var(--accent2))}
+.perso{position:absolute;width:200px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.perso b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:16px;margin-bottom:6px}
+.perso span{display:block;color:var(--dim);font-size:12.5px;line-height:1.5}
+.perso .etat{display:inline-block;margin-top:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-radius:99px;padding:3px 8px;border:1px solid}
+.ok{color:var(--vert);border-color:rgba(74,222,128,.45)}.att{color:var(--jaune);border-color:rgba(255,200,87,.45)}.non{color:var(--faint);border-color:rgba(255,255,255,.18)}
+svg.fleches{position:absolute;left:0;top:0;width:3600px;height:2200px;pointer-events:none}
+svg.fleches path{fill:none;stroke:rgba(185,208,255,.45);stroke-width:2.5;stroke-dasharray:8 8}
+.ui{position:fixed;left:16px;top:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;z-index:10}
+.ui img{height:20px;mix-blend-mode:screen;margin-right:6px}
+.ui button{background:rgba(14,16,24,.85);border:1px solid rgba(255,255,255,.14);color:var(--dim);border-radius:99px;padding:8px 13px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;backdrop-filter:blur(8px)}
+.ui button:hover{color:var(--ink);border-color:var(--accent)}
+.aide{position:fixed;right:16px;bottom:14px;color:var(--faint);font-size:12px;z-index:10;background:rgba(14,16,24,.8);padding:8px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.08)}
+</style>
+</head>
+<body>
+<div class="ui">
+  <img src="../logo.jpg" alt="Unlock">
+  <button data-go="tout">Tout voir</button>
+  <button data-go="now">Maintenant</button>
+  <button data-go="sept">Fin septembre</button>
+  <button data-go="chal">Challenge</button>
+  <button data-go="argent">L'argent</button>
+  <button data-go="pages">Les pages</button>
+  <button data-go="vie">Ta vie 2026</button>
+</div>
+<div class="aide">Glisse pour te déplacer · molette ou pincement pour zoomer · double-clic pour recentrer</div>
+
+<div id="scene"><div id="monde">
+  <div class="halo" style="left:200px;top:100px;width:700px;height:500px;background:var(--vert)"></div>
+  <div class="halo" style="left:1500px;top:0;width:800px;height:500px;background:var(--rose)"></div>
+  <div class="halo" style="left:2600px;top:1200px;width:700px;height:600px;background:var(--violet)"></div>
+  <div class="halo" style="left:600px;top:1400px;width:900px;height:500px;background:var(--bleu)"></div>
+
+  <svg class="fleches">
+    <path d="M 860 430 C 960 430, 980 430, 1080 430"/>
+    <path d="M 1740 430 C 1860 430, 1880 430, 2000 430"/>
+    <path d="M 2420 900 C 2420 990, 2420 1010, 2420 1100"/>
+    <path d="M 1480 1560 C 1600 1560, 1620 1560, 1760 1560"/>
+    <path d="M 700 900 C 700 980, 700 1000, 700 1080"/>
+  </svg>
+
+  <!-- Ligne du temps -->
+  <div class="cadre" style="left:80px;top:60px;width:3440px;height:210px;--c:var(--accent2)">
+    <div class="titre"><i></i>La ligne du temps</div>
+    <div class="ligne" style="left:120px;right:120px;top:120px"></div>
+    <div class="jalon" style="left:150px;top:100px;--c:var(--vert)"><i></i><b>Mardi 22 sept.</b><span>Contrats. Le starter pack passe en « prêt ».</span></div>
+    <div class="jalon" style="left:820px;top:100px;--c:var(--jaune)"><i></i><b>Mercredi 24 sept.</b><span>Le compteur du challenge démarre.</span></div>
+    <div class="jalon" style="left:1490px;top:100px;--c:var(--rose)"><i></i><b>Jeudi 16 oct.</b><span>Fin du compteur, 17 jours de marché.</span></div>
+    <div class="jalon" style="left:2160px;top:100px;--c:var(--orange)"><i></i><b>17 et 18 oct.</b><span>Event. Il close les dépôts en attente.</span></div>
+    <div class="jalon" style="left:2830px;top:100px;--c:var(--violet)"><i></i><b>20 au 25 oct.</b><span>Villa en Grèce. Puis novembre et décembre.</span></div>
+  </div>
+
+  <!-- Maintenant -->
+  <div class="cadre" id="f-now" style="left:80px;top:330px;width:780px;height:560px;--c:var(--vert)">
+    <div class="titre"><i></i>Maintenant</div><div class="sous">Lundi 21 septembre, veille des contrats</div>
+    <div class="post fait r1" style="left:30px;top:60px;--c:var(--vert)"><b>Ton funnel V1 existe</b>Une page par personne : ta vidéo, tes 4 vidéos questions, les résultats, sept témoignages vidéo. Lien propre, aperçu Insta à ton image.</div>
+    <div class="post fait r2" style="left:300px;top:60px;--c:var(--vert)"><b>Starter pack</b>7 listes, un message par liste, les objections, les scripts. En stand by jusqu'aux contrats.</div>
+    <div class="post r3" style="left:30px;top:270px;--c:var(--cyan)"><b>On trace tout</b>Visites, vidéo regardée, clics, messages, comptes ouverts. On voit à quoi notre avatar réagit et on améliore le funnel pour tous en même temps.</div>
+    <div class="post r1" style="left:300px;top:270px;--c:var(--cyan)"><b>Inspiré, pas copié</b>Le funnel de Kéo avec Jules, celui de Hamza grâce à Mila. On s'en inspire, on optimise à fond, et le nôtre devient le meilleur de la niche.</div>
+    <div class="post r2 grand" style="left:570px;top:60px;width:180px;--c:var(--vert)"><b>Toi</b>Tu fais des clients, en boucle. Nous, on s'occupe du reste : pages, tracking, appli.</div>
+  </div>
+
+  <!-- Fin septembre -->
+  <div class="cadre" id="f-sept" style="left:1080px;top:330px;width:660px;height:560px;--c:var(--jaune)">
+    <div class="titre"><i></i>D'ici fin septembre</div><div class="sous">Septembre sert à lancer la machine. Rien d'autre.</div>
+    <div class="post r2" style="left:30px;top:60px;--c:var(--jaune)"><b>Ta page complète</b>Pseudo Insta, photo HD, ta VSL, tes 4 vidéos questions. Envoyé le soir, en ligne le lendemain.</div>
+    <div class="post r1" style="left:330px;top:60px;--c:var(--jaune)"><b>Ta liste en 7 parties</b>Déjà déposés, MLM sans compte, anciens, hésitants, non, réseau chaud, potentiels partenaires.</div>
+    <div class="post r3" style="left:30px;top:250px;--c:var(--jaune)"><b>Dès la signature : tes premiers clients</b>Un message ne part que si tu peux ouvrir le compte dans l'heure. 10 à 15 clients perso avant tout sub-IB.</div>
+    <div class="post r2" style="left:330px;top:250px;--c:var(--jaune)"><b>Ta routine Insta</b>Un reel « ressource contre un mot en commentaire » par semaine, 1 à 3 stories par jour, revue le dimanche. Zéro promesse de gain, jamais le nom du broker.</div>
+    <div class="post r1" style="left:180px;top:430px;--c:var(--jaune)"><b>Ton témoignage vidéo</b>Sept sont déjà en ligne. 30 secondes face caméra si le tien manque.</div>
+  </div>
+
+  <!-- Challenge -->
+  <div class="cadre" id="f-chal" style="left:2000px;top:330px;width:840px;height:560px;--c:var(--rose)">
+    <div class="titre"><i></i>Le challenge villa</div><div class="sous">Du 24 septembre au 16 octobre, 17 jours de marché, Grèce du 20 au 25 octobre</div>
+    <div class="palier" style="left:30px;top:60px;--c:var(--faint)"><b>500 lots</b><em>invité</em><span>Tu viens à la villa en payant ta place.</span></div>
+    <div class="palier" style="left:30px;top:220px;--c:var(--rose)"><b>1 000 lots</b><em>tout payé sauf le vol</em><span>Villa, cuisinier, activités, photographe, vidéaste, podcast.</span></div>
+    <div class="palier" style="left:30px;top:380px;--c:var(--orange)"><b>1 500 lots</b><em>le vol aussi</em><span>Plus une surprise.</span></div>
+    <div class="post r1" style="left:370px;top:60px;--c:var(--rose)"><b>Le compteur</b>Lots rémunérés au back-office, sur tes clients perso, or uniquement.</div>
+    <div class="post r2" style="left:370px;top:215px;--c:var(--rose)"><b>1 000 lots en 17 jours</b>C'est 58 lots par jour, soit environ 12 comptes à 500 € actifs dès le premier jour. C'est dur exprès. Sinon c'est un cadeau.</div>
+    <div class="post r3" style="left:370px;top:390px;--c:var(--faint)"><b>Sous 500 lots</b>Pas cette fois. La prochaine cohésion est annoncée à la fin de celle-ci : Dubaï, Bahamas, ou ailleurs.</div>
+    <div class="post r1" style="left:620px;top:60px;width:190px;--c:var(--jaune)"><b>Trophées</b>10 K, 100 K, 500 K, 1 M par mois.</div>
+  </div>
+
+  <!-- Ce qui arrive -->
+  <div class="cadre" id="f-arrive" style="left:2000px;top:1100px;width:840px;height:420px;--c:var(--violet)">
+    <div class="titre"><i></i>Ce qui arrive</div><div class="sous">Construit par Arthur et Tony pendant que tu fais des clients</div>
+    <div class="post r2" style="left:30px;top:60px;--c:var(--violet)"><b>Les 24 premières heures</b>Validation dans l'appli, 4 questions, plan 24, 48, 72 heures. Un onboarding simple, en 1 ou 2 vidéos.</div>
+    <div class="post r1" style="left:300px;top:60px;--c:var(--violet)"><b>Témoignage contre XP</b>À J+2, le membre propose écrit, vocal ou vidéo. Tu valides en un clic, ça tombe sur ta page.</div>
+    <div class="post r3" style="left:570px;top:60px;--c:var(--violet)"><b>Barème d'augmentation</b>Écrit, sur tes lots perso. 7 puis 8, puis plus.</div>
+    <div class="post r2 grand" style="left:30px;top:250px;width:790px;--c:var(--cyan)"><b>Tracking complet</b>De la vue du reel au compte ouvert. Ce qui marche chez l'un est répliqué chez tous. Tu n'as plus qu'à faire des clients, en boucle.</div>
+  </div>
+
+  <!-- L'argent -->
+  <div class="cadre" id="f-argent" style="left:80px;top:1080px;width:1400px;height:820px;--c:var(--bleu)">
+    <div class="titre"><i></i>Ce que ça peut te rapporter</div><div class="sous">À 7 $ par lot, dépôt de 500 € avec bonus, 2 lots par jour pour 500 € de capital, 23 jours de marché. Théorique. Tes chiffres à toi : le simulateur.</div>
+    <table style="left:30px;top:70px;width:820px">
+      <thead><tr><th>Clients actifs à 500 €</th><th>Lots par jour</th><th>Par jour</th><th>Par mois</th><th>Oct. à déc.</th></tr></thead>
+      <tbody>
+        <tr><td><b>5</b></td><td>25</td><td>151 €</td><td class="fort">3 470 €</td><td>10 400 €</td></tr>
+        <tr><td><b>10</b></td><td>50</td><td>302 €</td><td class="fort">6 940 €</td><td>20 800 €</td></tr>
+        <tr><td><b>15</b></td><td>75</td><td>453 €</td><td class="fort">10 410 €</td><td>31 200 €</td></tr>
+        <tr><td><b>30</b></td><td>150</td><td>905 €</td><td class="fort">20 820 €</td><td>62 500 €</td></tr>
+      </tbody>
+    </table>
+    <div class="gros" style="left:900px;top:70px;width:460px"><span>Pour 10 000 € par mois</span><b>15 clients</b><small>à 500 €, actifs, soit 7 500 € de dépôts en tout</small></div>
+    <div class="gros" style="left:900px;top:220px;width:220px"><span>Un client à 500 €</span><b>700 €</b><small>par mois pour toi</small></div>
+    <div class="gros" style="left:1140px;top:220px;width:220px"><span>Contrat à 8 $</span><b>+14 %</b><small>le barème arrive</small></div>
+    <div class="post r1" style="left:30px;top:400px;width:400px;--c:var(--bleu)"><b>La règle qui fait tout</b>Un client qui a cramé son dépôt et trade sur le crédit ne rapporte plus rien. Ton revenu dépend de clients qui durent : les bases d'abord, les canaux ensuite.</div>
+    <div class="post r2" style="left:460px;top:400px;width:390px;--c:var(--bleu)"><b>Le bonus</b>150 % du premier dépôt, plafonné à 2 000 $. Un dépôt de 500 € trade avec 1 250 €. Au-delà d'environ 1 330 $ déposés, chaque euro compte pour un.</div>
+    <div class="post r3" style="left:900px;top:400px;width:460px;--c:var(--bleu)"><b>Payé chaque nuit</b>Le rebate tombe tous les jours à 1 heure, au lot tradé, que le client gagne ou perde. Ce n'est jamais un chiffre à montrer à un client.</div>
+    <div class="post r1" style="left:30px;top:600px;width:1330px;--c:var(--accent2)"><b>Le simulateur</b>Curseur du dépôt, bonus ou non, ton contrat, le nombre de dépôts. Il te donne tes lots, ton jour, ta semaine, ton mois, et le nombre de clients pour ton objectif. Lien interne : tonyconsulting.github.io/club/interne/simulateur.html</div>
+  </div>
+
+  <!-- Les pages -->
+  <div class="cadre" id="f-pages" style="left:1560px;top:1100px;width:400px;height:820px;--c:var(--cyan)">
+    <div class="titre"><i></i>Les pages</div><div class="sous">tonyconsulting.github.io/club/prenom/</div>
+    <div class="perso" style="left:30px;top:60px"><b>Maxim</b><span>Violet et jaune. Complète.</span><i class="etat ok">en ligne</i></div>
+    <div class="perso" style="left:30px;top:190px"><b>Mila</b><span>Rose et orange. Complète.</span><i class="etat ok">en ligne</i></div>
+    <div class="perso" style="left:30px;top:320px"><b>Pierre</b><span>Vert. Complète.</span><i class="etat ok">en ligne</i></div>
+    <div class="perso" style="left:30px;top:450px"><b>Ilhan</b><span>Rouge et noir. VSL ok. Manque : pseudo, photo, 4 FAQ.</span><i class="etat att">à compléter</i></div>
+    <div class="perso" style="left:30px;top:600px"><b>Loukas</b><span>Manque : pseudo, photo, VSL, 4 FAQ, couleur.</span><i class="etat att">à compléter</i></div>
+    <div class="perso" style="left:210px;top:60px;width:160px"><b>André</b><span>À créer.</span><i class="etat non">à venir</i></div>
+    <div class="perso" style="left:210px;top:190px;width:160px"><b>Kélian</b><span>À créer.</span><i class="etat non">à venir</i></div>
+    <div class="perso" style="left:210px;top:320px;width:160px"><b>Jules</b><span>À créer.</span><i class="etat non">à venir</i></div>
+    <div class="perso" style="left:210px;top:450px;width:160px"><b>Ilona</b><span>UGC + Unlock.</span><i class="etat non">à venir</i></div>
+    <div class="perso" style="left:210px;top:600px;width:160px"><b>Alessio</b><span>Sub de Jules.</span><i class="etat non">à venir</i></div>
+  </div>
+
+  <!-- Ta vie 2026 -->
+  <div class="cadre" id="f-vie" style="left:2920px;top:330px;width:600px;height:1190px;--c:var(--orange)">
+    <div class="titre"><i></i>Ta vie, d'ici Noël</div><div class="sous">Si tu joues le jeu</div>
+    <div class="post r1 grand" style="left:30px;top:60px;width:540px;--c:var(--jaune)"><b>Octobre</b>Tu passes de 0 à tes 10 ou 15 premiers clients actifs. Tu vis le challenge, tu vois tes lots monter chaque jour dans l'appli, et tu finis peut-être dans une villa en Grèce avec l'équipe.</div>
+    <div class="post r2 grand" style="left:30px;top:270px;width:540px;--c:var(--orange)"><b>Novembre</b>Le contenu et le tracking travaillent avec toi. Tes reels amènent des messages, ta page fait le tri, tu ouvres des comptes en boucle. Le barème te fait monter.</div>
+    <div class="post r3 grand" style="left:30px;top:480px;width:540px;--c:var(--rose)"><b>Décembre</b>Tu finis 2026 avec une base de clients qui trade tous les jours, un revenu qui tombe chaque nuit, et la prochaine cohésion annoncée : Dubaï, Bahamas, ou ailleurs.</div>
+    <div class="post r1 grand" style="left:30px;top:700px;width:540px;--c:var(--vert)"><b>La seule règle</b>Ton compte perso d'abord. Faire un sub-IB avant tes 10 à 15 clients, c'est le réflexe qu'on coupe. En IB, c'est toi et toi seul : l'accompagnement va à ceux qui agissent.</div>
+    <div class="gros" style="left:30px;top:930px;width:540px"><span>Ce soir</span><b>Une seule question</b><small>Combien de comptes tu ouvres cette semaine, et à quelle heure tu envoies ton premier message mardi ?</small></div>
+  </div>
+</div></div>
+
+<script>
+const scene = document.getElementById("scene"), monde = document.getElementById("monde");
+const MW = 3600, MH = 2200; let cam = { x: 0, y: 0, z: .35 }, anim = null;
+const applique = () => { monde.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.z})`; };
+const vers = (cible, duree = 500) => { const d = { ...cam }, t0 = performance.now(); if (anim) cancelAnimationFrame(anim);
+  const pas = (t) => { const p = Math.min(1, (t - t0) / duree), e = 1 - Math.pow(1 - p, 3); cam = { x: d.x + (cible.x - d.x) * e, y: d.y + (cible.y - d.y) * e, z: d.z + (cible.z - d.z) * e }; applique(); if (p < 1) anim = requestAnimationFrame(pas); }; anim = requestAnimationFrame(pas); };
+const cadrer = (x, y, w, h, marge = 60) => { const W = innerWidth, H = innerHeight; const z = Math.min((W - marge * 2) / w, (H - marge * 2 - 40) / h, 1.6); return { z, x: (W - w * z) / 2 - x * z, y: (H - h * z) / 2 - y * z + 20 }; };
+const tout = () => vers(cadrer(0, 0, MW, MH, 24));
+const zones = { tout: null, now: "f-now", sept: "f-sept", chal: "f-chal", argent: "f-argent", pages: "f-pages", vie: "f-vie" };
+document.querySelectorAll(".ui button").forEach((b) => b.addEventListener("click", () => { const id = zones[b.dataset.go]; if (!id) return tout(); const el = document.getElementById(id); vers(cadrer(el.offsetLeft, el.offsetTop, el.offsetWidth, el.offsetHeight)); }));
+let drag = null;
+scene.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y }; scene.classList.add("drag"); scene.setPointerCapture(e.pointerId); });
+scene.addEventListener("pointermove", (e) => { if (!drag) return; cam.x = drag.cx + (e.clientX - drag.x); cam.y = drag.cy + (e.clientY - drag.y); applique(); });
+scene.addEventListener("pointerup", () => { drag = null; scene.classList.remove("drag"); });
+scene.addEventListener("pointercancel", () => { drag = null; scene.classList.remove("drag"); });
+scene.addEventListener("wheel", (e) => { e.preventDefault(); const f = e.ctrlKey || Math.abs(e.deltaY) > 40 ? (e.deltaY < 0 ? 1.1 : .9) : (e.deltaY < 0 ? 1.04 : .96); const z = Math.min(2.5, Math.max(.15, cam.z * f)); const mx = e.clientX, my = e.clientY; cam.x = mx - (mx - cam.x) * (z / cam.z); cam.y = my - (my - cam.y) * (z / cam.z); cam.z = z; applique(); }, { passive: false });
+scene.addEventListener("dblclick", tout);
+let pince = null;
+scene.addEventListener("touchstart", (e) => { if (e.touches.length === 2) pince = { d: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), z: cam.z, cx: (e.touches[0].clientX + e.touches[1].clientX) / 2, cy: (e.touches[0].clientY + e.touches[1].clientY) / 2, x: cam.x, y: cam.y }; }, { passive: true });
+scene.addEventListener("touchmove", (e) => { if (!pince || e.touches.length !== 2) return; const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); const z = Math.min(2.5, Math.max(.15, pince.z * d / pince.d)); cam.x = pince.cx - (pince.cx - pince.x) * (z / pince.z); cam.y = pince.cy - (pince.cy - pince.y) * (z / pince.z); cam.z = z; applique(); }, { passive: true });
+scene.addEventListener("touchend", () => { pince = null; });
+window.addEventListener("resize", tout);
+tout();
+</script>
+</body>
+</html>
