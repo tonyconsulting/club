@@ -241,7 +241,7 @@
         const ini = (t.prenom || "U").charAt(0).toUpperCase();
         return `<article class="tcard treel" data-i="${i}">
         <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
-        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=0.5" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span></button>
+        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=0.5" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span><span class="tprog"><i></i></span></button>
         ${t.texte ? `<p class="ttexte">${esc(t.texte)}</p>` : ""}
       </article>`;
       }
@@ -263,16 +263,20 @@
       if (v) {
         if (v.classList.contains("tmedia")) {   // témoignage fichier : se lance dans la carte, sans fenêtre (demande de Tony du 21/09)
           const vid = v.querySelector("video");
-          piste.querySelectorAll(".tmedia video").forEach((o) => { if (o !== vid && !o.paused) { o.pause(); o.controls = false; o.closest(".tmedia").classList.remove("joue"); } });
-          if (vid.paused) { vid.muted = false; if (vid.currentTime < 0.6 || vid.ended) vid.currentTime = 0; vid.controls = true; v.classList.add("joue"); vid.play().catch(() => {}); mesure("temoignage-video"); }
-          else { vid.pause(); vid.controls = false; v.classList.remove("joue"); }
+          piste.querySelectorAll(".tmedia video").forEach((o) => { if (o !== vid && !o.paused) { o.pause(); o.closest(".tmedia").classList.remove("joue"); } });
+          if (vid.paused) { vid.muted = false; if (vid.currentTime < 0.6 || vid.ended) vid.currentTime = 0; v.classList.add("joue"); vid.play().catch(() => {}); mesure("temoignage-video"); }
+          else { vid.pause(); v.classList.remove("joue"); }   // un clic = lecture, un clic = pause, sans commandes natives (elles avalaient le clic)
           return;
         }
         ouvreVideo(v.dataset.video); mesure("temoignage-video"); return;
       }
       const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); return; }
     });
-    piste.querySelectorAll(".tmedia video").forEach((vid) => vid.addEventListener("ended", () => { vid.controls = false; vid.closest(".tmedia").classList.remove("joue"); }));
+    piste.querySelectorAll(".tmedia video").forEach((vid) => {
+      const barre = vid.closest(".tmedia").querySelector(".tprog i");
+      vid.addEventListener("ended", () => { vid.closest(".tmedia").classList.remove("joue"); });
+      vid.addEventListener("timeupdate", () => { if (barre && vid.duration) barre.style.width = (vid.currentTime / vid.duration * 100) + "%"; });
+    });
     // Carrousel en boucle façon Kéo : la carte active au centre, la précédente à gauche, la suivante à droite (même au début et à la fin), flèches, points, glissement au doigt
     const cartes = [...piste.querySelectorAll(".tcard")], n = cartes.length;
     const points = $("points");
