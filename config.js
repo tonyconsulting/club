@@ -38,9 +38,9 @@ window.CLUB = {
   contactParDefaut: "tony",
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "37K", photo: "mila.jpg?v=81", photoGrande: "mila-grande.jpg?v=80", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony) ; photo HD reçue le 21/09 (coucher de soleil), avatar recadré sur le visage
-             video: "Hp9xWN8UIvk",                                   // sa VSL Unlock « Comprendre Unlock en 3 minutes » (reçue le 21/09)
-             faqVideos: ["KCCFGn1kKi4", "N1Nln-q8bsc", "smqzEfBGnuQ", "0rt7-G3A-Jo"],   // piège, pour qui, peu de temps, compétences (reçues le 21/09, titres vérifiés)
-             accent: "#FF6FB0", accent2: "#FFC2DC",                 // DA rose (demande Tony 21/09) : rose vif + rose clair en dégradé
+             // video: "Hp9xWN8UIvk",                                // sa VSL Unlock « Comprendre Unlock en 3 minutes » : intégration BLOQUÉE par YouTube le 21/09 (« vidéo non disponible » dans le lecteur), à débloquer côté YouTube Studio puis décommenter ; vidéo générique en attendant
+             faqVideos: ["KCCFGn1kKi4", "N1Nln-q8bsc", "smqzEfBGnuQ", ""],   // piège, pour qui, peu de temps ; compétences = 0rt7-G3A-Jo BLOQUÉE à l'intégration le 21/09 (vidéo générique en attendant)
+             accent: "#FF6FB0", accent2: "#FFB067",                 // DA rose (demande Tony 21/09) + touche orange coucher de soleil de sa photo, à tester (Tony 21/09) ; rose clair d'avant : #FFC2DC
              theme: { bg: "#120a10", surface: "#1b1018", surface2: "#23141d", line: "#3a1f2f", line2: "#4f2a40" },
              temoignages: [   // mêmes membres que sur la page de Maxim, Mila remplacée par Maxim (vidéo reçue le 21/09)
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
