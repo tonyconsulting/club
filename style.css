@@ -108,17 +108,6 @@ html.duo .icertif{color:var(--accent2,var(--accent))}
 .tuile{aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--cap-bg,#0c1013);cursor:zoom-in;padding:0;display:flex;flex-direction:column;justify-content:flex-start;transition:transform .2s,border-color .2s}   /* --cap-bg = couleur du bas de la capture, posée par app.js : la case prolonge la capture, aucune bande noire */
 .tuile:hover{transform:translateY(-3px);border-color:var(--line2)}
 .tuile img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:top center;display:block;}   /* capture entière, calée en haut comme un écran de discussion, aucun fondu ni masque : pas un pixel de la capture n'est caché */
-.tuile{position:relative}
-.tuile .loupe{position:absolute;right:8px;bottom:8px;width:34px;height:34px;border-radius:50%;background:rgba(10,11,16,.82);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:transform .15s,border-color .15s}
-.tuile .loupe::before{content:"";width:11px;height:11px;border:2px solid var(--accent);border-radius:50%;position:absolute;left:9px;top:8px}
-.tuile .loupe::after{content:"";width:2px;height:8px;background:var(--accent);position:absolute;left:21px;top:19px;transform:rotate(-45deg);border-radius:1px}
-.tuile .loupe:hover{transform:scale(1.08);border-color:var(--accent)}
-.tuile .lens{position:absolute;border-radius:50%;border:2px solid var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.55),0 0 0 4px rgba(0,0,0,.35);background-repeat:no-repeat;background-color:#000;opacity:0;transform:scale(.85);pointer-events:none;transition:opacity .18s,transform .18s;z-index:3}
-@media (hover:hover){.tuile:not(.ex):hover .lens{opacity:1;transform:scale(1)}}
-.tuile.zoome .lens{opacity:1;transform:scale(1);pointer-events:auto;cursor:zoom-out}
-.tuile.zoome .loupe{border-color:var(--accent);background:var(--accent)}
-.tuile.zoome .loupe::before{border-color:#0a0b10}.tuile.zoome .loupe::after{background:#0a0b10}
-html.duo .tuile .lens{border-color:var(--accent2,var(--accent))}
 .tuile.ex{background:var(--surface)}.tuile.ex img{height:100%;object-fit:cover;-webkit-mask-image:none;mask-image:none}
 #resultatsPlus{margin-top:0}
 @media (max-width:640px){.grille-res{grid-template-columns:repeat(2,1fr);gap:10px}}
