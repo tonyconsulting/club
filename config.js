@@ -65,6 +65,33 @@ window.CLUB = {
              ],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
+    loukas: { prenom: "Loukas", nom: "Loukas", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, VSL, 4 FAQ et couleurs à venir ; DA par défaut en attendant
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
+    pierre: { prenom: "Pierre", nom: "Pierre", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, VSL, 4 FAQ et couleurs à venir ; DA par défaut en attendant
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
+    ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, VSL, 4 FAQ et couleurs à venir ; DA par défaut en attendant
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
