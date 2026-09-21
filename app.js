@@ -4,7 +4,7 @@
   const $ = (id) => document.getElementById(id);
   const esc = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const ytId = (v) => encodeURIComponent(String(v || "").trim());
-  const estFichier = (v) => /^https?:\/\/.+\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(String(v || "").trim());
+  const estFichier = (v) => /^(https?:\/\/.+|[^\s]+)\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(String(v || "").trim());   // adresse complète ou chemin relatif (ex. temoignages/maxim-t1.mp4)
   const CHARGE = performance.now();
   const APERCU = new URLSearchParams(location.search).get("apercu") === "1";   // ?apercu=1 : rendu final sans aucune mention « exemple » ni case à remplir (pour juger la page, pas pour la diffuser)
 
@@ -166,6 +166,7 @@
         const cv = document.createElement("canvas"); cv.width = 16; cv.height = 16; const x = cv.getContext("2d", { willReadFrequently: true });
         const moyenne = (sx, sy, sw, sh) => { x.drawImage(img, sx, sy, sw, sh, 0, 0, 16, 16); const d = x.getImageData(0, 0, 16, 16).data; let r = 0, g = 0, b = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; b += d[i + 2]; } const n = d.length / 4; r /= n; g /= n; b /= n; return { r, g, b, l: 0.2126 * r + 0.7152 * g + 0.0722 * b }; };
         const W = img.naturalWidth, H = img.naturalHeight, tuile = img.closest(".tuile");
+        if (W / H > 1) img.style.objectPosition = "center";   // capture plus large que haute (ex. écran coupé) : centrée dans la case au lieu d'être collée en haut
         const fond = moyenne(W * 0.86, H * 0.2, W * 0.14, H * 0.5);   // bande de droite = fond d'écran de la discussion
         const CIBLE = 14;   // luminosité du fond des captures sombres de référence
         if (fond.l > 19 && fond.l < 110 && !img.dataset.gamma) {   // capture trop claire : assombrie UNE fois (courbe gamma sur un canvas), puis affichée comme une image normale : rien à recalculer au défilement
@@ -236,6 +237,14 @@
     const tk = C.ticker || [];
     if (tk.length) { const l = tk.map((t) => `<span class="titem"><span class="tdot"></span>${esc(t)}</span>`).join(""); $("ttrack").innerHTML = l + l; } else $("ticker").remove();
     const carte = (t, i) => {
+      if (t.fichier) {   // témoignage vidéo réel (fichier mp4 hébergé avec le site) : la personne, la vidéo verticale en aperçu, une ligne au plus, aucun chiffre
+        const ini = (t.prenom || "U").charAt(0).toUpperCase();
+        return `<article class="tcard treel" data-i="${i}">
+        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
+        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=0.5" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span></button>
+        ${t.texte ? `<p class="ttexte">${esc(t.texte)}</p>` : ""}
+      </article>`;
+      }
       const cap = t.capture === "placeholder" ? captureFictive(t.depart, t.arrivee, t.duree) : t.capture;
       const ini = (t.prenom || "?").charAt(0).toUpperCase();
       return `<article class="tcard" data-i="${i}">
