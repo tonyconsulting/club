@@ -37,7 +37,19 @@ window.CLUB = {
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
   contactParDefaut: "tony",
   contacts: {
-    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg",  photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback" },
+    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "37K", photo: "mila.jpg?v=75", photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony), avatar recadré depuis la grande photo en attendant sa photo de profil HD
+             // video: "",                                            // sa VSL Unlock : lien attendu de Tony (celle du funnel MLM n'est pas publiée ici) ; en attendant, la vidéo générique
+             // faqVideos: ["", "", "", ""],                           // piège, pour qui, peu de temps, compétences : attendues de Tony
+             accent: "#B794F6", accent2: "#F6C453",                 // même DA que Maxim
+             theme: { bg: "#0c0914", surface: "#151021", surface2: "#1b152b", line: "#2b2142", line2: "#3c2f5c" },
+             temoignages: [   // mêmes membres que sur la page de Maxim, Mila remplacée par Maxim (vidéo reçue le 21/09)
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-3.jpg?v=66", "resultats/maxim-4.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // copie des captures de Maxim (à confirmer par Tony : la 3e, Antoine, cite Maxim par son prénom)
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
     maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",   // lien DIRECT : sur iPhone seul un vrai tap sur un lien Instagram ouvre l'appli. Testé le 19/09 : Taap.it (taap.it/wt6i1YC) redirige en JavaScript et fait atterrir sur la connexion web d'Instagram, à ne pas utiliser ici
              video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
