@@ -241,7 +241,7 @@
         const ini = (t.prenom || "U").charAt(0).toUpperCase();
         return `<article class="tcard treel" data-i="${i}">
         <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
-        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=0.5" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span><span class="tprog"><i></i></span></button>
+        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=1" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span><span class="tprog"><i></i></span></button>
         ${t.texte ? `<p class="ttexte">${esc(t.texte)}</p>` : ""}
       </article>`;
       }
@@ -264,7 +264,7 @@
         if (v.classList.contains("tmedia")) {   // témoignage fichier : se lance dans la carte, sans fenêtre (demande de Tony du 21/09)
           const vid = v.querySelector("video");
           piste.querySelectorAll(".tmedia video").forEach((o) => { if (o !== vid && !o.paused) { o.pause(); o.closest(".tmedia").classList.remove("joue"); } });
-          if (vid.paused) { vid.muted = false; if (vid.currentTime < 0.6 || vid.ended) vid.currentTime = 0; v.classList.add("joue"); vid.play().catch(() => {}); mesure("temoignage-video"); }
+          if (vid.paused) { vid.muted = false; if (vid.currentTime < 1.2 || vid.ended) vid.currentTime = 0; v.classList.add("joue"); vid.play().catch(() => {}); mesure("temoignage-video"); }
           else { vid.pause(); v.classList.remove("joue"); }   // un clic = lecture, un clic = pause, sans commandes natives (elles avalaient le clic)
           return;
         }
