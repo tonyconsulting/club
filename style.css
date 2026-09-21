@@ -159,8 +159,10 @@ h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:22px}
 .tmedia .tplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;box-shadow:0 6px 24px rgba(0,0,0,.45)}
 .tmedia .tplay::after{border-left-width:16px;border-top-width:10px;border-bottom-width:10px}
 .treel .ttexte{flex:0}
-.tmedia.joue .tplay{opacity:0;pointer-events:none}
-.tmedia.joue video{object-fit:contain;pointer-events:auto}
+.tmedia.joue .tplay{opacity:0}
+.tmedia .tprog{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.18);opacity:0;transition:opacity .3s}
+.tmedia .tprog i{display:block;height:100%;width:0;background:var(--accent2,var(--accent))}
+.tmedia.joue .tprog{opacity:1}
 
 /* faq : questions dépliables, vidéo dans la réponse */
 .faq{max-width:800px;margin:0 auto}
