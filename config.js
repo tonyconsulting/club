@@ -38,7 +38,7 @@ window.CLUB = {
   contactParDefaut: "tony",
   contacts: {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "37K", photo: "mila.jpg?v=75", photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony), avatar recadré depuis la grande photo en attendant sa photo de profil HD
-             // video: "",                                            // sa VSL Unlock : lien attendu de Tony (celle du funnel MLM n'est pas publiée ici) ; en attendant, la vidéo générique
+             video: "Hp9xWN8UIvk",                                   // sa VSL Unlock « Comprendre Unlock en 3 minutes » (reçue le 21/09)
              // faqVideos: ["", "", "", ""],                           // piège, pour qui, peu de temps, compétences : attendues de Tony
              accent: "#FF6FB0", accent2: "#FFC2DC",                 // DA rose (demande Tony 21/09) : rose vif + rose clair en dégradé
              theme: { bg: "#120a10", surface: "#1b1018", surface2: "#23141d", line: "#3a1f2f", line2: "#4f2a40" },
