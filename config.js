@@ -40,8 +40,8 @@ window.CLUB = {
     mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "37K", photo: "mila.jpg?v=75", photoGrande: "mila-grande.jpg", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony), avatar recadré depuis la grande photo en attendant sa photo de profil HD
              // video: "",                                            // sa VSL Unlock : lien attendu de Tony (celle du funnel MLM n'est pas publiée ici) ; en attendant, la vidéo générique
              // faqVideos: ["", "", "", ""],                           // piège, pour qui, peu de temps, compétences : attendues de Tony
-             accent: "#B794F6", accent2: "#F6C453",                 // même DA que Maxim
-             theme: { bg: "#0c0914", surface: "#151021", surface2: "#1b152b", line: "#2b2142", line2: "#3c2f5c" },
+             accent: "#FF6FB0", accent2: "#FFC2DC",                 // DA rose (demande Tony 21/09) : rose vif + rose clair en dégradé
+             theme: { bg: "#120a10", surface: "#1b1018", surface2: "#23141d", line: "#3a1f2f", line2: "#4f2a40" },
              temoignages: [   // mêmes membres que sur la page de Maxim, Mila remplacée par Maxim (vidéo reçue le 21/09)
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
