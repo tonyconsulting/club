@@ -15,7 +15,7 @@
   window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
 
   // Qui a envoyé la page (?r=prenom) : uniquement des liens publics déclarés dans config.js
-  const ref = (new URLSearchParams(location.search).get("r") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+  const ref = (new URLSearchParams(location.search).get("r") || window.CLUB_R || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");   // ?r=prenom, sinon la page d'entrée de la personne (dossier /prenom/) fixe window.CLUB_R
   const contacts = C.contacts || {};
   const contact = contacts[ref] || contacts[C.contactParDefaut] || Object.values(contacts)[0] || { prenom: "nous", lien: "#" };
   const avecPrenom = (t) => String(t || "").replace(/\{prenom\}/g, contact.prenom);
