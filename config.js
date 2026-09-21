@@ -74,7 +74,7 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    pierre: { prenom: "Pierre", nom: "Pierre Barrillon", handle: "pierre.barrillon_", abonnes: "", certifie: true, photo: "", lien: "https://ig.me/m/pierre.barrillon_",   // pseudo reçu le 21/09 ; Tony : pas le nombre d'abonnés, juste la certification ; photo HD à venir
+    pierre: { prenom: "Pierre", nom: "Pierre Barrillon", handle: "pierre.barrillon_", abonnes: "", certifie: true, photo: "pierre.jpg?v=92", lien: "https://ig.me/m/pierre.barrillon_",   // pseudo reçu le 21/09 ; Tony : pas le nombre d'abonnés, juste la certification ; photo HD à venir
              video: "PxfY4M2rx2s",                                   // sa VSL « Comment Unlock m'a aidé à passer à l'action » (reçue le 21/09)
              faqVideos: ["rrhvDpYgQQM", "OGuipHvr3v0", "ZrmivCzIViA", "BUxhpKHRb9U"],   // piège, pour qui, peu de temps, compétences (titres vérifiés)
              accent: "#34D399", accent2: "#C8F560",                 // DA verte (Tony 21/09 : « jaune ou vert peut-être » ; vert choisi, le jaune est déjà chez Maxim) : vert émeraude + vert citron en dégradé
