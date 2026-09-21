@@ -45,10 +45,11 @@ window.CLUB = {
              accent: "#B794F6", accent2: "#F6C453",                  // violet et jaune, les tons de sa vidéo
              theme: { bg: "#0c0914", surface: "#151021", surface2: "#1b152b", line: "#2b2142", line2: "#3c2f5c" },
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-3.jpg?v=66", "resultats/maxim-4.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // captures ENTIÈRES de ses membres, prénom et photo visibles (demande de Tony le 19/09 : accord de chaque membre à avoir), puis les cases à remplir
+             // temoignagesUrl: "https://…/api/temoignages?ib=maxim",   // à brancher quand l'appli d'Arthur sert la liste validée (voir spec-temoignages-arthur.md) ; en attendant la liste ci-dessous
              temoignages: [   // témoignages vidéo réels reçus le 21/09 (fichiers mp4 dans temoignages/), prénoms à compléter par Tony
-               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=73" },
-               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=73" },
-               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=73" },
+               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=74" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=74" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=74" },
              ],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
