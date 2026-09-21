@@ -226,7 +226,13 @@
   const captureFictive = (depart, arrivee, duree) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360"><rect width="640" height="360" fill="#0f0f0f"/><rect x="16" y="16" width="608" height="328" rx="10" fill="#151515" stroke="#262626"/><text x="36" y="50" font-family="Inter,Helvetica,Arial" font-size="13" fill="#7a7a7a">Solde du compte${duree ? " · " + esc(duree) : ""}</text>${APERCU ? "" : `<text x="604" y="50" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#4a4a4a">Exemple fictif</text>`}<line x1="36" y1="290" x2="604" y2="290" stroke="#262626"/><polyline points="60,262 120,248 180,256 250,222 320,232 390,190 450,200 520,150 580,120" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linejoin="round"/><circle cx="60" cy="262" r="6" fill="#0f0f0f" stroke="#9a9a9a" stroke-width="3"/><circle cx="580" cy="120" r="6" fill="#0f0f0f" stroke="${ACCENT}" stroke-width="3"/><text x="60" y="318" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Départ</text><text x="60" y="338" font-family="Inter,Helvetica,Arial" font-size="17" font-weight="700" fill="#ededed">${esc(depart)}</text><text x="580" y="86" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="12" fill="#7a7a7a">Aujourd'hui</text><text x="580" y="108" text-anchor="end" font-family="Inter,Helvetica,Arial" font-size="20" font-weight="700" fill="${ACCENT}">${esc(arrivee)}</text></svg>`);
   // Une personne qui a ses propres témoignages réels (contact.temoignages) les affiche ; une personne qui a déjà ses vraies captures (contact.resultats)
   // n'affiche plus les cartes d'exemple : la section disparaît tant qu'elle n'a pas de vrais témoignages vidéo.
-  const temoins = contact.temoignages || C.temoignages || [];   // les cartes d'exemple restent affichées (avec leur pastille) tant que la personne n'a pas ses propres témoignages vidéo
+  // Source des témoignages : contact.temoignagesUrl (liste JSON validée par l'IB, servie par l'appli d'Arthur) sinon contact.temoignages sinon C.temoignages
+  const temoinsConfig = contact.temoignages || C.temoignages || [];   // les cartes d'exemple restent affichées (avec leur pastille) tant que la personne n'a pas ses propres témoignages
+  const depuisJson = (j) => (Array.isArray(j) ? j : (j && j.temoignages) || [])
+    .filter((t) => t && t.valide !== false && t.accord !== false && (t.fichier || t.audio || t.texte))
+    .slice(0, Number(contact.temoignagesMax || C.temoignagesMax || 6))
+    .map((t) => ({ prenom: t.prenom || "", nom: t.nom || "", sous: t.sous || "Membre Unlock", texte: t.texte || "", fichier: t.fichier || "", audio: t.audio || "", poster: t.poster || "", photo: t.photo || "" }));
+  const rendreTemoignages = (temoins) => {
   if (!temoins.length) $("temoignages").remove();
   else {
     $("temoignagesTitre").textContent = C.temoignagesTitre || "Ce que disent les membres.";
@@ -237,11 +243,26 @@
     const tk = C.ticker || [];
     if (tk.length) { const l = tk.map((t) => `<span class="titem"><span class="tdot"></span>${esc(t)}</span>`).join(""); $("ttrack").innerHTML = l + l; } else $("ticker").remove();
     const carte = (t, i) => {
+      if (t.audio) {   // témoignage vocal : la personne, un lecteur audio sobre, une ligne au plus
+        const ini = (t.prenom || "U").charAt(0).toUpperCase();
+        return `<article class="tcard treel tvocal" data-i="${i}">
+        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
+        <audio class="taudio" controls preload="none" src="${esc(t.audio)}"></audio>
+        ${t.texte ? `<p class="ttexte">${esc(t.texte)}</p>` : ""}
+      </article>`;
+      }
+      if (!t.fichier && !t.capture && !t.depart && t.texte) {   // témoignage écrit : la personne et son texte, rien d'autre
+        const ini = (t.prenom || "U").charAt(0).toUpperCase();
+        return `<article class="tcard treel tecrit" data-i="${i}">
+        <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
+        <p class="ttexte tlong">${esc(t.texte)}</p>
+      </article>`;
+      }
       if (t.fichier) {   // témoignage vidéo réel (fichier mp4 hébergé avec le site) : la personne, la vidéo verticale en aperçu, une ligne au plus, aucun chiffre
         const ini = (t.prenom || "U").charAt(0).toUpperCase();
         return `<article class="tcard treel" data-i="${i}">
         <div class="tqui"><div class="tavatar">${t.photo ? `<img src="${esc(t.photo)}" alt="">` : esc(ini)}</div><div><div class="tnom">${esc(t.prenom || "Membre Unlock")}${t.nom ? " " + esc(t.nom) : ""}</div><div class="thandle">${esc(t.sous || "Membre Unlock")}</div></div></div>
-        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=1" muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span><span class="tprog"><i></i></span></button>
+        <button class="tmedia tvideo" data-video="${esc(t.fichier)}" aria-label="Voir le témoignage"><video src="${esc(t.fichier)}#t=1"${t.poster ? ` poster="${esc(t.poster)}"` : ""} muted playsinline preload="metadata" tabindex="-1"></video><span class="tplay"></span><span class="tprog"><i></i></span></button>
         ${t.texte ? `<p class="ttexte">${esc(t.texte)}</p>` : ""}
       </article>`;
       }
@@ -313,6 +334,12 @@
     window.addEventListener("resize", place);
     place(); setTimeout(place, 400); setTimeout(place, 1500);
   }
+  };
+  if (contact.temoignagesUrl) {
+    const delai = new Promise((r) => setTimeout(() => r(null), 3000));
+    Promise.race([fetch(contact.temoignagesUrl, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null), delai])
+      .then((j) => { const l = j ? depuisJson(j) : []; rendreTemoignages(l.length ? l : temoinsConfig); });
+  } else rendreTemoignages(temoinsConfig);
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
   $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r && (C.faqTextes !== false || !((contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut)) ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");   // faqTextes: false = la vidéo seule ; le texte ne revient que si une question n'a aucune vidéo
