@@ -230,6 +230,24 @@ window.CLUB = {
   legal1: "Le club n'est pas un conseiller financier et ne fournit aucune recommandation d'investissement personnalisée. Il est rémunéré par le broker partenaire au titre d'apporteur d'affaires, sur le volume d'activité, et n'exécute aucune opération pour ton compte.",
   legal2: "Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les témoignages sont des expériences individuelles et ne constituent pas une promesse de résultat. Les informations de cette page sont fournies à titre informatif et éducatif uniquement. N'investis que des sommes que tu peux te permettre de perdre.",
 
+  // --- Loupe sur les captures (façon Kéo) : point fort par fichier = [x %, y %, zoom]. Le bloc de résultats s'il existe, sinon le passage qui remercie l'accompagnement. Absent = [50, 80, 2.1].
+  loupe: {
+    "maxim-1": [46, 83, 2.1],    // Florian : message de remerciement
+    "maxim-2": [46, 84, 2.1],    // Leo : message
+    "maxim-3": [50, 19, 2.1],    // Antoine : bloc Bénéfice / Balance en haut
+    "maxim-4": [46, 85, 2.1],    // Amin : message +325 €
+    "maxim-5": [46, 86, 2.1],    // Lucas : message
+    "maxim-6": [46, 85, 2.1],    // Enzo : message
+    "maxim-7": [50, 70, 2.1],    // Nolan : bloc Dépôt / Profit / Solde
+    "maxim-8": [50, 57, 2.1],    // Thomas : bloc Dépôt / Profit / Solde
+    "maxim-9": [50, 56, 2.1],    // Ninon : bloc Profit / Solde
+    "maxim-10": [50, 30, 2.1],   // max : bloc Dépôt / Profit / Solde en haut
+    "mila-3": [50, 22, 2.1],     // Antoine (version Mila) : bloc Bénéfice / Balance
+    "mila-4": [50, 78, 2.1],     // Amin (version Mila) : Profit puis message
+    "thomas-2": [50, 70, 2.1],   // Thomas : blocs Dépôt / Crédit / Profit / Solde
+    "maxim-membre": [46, 87, 2.1], // Maxim membre : message sur le risque
+  },
+
   // --- Mesure (facultatif) : adresse GoatCounter, ex: "https://tony.goatcounter.com/count". Vide = rien. ---
   goatcounter: "",
 };
