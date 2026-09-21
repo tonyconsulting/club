@@ -259,9 +259,20 @@
     const piste = $("track");
     piste.innerHTML = temoins.map(carte).join("");
     piste.addEventListener("click", (e) => {
-      const v = e.target.closest(".tvideo"); if (v) { ouvreVideo(v.dataset.video); mesure("temoignage-video"); return; }
+      const v = e.target.closest(".tvideo");
+      if (v) {
+        if (v.classList.contains("tmedia")) {   // témoignage fichier : se lance dans la carte, sans fenêtre (demande de Tony du 21/09)
+          const vid = v.querySelector("video");
+          piste.querySelectorAll(".tmedia video").forEach((o) => { if (o !== vid && !o.paused) { o.pause(); o.controls = false; o.closest(".tmedia").classList.remove("joue"); } });
+          if (vid.paused) { vid.muted = false; if (vid.currentTime < 0.6 || vid.ended) vid.currentTime = 0; vid.controls = true; v.classList.add("joue"); vid.play().catch(() => {}); mesure("temoignage-video"); }
+          else { vid.pause(); vid.controls = false; v.classList.remove("joue"); }
+          return;
+        }
+        ouvreVideo(v.dataset.video); mesure("temoignage-video"); return;
+      }
       const c = e.target.closest(".tcapture"); if (c) { ouvreImage(c.dataset.src); mesure("temoignage-capture"); return; }
     });
+    piste.querySelectorAll(".tmedia video").forEach((vid) => vid.addEventListener("ended", () => { vid.controls = false; vid.closest(".tmedia").classList.remove("joue"); }));
     // Carrousel en boucle façon Kéo : la carte active au centre, la précédente à gauche, la suivante à droite (même au début et à la fin), flèches, points, glissement au doigt
     const cartes = [...piste.querySelectorAll(".tcard")], n = cartes.length;
     const points = $("points");
