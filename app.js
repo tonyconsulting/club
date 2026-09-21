@@ -158,27 +158,7 @@
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     { const note = $("resultatsNote"); if (!APERCU && listeRes.slice(0, nb).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove(); }   // la note ne s'affiche que si une case à remplir est visible sans cliquer
-    $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy">${listeRes[i] === "placeholder" ? "" : `<span class="loupe" role="button" aria-label="Zoomer sur le passage important" tabindex="0"></span><span class="lens" aria-hidden="true"></span>`}</button>`).join("");
-    // Loupe façon Kéo : chaque capture a un point fort (config.js `loupe`, clé = nom du fichier sans extension, valeur = [x %, y %, zoom]) :
-    // le bloc de résultats s'il y en a un, sinon le passage qui remercie l'accompagnement. Survol au bureau, appui sur l'icône au doigt.
-    const pointFort = (src) => { const cle = String(src).split("/").pop().split("?")[0].replace(/\.[a-z]+$/i, ""); return (C.loupe || {})[cle] || [50, 80, 2.1]; };
-    const placeLens = (tuile) => {
-      const img = tuile.querySelector("img"), lens = tuile.querySelector(".lens"); if (!img || !lens || !img.naturalWidth) return;
-      const [fx, fy, z = 2.1] = pointFort(tuile.dataset.src), rt = tuile.getBoundingClientRect(), ri = img.getBoundingClientRect();
-      const W = ri.width * z, H = ri.height * z, L = Math.min(150, rt.width * 0.68), px = ri.left - rt.left + ri.width * fx / 100, py = ri.top - rt.top + ri.height * fy / 100;
-      lens.style.width = lens.style.height = L + "px";
-      lens.style.left = Math.max(6, Math.min(rt.width - L - 6, px - L / 2)) + "px";
-      lens.style.top = Math.max(6, Math.min(rt.height - L - 6, py - L / 2)) + "px";
-      lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`; lens.style.backgroundSize = `${W}px ${H}px`;
-      lens.style.backgroundPosition = `${-(ri.width * fx / 100 * z - L / 2)}px ${-(ri.height * fy / 100 * z - L / 2)}px`;
-    };
-    $("resultats").querySelectorAll(".tuile:not(.ex)").forEach((t) => {
-      t.addEventListener("mouseenter", () => placeLens(t));
-      const lp = t.querySelector(".loupe");
-      if (lp) lp.addEventListener("click", (e) => { e.stopPropagation(); e.preventDefault(); const on = !t.classList.contains("zoome"); $("resultats").querySelectorAll(".tuile.zoome").forEach((o) => o.classList.remove("zoome")); if (on) { placeLens(t); t.classList.add("zoome"); mesure("resultat-loupe"); } });
-      const ln = t.querySelector(".lens");
-      if (ln) ln.addEventListener("click", (e) => { if (t.classList.contains("zoome")) { e.stopPropagation(); e.preventDefault(); t.classList.remove("zoome"); } });
-    });
+    $("resultats").innerHTML = res.map((s, i) => `<button class="tuile reveal${listeRes[i] === "placeholder" ? " ex" : ""}" data-src="${esc(s)}" aria-label="Agrandir"${i >= nb ? " hidden" : ""}><img src="${esc(s)}" alt="Capture ${i + 1}" loading="lazy"></button>`).join("");
     // Harmonisation des captures : toutes les cases ont le même fond sombre, et une capture plus claire que les autres
     // (fond d'écran gris au lieu de noir) est assombrie par une courbe gamma calculée sur SON fond : les blancs restent blancs, le texte reste lisible.
     $("resultats").querySelectorAll(".tuile:not(.ex) img").forEach((img) => {
