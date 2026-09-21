@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Plan Unlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--surface:rgba(18,20,30,.78);--surface2:#161927;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.14);--ink:#f4f6fb;--dim:#a9b2c8;--faint:#76809a;--accent:#6E9BFF;--accent2:#B9D0FF;--duo:linear-gradient(90deg,#6E9BFF,#B9D0FF);--ok:#4ade80;--am:#ffc857;--ro:#ff6fb0;--vi:#b794f6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:15.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 520px at 10% -10%,rgba(110,155,255,.20),transparent 60%),radial-gradient(700px 480px at 100% 30%,rgba(185,208,255,.08),transparent 60%),radial-gradient(800px 600px at 40% 110%,rgba(110,155,255,.10),transparent 60%)}
+.wrap{max-width:1240px;margin:0 auto;padding:26px 18px 70px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}
+header img{height:22px;mix-blend-mode:screen}
+.tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line2);border-radius:99px;padding:6px 12px;background:rgba(255,255,255,.03)}
+h1{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,48px);letter-spacing:-.025em;line-height:1.05;margin:0 0 10px}
+h1 em{font-style:normal;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sous{color:var(--dim);margin:0 0 30px;max-width:720px;font-size:17px}
+.etapes{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.etape{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line2);border-radius:99px;background:rgba(255,255,255,.03);font-size:13.5px;font-weight:600}
+.etape i{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:12px;background:var(--duo);color:#0a0b10}
+.etape small{color:var(--faint);font-weight:500}
+.colonnes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+@media (max-width:1000px){.colonnes{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){.colonnes{grid-template-columns:1fr}}
+.col{background:var(--surface);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.col.large{grid-column:1 / -1}
+.col h2{font-family:Manrope,Inter,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 6px;font-weight:700;display:flex;align-items:center;gap:10px}
+.col h2 b{width:10px;height:10px;border-radius:50%;background:var(--c,var(--accent));box-shadow:0 0 12px var(--c,var(--accent))}
+.col .quand{color:var(--faint);font-size:13px;margin-bottom:16px}
+.post{background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--c,var(--accent));border-radius:14px;padding:13px 15px;margin-bottom:10px;font-size:14.5px}
+.post b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:15px;margin-bottom:3px;letter-spacing:-.01em}
+.post span{color:var(--dim)}
+.post.fait{opacity:.75}
+.post.fait b::after{content:"fait";margin-left:8px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok);border:1px solid rgba(74,222,128,.4);border-radius:99px;padding:2px 7px;vertical-align:middle}
+.liste{margin:8px 0 0;padding:0 0 0 18px;color:var(--dim)}
+.liste li{margin:3px 0}
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+.ch{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
+.ch span{display:block;color:var(--faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:Manrope,Inter,sans-serif;font-weight:700;margin-bottom:6px}
+.ch b{display:block;font-family:Manrope,Inter,sans-serif;font-size:26px;font-weight:800;letter-spacing:-.02em;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ch small{display:block;color:var(--dim);font-size:12.5px;margin-top:3px}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:Manrope,Inter,sans-serif}
+td b{font-family:Manrope,Inter,sans-serif;font-weight:800}
+td.fort{color:var(--accent2)}
+.regle{margin-top:18px;padding:16px 18px;border:1px dashed var(--line2);border-radius:16px;color:var(--dim);font-size:14px}
+.regle b{color:var(--ink)}
+footer{margin-top:28px;color:var(--faint);font-size:12.5px;line-height:1.6;max-width:820px}
+a{color:var(--accent2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><img src="../logo.jpg" alt="Unlock"><span class="tag">Interne · Plan de lancement</span></header>
+<h1>Ton plan, <em>de ce soir à Noël.</em></h1>
+<p class="sous">Tout ce qu'on a décidé depuis deux jours, au même endroit : où on en est, ce que tu dois faire d'ici fin septembre, le challenge d'octobre, ce que ça peut te rapporter, et ce qui arrive derrière. Nous, on s'occupe du reste : les pages, le tracking, l'appli. Toi, tu fais des clients.</p>
+
+<div class="etapes">
+  <span class="etape"><i>1</i>Mardi 22 sept.<small>contrats</small></span>
+  <span class="etape"><i>2</i>24 sept. au 16 oct.<small>challenge, 17 jours</small></span>
+  <span class="etape"><i>3</i>17 et 18 oct.<small>event</small></span>
+  <span class="etape"><i>4</i>20 au 25 oct.<small>villa en Grèce</small></span>
+  <span class="etape"><i>5</i>Novembre, décembre<small>on passe la vitesse</small></span>
+</div>
+
+<div class="colonnes">
+  <section class="col" style="--c:#4ade80">
+    <h2><b></b>Où on en est</h2>
+    <div class="quand">Lundi 21 septembre, veille des contrats</div>
+    <div class="post fait"><b>Ton funnel V1 existe</b><span>Une page de vente par personne, avec ta vidéo, tes 4 vidéos questions, les résultats et sept témoignages vidéo des membres. Lien propre par personne, aperçu Instagram à ton image.</span></div>
+    <div class="post fait"><b>Pages prêtes</b><span>Maxim, Mila, Pierre. Ilhan et Loukas : il manque le pseudo et la photo pour activer le bouton.</span></div>
+    <div class="post fait"><b>Starter pack</b><span>Tes 7 listes, un message par liste, les réponses aux objections, les scripts. En stand by jusqu'aux contrats.</span></div>
+    <div class="post"><b>On trace tout</b><span>Visites, vidéo regardée, clics, messages, comptes ouverts. On saura à quoi notre avatar réagit, et on améliore le funnel pour tout le monde en même temps. Inspiré des funnels de Kéo et de Hamza, pas copié.</span></div>
+  </section>
+
+  <section class="col" style="--c:#ffc857">
+    <h2><b></b>D'ici fin septembre</h2>
+    <div class="quand">Septembre sert à lancer la machine. Rien d'autre.</div>
+    <div class="post"><b>Ta page complète</b><span>Pseudo Insta, photo HD, ta VSL, tes 4 vidéos questions. Envoie, c'est en ligne le lendemain.</span></div>
+    <div class="post"><b>Ta liste en 7 parties</b><span>Déjà déposés, MLM sans compte, anciens, hésitants, non, réseau chaud, potentiels partenaires. Gros potentiels surlignés.</span></div>
+    <div class="post"><b>Dès la signature : tes premiers clients</b><span>Un message ne part que si tu peux ouvrir le compte dans l'heure. 10 à 15 clients perso avant de penser à un sub-IB.</span></div>
+    <div class="post"><b>Ta routine Insta</b><span>Un reel « ressource offerte contre un mot en commentaire » par semaine, 1 à 3 stories par jour, revue de 30 minutes le dimanche. Jamais de promesse de gain, jamais le nom du broker.</span></div>
+    <div class="post"><b>Ton témoignage vidéo</b><span>Sept sont en ligne. Si le tien n'y est pas, 30 secondes face caméra suffisent.</span></div>
+  </section>
+
+  <section class="col" style="--c:#ff6fb0">
+    <h2><b></b>Le challenge villa</h2>
+    <div class="quand">Du mercredi 24 septembre au jeudi 16 octobre, 17 jours de marché</div>
+    <div class="post"><b>500 lots</b><span>Tu es invité à la villa en Grèce, du 20 au 25 octobre, en payant ta place.</span></div>
+    <div class="post"><b>1 000 lots</b><span>Tout est payé sauf ton vol : villa, cuisinier, activités, photographe, vidéaste, podcast.</span></div>
+    <div class="post"><b>1 500 lots</b><span>Le vol aussi, plus une surprise.</span></div>
+    <div class="post"><b>Sous 500 lots</b><span>Pas cette fois. La prochaine cohésion sera annoncée à la fin de celle-ci : Dubaï, Bahamas, ou ailleurs.</span></div>
+    <div class="regle">Compteur : <b>lots rémunérés au back-office</b>, sur tes clients perso, or uniquement. 1 000 lots en 17 jours, c'est <b>58 lots par jour</b>, soit environ 12 comptes à 500 € actifs dès le premier jour. C'est dur exprès. Sinon c'est un cadeau.</div>
+  </section>
+
+  <section class="col large" style="--c:#6E9BFF">
+    <h2><b></b>Ce que ça peut te rapporter</h2>
+    <div class="quand">À 7 $ par lot, dépôt de 500 € avec bonus, 2 lots par jour pour 500 € de capital, 23 jours de marché. Théorique. Le simulateur est là pour tes propres chiffres.</div>
+    <table>
+      <thead><tr><th>Clients actifs à 500 €</th><th>Lots par jour</th><th>Par jour</th><th>Par mois</th><th>Octobre à décembre</th></tr></thead>
+      <tbody>
+        <tr><td><b>5</b></td><td>25</td><td>151 €</td><td class="fort"><b>3 470 €</b></td><td>10 400 €</td></tr>
+        <tr><td><b>10</b></td><td>50</td><td>302 €</td><td class="fort"><b>6 940 €</b></td><td>20 800 €</td></tr>
+        <tr><td><b>15</b></td><td>75</td><td>453 €</td><td class="fort"><b>10 410 €</b></td><td>31 200 €</td></tr>
+        <tr><td><b>30</b></td><td>150</td><td>905 €</td><td class="fort"><b>20 820 €</b></td><td>62 500 €</td></tr>
+      </tbody>
+    </table>
+    <div class="chiffres" style="margin-top:14px">
+      <div class="ch"><span>10 K€ par mois</span><b>15 clients</b><small>à 500 €, actifs, soit 7 500 € de dépôts</small></div>
+      <div class="ch"><span>Un client à 500 €</span><b>700 €</b><small>par mois pour toi, tant qu'il est actif</small></div>
+      <div class="ch"><span>Contrat à 8 $</span><b>+14 %</b><small>le barème d'augmentation arrive, basé sur tes lots perso</small></div>
+      <div class="ch"><span>Trophées</span><b>10 K · 100 K</b><small>puis 500 K et 1 M par mois</small></div>
+    </div>
+    <div class="regle">Un client qui a cramé son dépôt et trade sur le crédit ne rapporte plus rien. <b>Ton revenu dépend de clients qui durent</b> : les bases d'abord, les canaux ensuite, et l'onboarding des 24 premières heures.</div>
+  </section>
+
+  <section class="col" style="--c:#b794f6">
+    <h2><b></b>Ce qui arrive</h2>
+    <div class="quand">Construit par Arthur et Tony pendant que tu fais des clients</div>
+    <div class="post"><b>Les 24 premières heures du client</b><span>Validation dans l'appli, 4 questions, plan 24, 48, 72 heures. Un gros onboarding simple, en 1 ou 2 vidéos.</span></div>
+    <div class="post"><b>Témoignage contre XP</b><span>À J+2, le membre propose un témoignage écrit, vocal ou vidéo. Tu valides en un clic, il apparaît sur ta page tout seul.</span></div>
+    <div class="post"><b>Tracking complet</b><span>De la vue du reel au compte ouvert. Ce qui marche chez l'un est répliqué chez tous.</span></div>
+    <div class="post"><b>Barème d'augmentation</b><span>Écrit, basé sur tes lots perso. 7 puis 8, puis plus.</span></div>
+  </section>
+
+  <section class="col" style="--c:#B9D0FF">
+    <h2><b></b>Les dates</h2>
+    <div class="quand">Ce qui est calé</div>
+    <div class="post"><b>Mardi 22 septembre</b><span>Contrats. Le starter pack passe en « prêt ». Tu envoies ton premier message.</span></div>
+    <div class="post"><b>Mercredi 24 septembre</b><span>Le compteur du challenge démarre.</span></div>
+    <div class="post"><b>Jeudi 16 octobre</b><span>Fin du compteur. Résultats annoncés à l'event. Les invités qui paient leur place règlent avant le départ.</span></div>
+    <div class="post"><b>17 et 18 octobre</b><span>Event. Il close les dépôts en attente.</span></div>
+    <div class="post"><b>20 au 25 octobre</b><span>Villa en Grèce. Photographe, vidéaste, podcast, reels.</span></div>
+  </section>
+
+  <section class="col" style="--c:#4ade80">
+    <h2><b></b>Ce que ça change pour toi</h2>
+    <div class="quand">Si tu joues le jeu</div>
+    <div class="post"><b>Octobre</b><span>Tu passes de 0 à tes 10 ou 15 premiers clients actifs. Tu vis le challenge et tu vois tes lots monter chaque jour dans l'appli.</span></div>
+    <div class="post"><b>Novembre</b><span>Le contenu et le tracking font le travail avec toi. Tes reels amènent des messages, ta page fait le tri, tu ouvres des comptes en boucle.</span></div>
+    <div class="post"><b>Décembre</b><span>Tu finis 2026 avec une base de clients qui trade tous les jours, un revenu qui tombe chaque nuit à 1 heure, et une cohésion de folie annoncée pour la suite.</span></div>
+    <div class="regle"><b>Une règle :</b> ton compte perso d'abord. Faire un sub-IB avant d'avoir tes 10 à 15 clients, c'est le réflexe qu'on coupe.</div>
+  </section>
+</div>
+
+<footer>Document interne à l'équipe Unlock. Les chiffres de revenu sont théoriques et concernent la rémunération des IB par le broker, payée au lot tradé. Aucun de ces chiffres ne doit être montré à un client ni utilisé dans un contenu public. Simulateur : <a href="simulateur.html">simulateur.html</a>.</footer>
+</div>
+</body>
+</html>
