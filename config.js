@@ -74,7 +74,9 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    pierre: { prenom: "Pierre", nom: "Pierre", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, VSL, 4 FAQ et couleurs à venir ; DA par défaut en attendant
+    pierre: { prenom: "Pierre", nom: "Pierre Barrillon", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés et couleurs à venir ; DA par défaut en attendant ; nom d'après sa chaîne YouTube
+             video: "PxfY4M2rx2s",                                   // sa VSL « Comment Unlock m'a aidé à passer à l'action » (reçue le 21/09)
+             faqVideos: ["rrhvDpYgQQM", "OGuipHvr3v0", "ZrmivCzIViA", "BUxhpKHRb9U"],   // piège, pour qui, peu de temps, compétences (titres vérifiés)
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
