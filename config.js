@@ -44,7 +44,12 @@ window.CLUB = {
              faqVideos: ["HVuh2EdflCE", "EuAOUfofyeU", "FtCrOmHyBio", "C4cuZzo4k0o"],   // ses 4 réponses vidéo, dans l'ordre des questions : piège, pour qui, peu de temps, compétences
              accent: "#B794F6", accent2: "#F6C453",                  // violet et jaune, les tons de sa vidéo
              theme: { bg: "#0c0914", surface: "#151021", surface2: "#1b152b", line: "#2b2142", line2: "#3c2f5c" },
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-3.jpg?v=66", "resultats/maxim-4.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "placeholder", "placeholder", "placeholder", "placeholder"],   // captures ENTIÈRES de ses membres, prénom et photo visibles (demande de Tony le 19/09 : accord de chaque membre à avoir), puis les cases à remplir
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-3.jpg?v=66", "resultats/maxim-4.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // captures ENTIÈRES de ses membres, prénom et photo visibles (demande de Tony le 19/09 : accord de chaque membre à avoir), puis les cases à remplir
+             temoignages: [   // témoignages vidéo réels reçus le 21/09 (fichiers mp4 dans temoignages/), prénoms à compléter par Tony
+               { prenom: "", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=68" },
+               { prenom: "", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=68" },
+               { prenom: "", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=68" },
+             ],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
