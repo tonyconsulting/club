@@ -37,7 +37,7 @@ window.CLUB = {
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
   contactParDefaut: "tony",
   contacts: {
-    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", photo: "mila.jpg?v=81", photoGrande: "mila-grande.jpg?v=80", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony) ; photo HD reçue le 21/09 (coucher de soleil), avatar recadré sur le visage
+    mila:  { prenom: "Mila",  nom: "Mila Winsback", handle: "mila.winsback", abonnes: "40K", certifie: true, photo: "mila.jpg?v=81", photoGrande: "mila-grande.jpg?v=80", lien: "https://ig.me/m/mila.winsback",   // page créée le 21/09 : copie exacte de celle de Maxim (demande Tony) ; photo HD reçue le 21/09 (coucher de soleil), avatar recadré sur le visage
              video: "Hp9xWN8UIvk",                                   // sa VSL Unlock « Comprendre Unlock en 3 minutes » (reçue le 21/09 ; fausse alerte de blocage le 21/09 : ne passait pas en test local, passe sur le vrai domaine)
              faqVideos: ["KCCFGn1kKi4", "N1Nln-q8bsc", "smqzEfBGnuQ", "0rt7-G3A-Jo"],   // piège, pour qui, peu de temps, compétences (reçues le 21/09, titres vérifiés)
              accent: "#FF6FB0", accent2: "#FFB067",                 // DA rose (demande Tony 21/09) + touche orange coucher de soleil de sa photo, à tester (Tony 21/09) ; rose clair d'avant : #FFC2DC
@@ -52,7 +52,7 @@ window.CLUB = {
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
-    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",   // lien DIRECT : sur iPhone seul un vrai tap sur un lien Instagram ouvre l'appli. Testé le 19/09 : Taap.it (taap.it/wt6i1YC) redirige en JavaScript et fait atterrir sur la connexion web d'Instagram, à ne pas utiliser ici
+    maxim: { prenom: "Maxim", nom: "Maxim Humbert", handle: "maxim.hrtt", abonnes: "14K", certifie: true, photo: "maxim.jpg", photoGrande: "maxim-grande.jpg", lien: "https://ig.me/m/maxim.hrtt",   // lien DIRECT : sur iPhone seul un vrai tap sur un lien Instagram ouvre l'appli. Testé le 19/09 : Taap.it (taap.it/wt6i1YC) redirige en JavaScript et fait atterrir sur la connexion web d'Instagram, à ne pas utiliser ici
              video: "KorX3tYtFUQ",                                   // sa VSL (YouTube)
              faqVideos: ["HVuh2EdflCE", "EuAOUfofyeU", "FtCrOmHyBio", "C4cuZzo4k0o"],   // ses 4 réponses vidéo, dans l'ordre des questions : piège, pour qui, peu de temps, compétences
              accent: "#B794F6", accent2: "#F6C453",                  // violet et jaune, les tons de sa vidéo
