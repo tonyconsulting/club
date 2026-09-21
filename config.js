@@ -85,6 +85,8 @@ window.CLUB = {
              resultatsSous: "Touche une capture pour l'agrandir." },
     ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, 4 FAQ et couleurs à venir ; DA par défaut en attendant
              video: "hTTwMaFBteM",                                   // sa VSL (reçue le 21/09)
+             accent: "#FF3B3B", accent2: "#FF8A80",                 // DA rouge et noir (demande Tony 21/09) : rouge vif + rouge clair en dégradé
+             theme: { bg: "#0b0708", surface: "#150c0d", surface2: "#1d1012", line: "#33191c", line2: "#4a2226" },
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
