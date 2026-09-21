@@ -77,6 +77,8 @@ window.CLUB = {
     pierre: { prenom: "Pierre", nom: "Pierre Barrillon", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés et couleurs à venir ; DA par défaut en attendant ; nom d'après sa chaîne YouTube
              video: "PxfY4M2rx2s",                                   // sa VSL « Comment Unlock m'a aidé à passer à l'action » (reçue le 21/09)
              faqVideos: ["rrhvDpYgQQM", "OGuipHvr3v0", "ZrmivCzIViA", "BUxhpKHRb9U"],   // piège, pour qui, peu de temps, compétences (titres vérifiés)
+             accent: "#34D399", accent2: "#C8F560",                 // DA verte (Tony 21/09 : « jaune ou vert peut-être » ; vert choisi, le jaune est déjà chez Maxim) : vert émeraude + vert citron en dégradé
+             theme: { bg: "#070d0a", surface: "#0e1712", surface2: "#132019", line: "#1e3328", line2: "#2a4a38" },
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
