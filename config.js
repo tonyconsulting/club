@@ -48,6 +48,8 @@ window.CLUB = {
                { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
                { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // captures de Maxim, avec les versions pour Mila d'Antoine (mila-3, sans « merci Maxim ») et d'Amin (mila-4), reçues le 21/09 (cite Maxim ; retirée le 21/09 sur demande de Tony, une version sans « merci Maxim » est attendue)
              resultatsTitre: "Ce que les membres m'écrivent.",
@@ -66,6 +68,8 @@ window.CLUB = {
                { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=74" },
                { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
@@ -76,6 +80,8 @@ window.CLUB = {
                { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
                { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
@@ -91,6 +97,8 @@ window.CLUB = {
                { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
                { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
@@ -105,6 +113,8 @@ window.CLUB = {
                { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
                { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "placeholder", "placeholder"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
