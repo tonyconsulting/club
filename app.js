@@ -38,7 +38,7 @@
   // Identité de la personne qui envoie (photo, nom, abonnés), façon Kéo
   const ident = $("identite");
   if (C.identite !== false && (contact.photo || contact.nom)) {
-    ident.innerHTML = `${contact.photo ? `<img class="iavatar" src="${esc(contact.photo)}" alt="">` : ""}<div><div class="inom">${esc(contact.nom || contact.prenom)}</div><div class="isuite">${contact.handle ? `@${esc(contact.handle)}` : ""}${contact.handle && contact.abonnes ? " · " : ""}${contact.abonnes ? `<b>${esc(contact.abonnes)} abonnés</b>` : ""}</div></div>`;
+    ident.innerHTML = `${contact.photo ? `<img class="iavatar" src="${esc(contact.photo)}" alt="">` : ""}<div><div class="inom">${esc(contact.nom || contact.prenom)}${contact.certifie ? ` <span class="icertif" title="Compte certifié" aria-label="Compte certifié"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.4 1 3.1 2.9 1.5-1.2 3 1.2 3-2.9 1.5-1 3.1-3.2-.4L12 22l-2.4-2.1-3.2.4-1-3.1-2.9-1.5 1.2-3-1.2-3 2.9-1.5 1-3.1 3.2.4z" fill="currentColor"/><path d="M8.5 12.2l2.3 2.3 4.7-4.8" fill="none" stroke="#0a0b10" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>` : ""}</div><div class="isuite">${contact.handle ? `@${esc(contact.handle)}` : ""}${contact.handle && contact.abonnes ? " · " : ""}${contact.abonnes ? `<b>${esc(contact.abonnes)} abonnés</b>` : ""}</div></div>`;
   } else ident.remove();
 
   // Hero
