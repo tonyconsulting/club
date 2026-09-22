@@ -120,6 +120,23 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
+    ilona: { prenom: "Ilona", nom: "Ilona", handle: "", abonnes: "37K", photo: "", lien: "",   // page créée le 22/09 (demande Tony) : pseudo, photo HD et certification à venir ; 37K d'après la note du 17/09, à confirmer
+             video: "7Oa0UBHzUBA",                                   // sa VSL « Comment j'ai changé ma vie avec Unlock » (reçue le 22/09)
+             faqVideos: ["QRrp1-N5l2A", "aAHAwonWNNU", "oZ1gMU2DRnU", "LRbwGuPZWd8"],   // piège, pour qui, peu de temps, compétences (titres vérifiés)
+             accent: "#FF8FC8", accent2: "#C9A7FF",                 // DA rose poudré + lilas (Tony 22/09 : rose aussi, mais différente de Mila qui est rose vif + orange)
+             theme: { bg: "#100a12", surface: "#181020", surface2: "#20141f", line: "#36203a", line2: "#4d2d52" },
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+               { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
