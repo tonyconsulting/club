@@ -79,6 +79,11 @@ details.rep{margin-top:8px;border:1px solid var(--line);border-radius:16px;paddi
 details.rep summary{cursor:pointer;font-weight:600;font-size:14.5px;color:var(--dim);list-style:none;display:flex;justify-content:space-between}
 details.rep summary::after{content:"+";font-size:20px;color:var(--faint)}
 details.rep[open] summary::after{content:"–"}
+.niveaux{display:flex;gap:8px;margin:0 0 18px}
+.niveaux button{background:rgba(255,255,255,.03);border:1px solid var(--line2);color:var(--dim);border-radius:99px;padding:10px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;font-family:Manrope,Inter,sans-serif}
+.niveaux button.on{background:var(--c);color:#0a0b10;border-color:transparent}
+.niv{display:none}.niv.on{display:block}
+.carte.vide{border-style:dashed;opacity:.6;min-height:140px}
 </style>
 </head>
 <body>
@@ -98,6 +103,8 @@ details.rep[open] summary::after{content:"–"}
 <section class="vue" id="attraction" style="--c:var(--rose)">
   <h2><i></i>Attraction</h2>
   <p class="quand">Le lien en bio. Un message à chaque nouvel abonné. Tu closes en DM.</p>
+  <div class="niveaux" data-vue="attraction"><button class="on" data-n="1">Niveau 1</button><button data-n="2">Niveau 2</button><button data-n="3">Niveau 3</button></div>
+  <div class="niv on" data-vue="attraction" data-n="1">
   <div class="carte">
     <h3>Le message au nouvel abonné</h3>
     <p class="obj">Dans tes mots, pas trop propre.</p>
@@ -107,13 +114,17 @@ details.rep[open] summary::after{content:"–"}
     <div class="msg" style="--c:var(--rose)"><span class="lab">La présentation</span><button>Copier</button>Ok écoute, en vrai je peux te présenter un truc si tu veux, tu me diras ce que tu en penses. En ce moment je me suis dit pourquoi pas faire un complément de revenus à côté de mes études, et je me suis lancée un peu sur les réseaux. Regarde dans ma bio, il y a un lien. Dis-moi ce que t'en penses, ça peut être que du plus.</div>
     <p class="note">Il regarde la page. Soit il démarre, soit il pose ses questions ici. Tu réponds, puis : « on ouvre ton compte ce soir 20 h ou demain 12 h ? »</p>
   </div>
-  <div class="carte niv2"><h3>Niveau 2</h3><p class="obj">Quand tu auras des centaines de conversations.</p><div class="grille2"><div></div><div></div><div></div></div></div>
+  </div>
+  <div class="niv" data-vue="attraction" data-n="2"><div class="carte vide"><h3>Niveau 2</h3><p class="obj">Bientôt.</p></div></div>
+  <div class="niv" data-vue="attraction" data-n="3"><div class="carte vide"><h3>Niveau 3</h3><p class="obj">Bientôt.</p></div></div>
   <details class="rep"><summary>Les réponses aux questions</summary><div id="rep1"></div></details>
 </section>
 
 <section class="vue" id="prospection" style="--c:var(--jaune)">
   <h2><i></i>Prospection</h2>
   <p class="quand">Ta liste d'abord, dans l'ordre. Le message envoie vers ta page, le retour se fait en DM, et tu ouvres le compte.</p>
+  <div class="niveaux" data-vue="prospection"><button class="on" data-n="1">Niveau 1</button><button data-n="2">Niveau 2</button><button data-n="3">Niveau 3</button></div>
+  <div class="niv on" data-vue="prospection" data-n="1">
   <div class="carte">
     <h3>Ta liste, en 7 parties</h3>
     <p class="obj">Deux relances maximum, puis une vidéo Loom, puis stop. Jamais de promesse de gain, jamais le nom du broker à l'écrit.</p>
@@ -161,7 +172,9 @@ details.rep[open] summary::after{content:"–"}
     <p class="obj">Dans l'appli, chaque membre a sa page de parrainage et gagne de l'XP quand il ramène quelqu'un. Le lien du filleul, c'est le tien.</p>
     <div class="msg" style="--c:var(--violet)"><span class="lab">Au client bien installé, J+14</span><button>Copier</button>Tu connais quelqu'un à qui ça ferait du bien ? Tu as ta page de parrainage dans l'appli, tu la lui envoies, et ça te fait de l'XP pour la boutique.</div>
   </div>
-  <div class="carte niv2"><h3>Niveau 2</h3><p class="obj">Quand ta liste est vidée et que tes premiers clients tournent.</p><div class="grille2"><div></div><div></div><div></div></div></div>
+  </div>
+  <div class="niv" data-vue="prospection" data-n="2"><div class="carte vide"><h3>Niveau 2</h3><p class="obj">Bientôt.</p></div></div>
+  <div class="niv" data-vue="prospection" data-n="3"><div class="carte vide"><h3>Niveau 3</h3><p class="obj">Bientôt.</p></div></div>
   <details class="rep"><summary>Les réponses aux questions</summary><div id="rep2"></div></details>
 </section>
 
@@ -191,6 +204,7 @@ document.querySelectorAll("#tabs button").forEach((b) => b.addEventListener("cli
 const montre = (vue) => { document.getElementById("accueil").classList.toggle("off", !!vue); document.querySelectorAll(".vue").forEach((v) => v.classList.toggle("on", v.id === vue)); document.getElementById("retour").hidden = !vue; window.scrollTo(0, 0); if (vue) history.replaceState(null, "", "#" + vue); else history.replaceState(null, "", location.pathname + location.search); };
 document.querySelectorAll(".porte").forEach((p) => p.addEventListener("click", () => montre(p.dataset.vue)));
 document.getElementById("retour").addEventListener("click", () => montre(null));
+document.querySelectorAll(".niveaux button").forEach((b) => b.addEventListener("click", () => { const v = b.parentElement.dataset.vue, n = b.dataset.n; b.parentElement.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); document.querySelectorAll(".niv[data-vue=\"" + v + "\"]").forEach((x) => x.classList.toggle("on", x.dataset.n === n)); }));
 const h = location.hash.replace("#", ""); if (h === "attraction" || h === "prospection") montre(h);
 </script>
 </body>
