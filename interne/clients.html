@@ -24,7 +24,7 @@ h1 em{font-style:normal;background:var(--duo);-webkit-background-clip:text;backg
 .sous{color:var(--dim);font-size:18px;max-width:700px;margin:0 0 34px}
 section{margin:0 0 54px;scroll-margin-top:80px}
 h2{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:28px;letter-spacing:-.02em;margin:0 0 6px;display:flex;align-items:center;gap:12px}
-h2 i{display:none}
+h2 i{width:10px;height:10px;border-radius:50%;background:var(--c,var(--accent))}
 .quand{color:var(--faint);font-size:14px;margin:0 0 20px}
 .etapes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px}
 @media (max-width:760px){.etapes{grid-template-columns:1fr 1fr}}
@@ -67,10 +67,10 @@ a{color:var(--accent2)}
 .deux{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
 @media (max-width:700px){.deux{grid-template-columns:1fr}}
 .porte{text-align:left;background:var(--surface);backdrop-filter:blur(14px);border:1.5px solid var(--line);border-radius:24px;padding:30px 28px 28px;cursor:pointer;color:var(--ink);font:inherit;position:relative;overflow:hidden;transition:transform .2s,border-color .2s;box-shadow:0 30px 80px rgba(0,0,0,.35);min-height:210px}
-.porte::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--duo)}
+.porte::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--c,var(--accent))}
 .porte::after{content:none}
-.porte:hover{transform:translateY(-4px);border-color:var(--accent)}
-.porte em{display:inline-block;font-style:normal;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px}
+.porte:hover{transform:translateY(-4px);border-color:var(--c,var(--accent))}
+.porte em{display:inline-block;font-style:normal;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--c,var(--accent2));margin-bottom:14px}
 .porte b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
 .porte span{display:block;color:var(--dim);font-size:15.5px}
 .vue{display:none}.vue.on{display:block}
@@ -81,7 +81,7 @@ details.rep summary::after{content:"+";font-size:20px;color:var(--faint)}
 details.rep[open] summary::after{content:"–"}
 .niveaux{display:flex;gap:8px;margin:0 0 18px}
 .niveaux button{background:rgba(255,255,255,.03);border:1px solid var(--line2);color:var(--dim);border-radius:99px;padding:10px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;font-family:Manrope,Inter,sans-serif}
-.niveaux button.on{background:#fff;color:#0a0b10;border-color:transparent}
+.niveaux button.on{background:var(--c,#fff);color:#0a0b10;border-color:transparent}
 .niv{display:none}.niv.on{display:block}
 .carte.vide{border-style:dashed;opacity:.6;min-height:140px}
 </style>
@@ -94,13 +94,13 @@ details.rep[open] summary::after{content:"–"}
   <h1 id="titre">Comment avoir <em>des clients.</em></h1>
   <p class="sous">Deux chemins. Choisis le tien.</p>
   <div class="deux">
-    <button class="porte" data-vue="attraction"><em>Attraction</em><b>Ils viennent à toi</b><span>Ton contenu amène des abonnés, tu leur écris, tu closes en DM.</span></button>
-    <button class="porte" data-vue="prospection"><em>Prospection</em><b>Tu vas vers eux</b><span>Ta liste, ton réseau, et ceux qui prospectent pour toi.</span></button>
+    <button class="porte" data-vue="attraction" style="--c:var(--rose)"><em>Attraction</em><b>Ils viennent à toi</b><span>Ton contenu amène des abonnés, tu leur écris, tu closes en DM.</span></button>
+    <button class="porte" data-vue="prospection" style="--c:var(--jaune)"><em>Prospection</em><b>Tu vas vers eux</b><span>Ta liste, ton réseau, et ceux qui prospectent pour toi.</span></button>
   </div>
   <p class="note" style="margin-top:22px"><b>Ton lien :</b> <span id="lienPerso">https://tonyconsulting.github.io/club/prenom/</span>. C'est le seul lien que tu envoies.</p>
 </div>
 
-<section class="vue" id="attraction">
+<section class="vue" id="attraction" style="--c:var(--rose)">
   <h2><i></i>Attraction</h2>
   <p class="quand">Le lien en bio. Un message à chaque nouvel abonné. Tu closes en DM.</p>
   <div class="niveaux" data-vue="attraction"><button class="on" data-n="1">Niveau 1</button><button data-n="2">Niveau 2</button><button data-n="3">Niveau 3</button></div>
@@ -120,7 +120,7 @@ details.rep[open] summary::after{content:"–"}
   <div class="niv" data-vue="attraction" data-n="3"><div class="carte vide"><h3>Niveau 3</h3><p class="obj">Bientôt.</p></div></div>
 </section>
 
-<section class="vue" id="prospection">
+<section class="vue" id="prospection" style="--c:var(--jaune)">
   <h2><i></i>Prospection</h2>
   <p class="quand">Ta liste d'abord, dans l'ordre. Le message envoie vers ta page, le retour se fait en DM, et tu ouvres le compte.</p>
   <div class="niveaux" data-vue="prospection"><button class="on" data-n="1">Niveau 1</button><button data-n="2">Niveau 2</button><button data-n="3">Niveau 3</button></div>
