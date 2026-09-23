@@ -395,5 +395,6 @@
     if (!C.goatcounter) return;
     try { const i = new Image(); i.src = C.goatcounter + "?p=" + encodeURIComponent("/" + nom) + "&e=true&t=" + encodeURIComponent(nom) + "&rnd=" + Math.random(); } catch (e) {}
   }
-  if (C.goatcounter) mesure("vue-" + (contacts[ref] ? ref : "defaut"));
+  const setter = (new URLSearchParams(location.search).get("s") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");   // ?s=prenom : le setter qui a envoyé la page (mesure seulement)
+  if (C.goatcounter) mesure("vue-" + (contacts[ref] ? ref : "defaut") + (setter ? "-s-" + setter : ""));
 })();
