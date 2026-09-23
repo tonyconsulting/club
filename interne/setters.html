@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Espace setter · Unlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--surface:rgba(18,20,30,.78);--surface2:#161927;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.14);--ink:#f4f6fb;--dim:#a9b2c8;--faint:#76809a;--accent:#6E9BFF;--accent2:#B9D0FF;--duo:linear-gradient(90deg,#6E9BFF,#B9D0FF);--c:#ffc857}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 520px at 20% -10%,rgba(110,155,255,.14),transparent 60%)}
+.wrap{max-width:980px;margin:0 auto;padding:22px 18px 80px}
+.haut{display:flex;align-items:center;justify-content:space-between;padding:6px 0 18px}
+.haut img{height:22px;mix-blend-mode:screen}
+.tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line2);border-radius:99px;padding:6px 12px}
+h1{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,48px);letter-spacing:-.025em;line-height:1.05;margin:10px 0 12px}
+h1 em{font-style:normal;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sous{color:var(--dim);font-size:17px;max-width:700px;margin:0 0 26px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:600;padding:8px 13px;border:1px solid var(--line2);border-radius:99px}
+nav a:hover{color:var(--ink);border-color:var(--c)}
+section{margin:0 0 44px;scroll-margin-top:20px}
+h2{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 4px;display:flex;align-items:center;gap:12px}
+h2 i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.quand{color:var(--faint);font-size:14px;margin:0 0 16px}
+.carte{background:var(--surface);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}
+.carte h3{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:18px;margin:0 0 4px}
+.carte .obj{color:var(--faint);font-size:13.5px;margin:0 0 14px}
+.msg{position:relative;background:var(--surface2);border:1px solid var(--line);border-left:3px solid rgba(255,255,255,.22);border-radius:14px;padding:14px 110px 14px 16px;margin:10px 0;white-space:pre-line;font-size:15px;line-height:1.55;color:#dfe5f3}
+.msg .lab{position:absolute;left:16px;top:-9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);background:var(--bg);padding:0 6px;font-family:Manrope,Inter,sans-serif;font-weight:700}
+.msg button{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--dim);border-radius:99px;padding:6px 12px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+.msg button.ok{color:#4ade80;border-color:rgba(74,222,128,.5)}
+.etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:760px){.etapes{grid-template-columns:1fr 1fr}}
+.et{background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:16px}
+.et em{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#0a0b10;font-style:normal;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:14px;margin-bottom:10px}
+.et b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:16px;margin-bottom:4px}
+.et span{color:var(--dim);font-size:13.5px}
+.regles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:700px){.regles{grid-template-columns:1fr}}
+.regle{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-size:14.5px;color:var(--dim)}
+.regle b{color:var(--ink);display:block;margin-bottom:2px;font-family:Manrope,Inter,sans-serif}
+.lien{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+@media (max-width:700px){.lien{grid-template-columns:1fr}}
+.lien label{display:block;font-size:12.5px;color:var(--faint);margin-bottom:6px}
+.lien input{width:100%;background:var(--surface2);border:1px solid var(--line2);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit}
+.lien button{background:#fff;color:#0a0b10;border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:700;cursor:pointer}
+.resultat{margin-top:12px;font-family:ui-monospace,Menlo,monospace;font-size:14px;color:var(--accent2);word-break:break-all}
+.paye{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:700px){.paye{grid-template-columns:1fr}}
+.paye div{background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.paye b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em;margin-bottom:6px}
+.paye span{color:var(--dim);font-size:14px}
+.av{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);border:1px solid rgba(255,200,87,.45);border-radius:99px;padding:3px 8px;font-family:Manrope,Inter,sans-serif;font-weight:700;margin-left:8px;vertical-align:middle}
+.kpi{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.kpi span{background:var(--surface2);border:1px solid var(--line);border-radius:99px;padding:9px 14px;font-size:14px;font-weight:600}
+.kpi i{color:var(--faint);font-style:normal}
+footer{margin-top:40px;color:var(--faint);font-size:12.5px;line-height:1.6;max-width:820px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="haut"><img src="../logo.jpg" alt="Unlock"><span class="tag">Espace setter</span></div>
+<h1 id="titre">Tu ouvres, <em>il close.</em></h1>
+<p class="sous">Ton rôle : trouver des gens, ouvrir la conversation, et les envoyer sur la page de ton IB. Tu n'expliques pas, tu ne closes pas. Lui fait le reste, et tu es payé sur chaque compte ouvert grâce à toi.</p>
+<nav><a href="#role">Ton rôle</a><a href="#lien">Ton lien</a><a href="#cibles">Qui tu cherches</a><a href="#messages">Tes messages</a><a href="#regles">Les règles</a><a href="#paye">Comment tu es payé</a><a href="#kpi">Ce que tu notes</a></nav>
+
+<section id="role">
+  <h2><i></i>Ton rôle, en quatre gestes</h2>
+  <p class="quand">Toujours dans cet ordre. Rien d'autre.</p>
+  <div class="etapes">
+    <div class="et"><em>1</em><b>Trouver</b><span>Un profil qui correspond à l'un des trois types plus bas.</span></div>
+    <div class="et"><em>2</em><b>Ouvrir</b><span>Un message personnalisé : prénom, où tu l'as vu, un détail vrai. Une question.</span></div>
+    <div class="et"><em>3</em><b>Passer la main</b><span>S'il est ouvert, tu lui envoies la page de ton IB avec ton lien.</span></div>
+    <div class="et"><em>4</em><b>Prévenir</b><span>Tu écris à ton IB : qui, d'où, quel type. Il prend le relais.</span></div>
+  </div>
+</section>
+
+<section id="lien">
+  <h2><i></i>Ton lien</h2>
+  <p class="quand">Chaque client que tu envoies porte ton prénom dans le lien. C'est ce qui permet de te payer.</p>
+  <div class="carte">
+    <div class="lien">
+      <div><label>Prénom de ton IB (comme dans son lien)</label><input id="ib" placeholder="maxim"></div>
+      <div><label>Ton prénom</label><input id="setter" placeholder="lucas"></div>
+      <button id="gen">Créer mon lien</button>
+    </div>
+    <div class="resultat" id="lienTexte">https://tonyconsulting.github.io/club/maxim/?s=lucas</div>
+    <p class="obj" style="margin-top:10px">Il s'injecte tout seul dans les messages plus bas.</p>
+  </div>
+</section>
+
+<section id="cibles">
+  <h2><i></i>Qui tu cherches</h2>
+  <p class="quand">Trois types. Tu notes toujours où tu as trouvé la personne.</p>
+  <div class="regles">
+    <div class="regle"><b>1. Ambitieux, pas encore dans le trading</b>Commentaires et profils autour du business, de l'ambition, du lifestyle, de la création de contenu.</div>
+    <div class="regle"><b>2. Déjà dans le trading</b>Commentaires, reels et profils autour des marchés. Il trade encore, ou il a arrêté.</div>
+    <div class="regle"><b>3. Créateur ou communauté</b>Quelqu'un qui a déjà une audience ou un groupe. Celui-là, ton IB le traite en partenaire.</div>
+    <div class="regle"><b>Jamais</b>Quelqu'un en détresse financière. Quelqu'un de mineur. Quelqu'un qui a dit non.</div>
+  </div>
+</section>
+
+<section id="messages">
+  <h2><i></i>Tes messages</h2>
+  <p class="quand">À mettre dans tes mots. Le prénom, la source et le détail sont obligatoires.</p>
+  <div class="carte">
+    <h3>Ouvrir</h3>
+    <div class="msg"><span class="lab">Type 1 · Ambitieux</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. Je t'ai vu sur [le commentaire, le TikTok, le compte] : [détail vrai]. Je bosse sur un projet différent de ce qu'on voit d'habitude sur les réseaux, et vu ton profil je pense que ça peut te parler. Dis-moi si t'es ouvert à ce qu'on en discute.
+À très vite, [ton prénom]</div>
+    <div class="msg"><span class="lab">Type 2 · Déjà dans le trading</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. Je suis tombé sur [ton commentaire, ton TikTok, ton profil] via [source]. J'ai vu que tu t'intéressais aux marchés, c'est top. Tu trades toujours ? Ça se passe comment de ton côté ?
+À très vite, [ton prénom]</div>
+    <div class="msg"><span class="lab">Type 3 · Créateur ou communauté</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. J'ai regardé ce que tu construis autour de ta communauté sur [sujet], bravo. Je bosse avec quelqu'un qui développe un partenariat qui peut être pertinent pour ton activité. T'es ouvert à en discuter ?
+À très vite, [ton prénom]</div>
+  </div>
+  <div class="carte">
+    <h3>Passer la main</h3>
+    <p class="obj">Dès qu'il répond de façon ouverte. Tu ne réponds pas à ses questions sur le projet : la page et ton IB le font.</p>
+    <div class="msg"><span class="lab">Il est ouvert</span><button>Copier</button>Top. Je bosse avec [prénom de l'IB], c'est lui qui porte le projet et qui répond à tout. Regarde sa page 3 minutes, et écris-lui directement sur Insta, je le préviens que tu viens de ma part : [ton lien]</div>
+    <div class="msg"><span class="lab">Il pose une question sur le projet</span><button>Copier</button>Je te laisse regarder la page, tout est dedans, et [prénom de l'IB] te répond en direct sur Insta. Je lui dis que tu arrives.</div>
+    <div class="msg"><span class="lab">Il ne répond pas, J+2, une seule relance</span><button>Copier</button>Tu as eu le temps de regarder ? Pas de pression, dis-moi juste si ce n'est pas pour toi.</div>
+  </div>
+  <div class="carte">
+    <h3>Prévenir ton IB</h3>
+    <div class="msg"><span class="lab">À envoyer à ton IB à chaque passage de main</span><button>Copier</button>[Prénom du prospect], @[pseudo], vu sur [source]. Type [1, 2 ou 3]. Je lui ai envoyé ta page, il t'écrit.</div>
+  </div>
+</section>
+
+<section id="regles">
+  <h2><i></i>Les règles</h2>
+  <p class="quand">Non négociables. Un manquement, et c'est fini.</p>
+  <div class="regles">
+    <div class="regle"><b>18 ans minimum</b>Pour toi comme pour les gens que tu contactes.</div>
+    <div class="regle"><b>Tu n'expliques jamais le projet</b>La page explique. Ton IB répond. Toi, tu ouvres et tu passes la main.</div>
+    <div class="regle"><b>Jamais un chiffre</b>Pas de gain, pas de rendement, pas de « tu peux faire ». Jamais.</div>
+    <div class="regle"><b>Jamais le nom du broker</b>Ni à l'écrit, ni à l'oral.</div>
+    <div class="regle"><b>Tu ne te dis pas associé</b>Tu bosses avec ton IB. C'est tout.</div>
+    <div class="regle"><b>Deux messages maximum</b>Une ouverture, une relance. Ensuite tu passes à quelqu'un d'autre.</div>
+    <div class="regle"><b>Premier message toujours personnalisé</b>Prénom, source, détail vrai. Pas de copier-coller sec.</div>
+    <div class="regle"><b>Si on te demande ce que c'est</b>Tu ne mens pas et tu n'esquives pas : « un écosystème gratuit pour apprendre les marchés, accompagné. La page explique tout. »</div>
+  </div>
+</section>
+
+<section id="paye">
+  <h2><i></i>Comment tu es payé <span class="av">à valider</span></h2>
+  <p class="quand">Un client compte quand il a ouvert son compte et déposé. Ton IB voit d'où il vient grâce à ton lien.</p>
+  <div class="paye">
+    <div><b>Option A · au résultat</b><span>25 % de ce que ton IB touche sur ce client, pendant 3 mois. Payé chaque mois.</span></div>
+    <div><b>Option B · cash</b><span>Un bonus fixe par compte financé, payé dans la semaine, plus un second bonus si le client est encore actif à 30 jours.</span></div>
+  </div>
+  <p class="obj" style="margin-top:12px">Les montants exacts sont donnés par ton IB au démarrage.</p>
+</section>
+
+<section id="kpi">
+  <h2><i></i>Ce que tu notes chaque soir</h2>
+  <p class="quand">Quatre chiffres, dans le groupe avec ton IB.</p>
+  <div class="kpi"><span>Messages envoyés</span><i>puis</i><span>Réponses</span><i>puis</i><span>Pages envoyées</span><i>puis</i><span>Comptes ouverts</span></div>
+</section>
+
+<footer>Espace interne. Les messages sont des trames à mettre dans tes mots. Les formulations liées aux marchés financiers respectent la règle du club : on vend l'accès et le process, jamais le résultat.</footer>
+</div>
+<script>
+const q = new URLSearchParams(location.search);
+const propre = (v) => (v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "");
+const ib = document.getElementById("ib"), st = document.getElementById("setter"), out = document.getElementById("lienTexte");
+ib.value = propre(q.get("r")) || ""; st.value = propre(q.get("s")) || "";
+const maj = () => { const i = propre(ib.value) || "prenom", s = propre(st.value); const lien = "https://tonyconsulting.github.io/club/" + i + "/" + (s ? "?s=" + s : ""); out.textContent = lien;
+  document.querySelectorAll(".msg").forEach((m) => { m.childNodes.forEach((n) => { if (n.nodeType === 3) n.textContent = n.textContent.replace(/https:\/\/tonyconsulting\.github\.io\/club\/[^\s\]]*|\[ton lien\]/g, lien); }); });
+  if (i !== "prenom") { const p = i.charAt(0).toUpperCase() + i.slice(1); document.querySelectorAll(".msg").forEach((m) => { m.childNodes.forEach((n) => { if (n.nodeType === 3) n.textContent = n.textContent.replace(/\[prénom de l'IB\]/g, p); }); }); } };
+document.getElementById("gen").addEventListener("click", maj); ib.addEventListener("input", maj); st.addEventListener("input", maj); maj();
+document.querySelectorAll(".msg button").forEach((b) => b.addEventListener("click", () => { const m = b.closest(".msg"); const t = [...m.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim(); navigator.clipboard.writeText(t).then(() => { b.textContent = "Copié"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copier"; b.classList.remove("ok"); }, 1600); }); }));
+</script>
+</body>
+</html>
