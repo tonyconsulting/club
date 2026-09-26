@@ -20,7 +20,7 @@ window.CLUB = {
   canalEnBas: false,               // bouton « Voir le canal » du bloc final : retiré le 19/09 au soir à la demande de Tony (true pour le remettre)
   hubTitre: "Par où tu veux commencer ?",
   hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
-    { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis envoie-moi UNLOCK en DM.", lien: "index.html" },
+    { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
     { titre: "Les preuves", texte: "Ce que disent les membres, en captures.", lien: "preuves.html" },
     { titre: "Développer un business avec moi", texte: "Si tu veux aller plus loin que le trading.", mlm: true },
   ],
@@ -33,7 +33,7 @@ window.CLUB = {
   //     Le lien ?r=prenom choisit vers quel Instagram le bouton renvoie (et compte les clics par personne).
   //     Mets uniquement des liens publics (Instagram, page, formulaire). Jamais de numéro de téléphone.
   badge: "Accès gratuit",
-  titreVideo: "Regarde cette vidéo avant de m'envoyer UNLOCK.",
+  titreVideo: "Regarde cette vidéo avant de m'écrire.",
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
   contactParDefaut: "tony",
   contacts: {
@@ -188,7 +188,7 @@ window.CLUB = {
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Tout est dedans.", temps: "3 min" },
-    { titre: "Tu m'envoies UNLOCK en DM", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
+    { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
     { titre: "On te lance ensemble", texte: "On t'installe dans l'écosystème.", temps: "5 min" },
   ],
 
@@ -263,10 +263,11 @@ window.CLUB = {
   finalTexte: "Il ne te reste plus qu'à :",
   finalLignes: [
     "Regarder la vidéo jusqu'au bout",
-    "M'envoyer UNLOCK en DM avec tes questions",
+    "Écrire à ton contact avec tes questions",
     "N'engager que ce que tu peux te permettre de perdre",
   ],
-  boutonTexte: "DM UNLOCK",   // 26/09 (Tony) : le prospect envoie le mot UNLOCK en DM, plus précis qu'« écris-moi »
+  boutonTexte: "Écris-moi sur Insta",
+  boutonSous: "« UNLOCK »",   // 26/09 (Tony) : petit mot sous le bouton, le prospect envoie UNLOCK en DM
   antiUrgence: "Pas de compte à rebours, pas d'offre qui expire. Cette page sera encore là demain.",
 
   // --- Mentions légales (obligatoire en France) ---
