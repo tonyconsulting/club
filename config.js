@@ -105,7 +105,7 @@ window.CLUB = {
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, 4 FAQ et couleurs à venir ; DA par défaut en attendant
-             video: "hTTwMaFBteM",                                   // sa VSL (reçue le 21/09)
+             video: "b50NawqbWWU",                                   // sa VSL « Qu'est-ce que réellement Unlock » (reçue le 26/09, remplace hTTwMaFBteM « Vsl v2 »)
              accent: "#FF3B3B", accent2: "#FF8A80",                 // DA rouge et noir (demande Tony 21/09) : rouge vif + rouge clair en dégradé
              theme: { bg: "#0b0708", surface: "#150c0d", surface2: "#1d1012", line: "#33191c", line2: "#4a2226" },
              temoignages: [
@@ -150,7 +150,11 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    andre: { prenom: "André", nom: "André", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo, photo HD, VSL, 4 FAQ et couleurs attendus ; DA par défaut en attendant
+    andre: { prenom: "André", nom: "André", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo et photo HD attendus
+             video: "8WPaa4pOSVM",                                   // sa VSL « VSL 1 » (reçue le 26/09)
+             faqVideos: ["oVzck38eCP0", "i76fRVD3R9g", "BjdqUyWn8gY", "yIElg3DnpcM"],   // piège, pour qui, peu de temps, compétences (identifiées par les sous-titres, titres identiques sur YouTube)
+             accent: "#1F9D68", accent2: "#7BD3A1",                 // vert un peu plus foncé que Pierre (demande Tony 26/09)
+             theme: { bg: "#060b08", surface: "#0b130e", surface2: "#101b14", line: "#1b2f23", line2: "#26432f" },
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
