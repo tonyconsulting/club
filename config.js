@@ -20,7 +20,7 @@ window.CLUB = {
   canalEnBas: false,               // bouton « Voir le canal » du bloc final : retiré le 19/09 au soir à la demande de Tony (true pour le remettre)
   hubTitre: "Par où tu veux commencer ?",
   hubPortes: [   // les portes du lien groupé ; {r} = le prénom du lien. mlm: true = renvoie vers le lien MLM du contact (ou son Insta si vide)
-    { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis écris-moi.", lien: "index.html" },
+    { titre: "L'écosystème gratuit", texte: "Regarde la vidéo (3 min), puis envoie-moi UNLOCK en DM.", lien: "index.html" },
     { titre: "Les preuves", texte: "Ce que disent les membres, en captures.", lien: "preuves.html" },
     { titre: "Développer un business avec moi", texte: "Si tu veux aller plus loin que le trading.", mlm: true },
   ],
@@ -33,7 +33,7 @@ window.CLUB = {
   //     Le lien ?r=prenom choisit vers quel Instagram le bouton renvoie (et compte les clics par personne).
   //     Mets uniquement des liens publics (Instagram, page, formulaire). Jamais de numéro de téléphone.
   badge: "Accès gratuit",
-  titreVideo: "Regarde cette vidéo avant de m'écrire.",
+  titreVideo: "Regarde cette vidéo avant de m'envoyer UNLOCK.",
   identite: true,                  // photo + nom + abonnés de la personne qui envoie, tout en haut (façon Kéo)
   contactParDefaut: "tony",
   contacts: {
@@ -137,6 +137,32 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
+    jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo, photo HD, VSL, 4 FAQ et couleurs attendus ; DA par défaut en attendant
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "André", sous: "Membre Unlock", fichier: "temoignages/maxim-t3.mp4?v=75" },
+               { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
+               { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
+    andre: { prenom: "André", nom: "André", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo, photo HD, VSL, 4 FAQ et couleurs attendus ; DA par défaut en attendant
+             temoignages: [
+               { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
+               { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
+               { prenom: "Ilhan", sous: "Membre Unlock", fichier: "temoignages/maxim-t2.mp4?v=75" },
+               { prenom: "Pierre", sous: "Membre Unlock", fichier: "temoignages/pierre-t1.mp4?v=94" },
+               { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
+               { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
+               { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
+             ],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
+             resultatsTitre: "Ce que les membres m'écrivent.",
+             resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
   },
 
@@ -162,7 +188,7 @@ window.CLUB = {
   // --- Étape 3 : comment ça se passe (le vrai déroulé, dans l'ordre) ---
   deroule: [
     { titre: "Tu regardes la vidéo", texte: "Tout est dedans.", temps: "3 min" },
-    { titre: "Tu m'écris sur Insta", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
+    { titre: "Tu m'envoies UNLOCK en DM", texte: "Toutes tes questions, réponse franche.", temps: "2 min" },
     { titre: "On te lance ensemble", texte: "On t'installe dans l'écosystème.", temps: "5 min" },
   ],
 
@@ -237,10 +263,10 @@ window.CLUB = {
   finalTexte: "Il ne te reste plus qu'à :",
   finalLignes: [
     "Regarder la vidéo jusqu'au bout",
-    "Écrire à ton contact avec tes questions",
+    "M'envoyer UNLOCK en DM avec tes questions",
     "N'engager que ce que tu peux te permettre de perdre",
   ],
-  boutonTexte: "Écris-moi sur Insta",
+  boutonTexte: "DM UNLOCK",   // 26/09 (Tony) : le prospect envoie le mot UNLOCK en DM, plus précis qu'« écris-moi »
   antiUrgence: "Pas de compte à rebours, pas d'offre qui expire. Cette page sera encore là demain.",
 
   // --- Mentions légales (obligatoire en France) ---
