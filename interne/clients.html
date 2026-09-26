@@ -84,6 +84,11 @@ details.rep[open] summary::after{content:"–"}
 .niveaux button.on{background:var(--c,#fff);color:#0a0b10;border-color:transparent}
 .niv{display:none}.niv.on{display:block}
 .carte.vide{border-style:dashed;opacity:.6;min-height:140px}
+.edit .msg button{display:none}.edit .msg{padding-right:16px}
+.edit .txt{display:block;outline:1px dashed rgba(255,255,255,.28);border-radius:8px;padding:4px 6px;cursor:text;min-height:1.4em}.edit .txt:focus{outline:1.5px solid var(--accent)}
+.edit .wrap{padding-bottom:90px}
+.barre{position:fixed;left:0;right:0;bottom:0;z-index:9;background:rgba(7,8,13,.96);border-top:1px solid var(--line);padding:12px 18px;display:flex;gap:12px;align-items:center;justify-content:space-between;font-size:14px;color:var(--dim)}
+.barre button{background:#fff;color:#000;border:0;border-radius:99px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}.barre button:disabled{opacity:.5}
 </style>
 </head>
 <body>
@@ -108,23 +113,23 @@ details.rep[open] summary::after{content:"–"}
   <div class="carte">
     <h3>Le message au nouvel abonné</h3>
     <p class="obj">Dans tes mots, pas trop propre.</p>
-    <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Coucou, je viens de voir que tu t'es abonné, merci. Tu l'as fait pour une raison en particulier ?</div>
-    <div class="msg"><span class="lab">S'il répond « non, j'aime bien ton contenu »</span><button>Copier</button>Ok trop bien. Et toi, tu développes une activité en ce moment ?</div>
+    <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m01">Coucou, je viens de voir que tu t'es abonné, merci. Tu l'as fait pour une raison en particulier ?</span></div>
+    <div class="msg"><span class="lab">S'il répond « non, j'aime bien ton contenu »</span><button>Copier</button><span class="txt" data-id="m02">Ok trop bien. Et toi, tu développes une activité en ce moment ?</span></div>
     <p class="note">S'il dit oui : « tu fais quoi ? », et tu cherches vite ce qui lui manque. S'il dit non : tu enchaînes direct.</p>
-    <div class="msg"><span class="lab">La présentation</span><button>Copier</button>Ok écoute, en vrai je peux te présenter un truc si tu veux, tu me diras ce que tu en penses. En ce moment je me suis dit pourquoi pas faire un complément de revenus à côté de mes études, et je me suis lancée un peu sur les réseaux. Regarde dans ma bio, il y a un lien. Dis-moi ce que t'en penses, ça peut être que du plus.</div>
+    <div class="msg"><span class="lab">La présentation</span><button>Copier</button><span class="txt" data-id="m03">Ok écoute, en vrai je peux te présenter un truc si tu veux, tu me diras ce que tu en penses. En ce moment je me suis dit pourquoi pas faire un complément de revenus à côté de mes études, et je me suis lancée un peu sur les réseaux. Regarde dans ma bio, il y a un lien. Dis-moi ce que t'en penses, ça peut être que du plus.</span></div>
     <p class="note">Il regarde la page. Soit il démarre, soit il pose ses questions ici. Tu réponds, puis : « on ouvre ton compte ce soir 20 h ou demain 12 h ? »</p>
   </div>
   <div class="carte">
     <h3>Quand ils réagissent à ton contenu</h3>
     <p class="obj">Le lien tout de suite, une question, et tu laisses regarder.</p>
-    <div class="msg"><span class="lab">Il a commenté sous un reel avec le mot-clé</span><button>Copier</button>Coucou, tu as commenté sous mon reel, voilà ce que je t'avais promis : [ton lien]. Regarde, et dis-moi ce que t'en penses.</div>
-    <div class="msg"><span class="lab">Il a répondu à une story</span><button>Copier</button>Ah t'as vu ça ? Regarde ça 3 minutes, tout est expliqué : [ton lien]. Pose-moi tes questions après.</div>
+    <div class="msg"><span class="lab">Il a commenté sous un reel avec le mot-clé</span><button>Copier</button><span class="txt" data-id="m04">Coucou, tu as commenté sous mon reel, voilà ce que je t'avais promis : [ton lien]. Regarde, et dis-moi ce que t'en penses.</span></div>
+    <div class="msg"><span class="lab">Il a répondu à une story</span><button>Copier</button><span class="txt" data-id="m05">Ah t'as vu ça ? Regarde ça 3 minutes, tout est expliqué : [ton lien]. Pose-moi tes questions après.</span></div>
   </div>
   <div class="carte">
     <h3>S'il ne répond plus</h3>
     <p class="obj">Deux relances maximum, puis une vidéo Loom, puis stop.</p>
-    <div class="msg"><span class="lab">J+2</span><button>Copier</button>Tu as eu le temps de regarder ? Pas de pression, dis-moi juste si ce n'est pas pour toi.</div>
-    <div class="msg"><span class="lab">Il a vu la page, silence</span><button>Copier</button>T'as vu la vidéo ? Si un truc t'a fait tiquer, dis-le moi, je préfère une vraie question qu'un silence.</div>
+    <div class="msg"><span class="lab">J+2</span><button>Copier</button><span class="txt" data-id="m06">Tu as eu le temps de regarder ? Pas de pression, dis-moi juste si ce n'est pas pour toi.</span></div>
+    <div class="msg"><span class="lab">Il a vu la page, silence</span><button>Copier</button><span class="txt" data-id="m07">T'as vu la vidéo ? Si un truc t'a fait tiquer, dis-le moi, je préfère une vraie question qu'un silence.</span></div>
     <p class="note"><b>J+5, un Loom de 60 secondes :</b> ce qui s'est passé dans le club cette semaine, une histoire de membre sur le process, la porte reste ouverte. Zéro chiffre de gain. Puis stop.</p>
   </div>
   <details class="rep"><summary>Les réponses aux questions</summary><div id="rep1"></div></details>
@@ -145,63 +150,63 @@ details.rep[open] summary::after{content:"–"}
     <div class="tab" id="tabs"><button class="on" data-t="l1">1 · Déjà déposé</button><button data-t="l2">2 · Sans compte</button><button data-t="l3">3 · A arrêté</button><button data-t="l4">4 · Hésite</button><button data-t="l5">5 · A dit non</button><button data-t="l6">6 · Réseau chaud</button><button data-t="l7">7 · Partenaire</button></div>
     <div class="bloc on" id="l1">
       <p class="note"><b>Objectif :</b> l'installer dans l'écosystème, le rendre actif, un témoignage dans deux semaines.</p>
-      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Coucou [prénom], nouveauté qui te concerne : tout est regroupé au même endroit maintenant, canal privé plus accompagnement, et pour toi c'est déjà inclus. Je t'installe ce soir ? 5 minutes.</div>
-      <div class="msg"><span class="lab">J+14</span><button>Copier</button>Tu m'écris deux phrases sur ce que ça t'a apporté ? Avec ton accord je les mets sur ma page.</div>
+      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m08">Coucou [prénom], nouveauté qui te concerne : tout est regroupé au même endroit maintenant, canal privé plus accompagnement, et pour toi c'est déjà inclus. Je t'installe ce soir ? 5 minutes.</span></div>
+      <div class="msg"><span class="lab">J+14</span><button>Copier</button><span class="txt" data-id="m09">Tu m'écris deux phrases sur ce que ça t'a apporté ? Avec ton accord je les mets sur ma page.</span></div>
     </div>
     <div class="bloc" id="l2">
       <p class="note"><b>Objectif :</b> lever l'objection prix. Il n'y a plus rien à acheter.</p>
-      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Coucou [prénom], on avait parlé de [sujet]. Depuis ça a changé : plus rien à acheter, l'accès est gratuit, tu ouvres ton compte et je t'installe. Regarde ça 3 minutes et dis-moi. [ton lien]</div>
-      <div class="msg"><span class="lab">S'il demande la différence</span><button>Copier</button>Avant il fallait un pack. Là non. Tu paies les mêmes frais qu'en direct chez le broker, c'est lui qui nous rémunère sur l'activité.</div>
+      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m10">Coucou [prénom], on avait parlé de [sujet]. Depuis ça a changé : plus rien à acheter, l'accès est gratuit, tu ouvres ton compte et je t'installe. Regarde ça 3 minutes et dis-moi. [ton lien]</span></div>
+      <div class="msg"><span class="lab">S'il demande la différence</span><button>Copier</button><span class="txt" data-id="m11">Avant il fallait un pack. Là non. Tu paies les mêmes frais qu'en direct chez le broker, c'est lui qui nous rémunère sur l'activité.</span></div>
     </div>
     <div class="bloc" id="l3">
       <p class="note"><b>Objectif :</b> une seconde chance sans rien vendre. Pas de relance écrite, un Loom à J+7 si silence, puis stop.</p>
-      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Coucou [prénom], je sais que tu avais arrêté, aucun souci. Je te préviens juste parce que ça te concerne : ce qu'on fait maintenant est gratuit, pas de pack, pas de recrutement, juste l'accès aux analyses et à l'accompagnement. 3 minutes de vidéo si ça te parle, sinon oublie mon message. [ton lien]</div>
+      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m12">Coucou [prénom], je sais que tu avais arrêté, aucun souci. Je te préviens juste parce que ça te concerne : ce qu'on fait maintenant est gratuit, pas de pack, pas de recrutement, juste l'accès aux analyses et à l'accompagnement. 3 minutes de vidéo si ça te parle, sinon oublie mon message. [ton lien]</span></div>
     </div>
     <div class="bloc" id="l4">
       <p class="note"><b>Objectif :</b> retirer ce qui bloquait. Relance à J+2, Loom à J+5, puis stop.</p>
-      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Coucou [prénom], tu m'avais dit que tu réfléchissais. Ce qui bloquait la plupart des gens a disparu : c'est gratuit. Regarde 3 minutes et dis-moi ce qui te bloque encore. [ton lien]</div>
-      <div class="msg"><span class="lab">J+2</span><button>Copier</button>Tu as eu le temps de regarder ? Pas de pression, dis-moi juste si ce n'est pas pour toi.</div>
+      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m13">Coucou [prénom], tu m'avais dit que tu réfléchissais. Ce qui bloquait la plupart des gens a disparu : c'est gratuit. Regarde 3 minutes et dis-moi ce qui te bloque encore. [ton lien]</span></div>
+      <div class="msg"><span class="lab">J+2</span><button>Copier</button><span class="txt" data-id="m14">Tu as eu le temps de regarder ? Pas de pression, dis-moi juste si ce n'est pas pour toi.</span></div>
     </div>
     <div class="bloc" id="l5">
       <p class="note"><b>Objectif :</b> une info, pas une relance. Un seul message. Loom à J+7 pour ceux qui ont lu sans répondre, puis stop.</p>
-      <div class="msg"><span class="lab">Le seul message</span><button>Copier</button>Coucou [prénom], pas une relance, juste une info : ce que je t'avais proposé a changé et c'est gratuit maintenant. Si un jour ça te parle, la vidéo est là. Sinon je te souhaite le meilleur. [ton lien]</div>
+      <div class="msg"><span class="lab">Le seul message</span><button>Copier</button><span class="txt" data-id="m15">Coucou [prénom], pas une relance, juste une info : ce que je t'avais proposé a changé et c'est gratuit maintenant. Si un jour ça te parle, la vidéo est là. Sinon je te souhaite le meilleur. [ton lien]</span></div>
     </div>
     <div class="bloc" id="l6">
       <p class="note"><b>Objectif :</b> en vocal ou en vrai, jamais un pavé. Les commerçants avec du passage vont en liste 7.</p>
-      <div class="msg"><span class="lab">En vrai ou en vocal</span><button>Copier</button>Tu sais que je fais un truc dans les marchés financiers ? Je t'explique en 3 minutes quand tu as le temps.</div>
-      <div class="msg"><span class="lab">Déjà closé, en attente</span><button>Copier</button>Coucou, tout est prêt de mon côté, on ouvre ton compte quand ? Ce soir 20 h ou demain 12 h ?</div>
+      <div class="msg"><span class="lab">En vrai ou en vocal</span><button>Copier</button><span class="txt" data-id="m16">Tu sais que je fais un truc dans les marchés financiers ? Je t'explique en 3 minutes quand tu as le temps.</span></div>
+      <div class="msg"><span class="lab">Déjà closé, en attente</span><button>Copier</button><span class="txt" data-id="m17">Coucou, tout est prêt de mon côté, on ouvre ton compte quand ? Ce soir 20 h ou demain 12 h ?</span></div>
     </div>
     <div class="bloc" id="l7">
       <p class="note"><b>Objectif :</b> un appel de 15 minutes, jamais un pitch écrit. Jamais de chiffre de gain pour lui non plus.</p>
-      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button>Tu as des dizaines de personnes qui te font confiance chaque semaine. J'ai un partenariat qui peut te rapporter sans rien vendre : tu partages un accès gratuit, on s'occupe de tout le reste, page, vidéos, messages, et tu es payé sur l'activité. 15 minutes pour te montrer ?</div>
-      <div class="msg"><span class="lab">Après l'appel, s'il est partant</span><button>Copier</button>Voilà ce dont j'ai besoin pour te lancer : ton pseudo Insta, ta photo de profil en HD, et 30 minutes pour tourner ta vidéo. Tu me dis quand.</div>
+      <div class="msg"><span class="lab">Ouverture</span><button>Copier</button><span class="txt" data-id="m18">Tu as des dizaines de personnes qui te font confiance chaque semaine. J'ai un partenariat qui peut te rapporter sans rien vendre : tu partages un accès gratuit, on s'occupe de tout le reste, page, vidéos, messages, et tu es payé sur l'activité. 15 minutes pour te montrer ?</span></div>
+      <div class="msg"><span class="lab">Après l'appel, s'il est partant</span><button>Copier</button><span class="txt" data-id="m19">Voilà ce dont j'ai besoin pour te lancer : ton pseudo Insta, ta photo de profil en HD, et 30 minutes pour tourner ta vidéo. Tu me dis quand.</span></div>
     </div>
   </div>
   <div class="carte">
     <h3>Les gens que tu ne connais pas</h3>
     <p class="obj">Un détail vrai sur la personne, une question. Le projet ne s'explique jamais en DM, c'est la page qui le fait.</p>
-    <div class="msg"><span class="lab">Ambitieux, pas encore dans le trading</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. Je t'ai vu sur [le commentaire, le TikTok, le compte] : [détail vrai]. Je développe un truc différent de ce qu'on voit d'habitude sur les réseaux, et vu ton profil je pense que ça peut te parler. Dis-moi si t'es ouvert à ce qu'on en discute.</div>
-    <div class="msg"><span class="lab">Déjà dans le trading</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. Je suis tombé sur [ton commentaire, ton TikTok, ton profil] via [source]. J'ai vu que tu t'intéressais aux marchés, c'est top. Tu trades toujours ? Ça se passe comment de ton côté ?</div>
-    <div class="msg"><span class="lab">Créateur ou communauté</span><button>Copier</button>Hello [prénom], j'espère que tu vas bien. J'ai regardé ce que tu construis autour de ta communauté sur [sujet], bravo. Je développe un partenariat qui peut être pertinent pour ton activité. T'es ouvert à en discuter ?</div>
-    <div class="msg"><span class="lab">S'il répond oui, pour les trois</span><button>Copier</button>Top. Le plus simple : regarde ça 3 minutes, tout est expliqué dedans, et pose-moi toutes tes questions après. [ton lien]</div>
+    <div class="msg"><span class="lab">Ambitieux, pas encore dans le trading</span><button>Copier</button><span class="txt" data-id="m20">Hello [prénom], j'espère que tu vas bien. Je t'ai vu sur [le commentaire, le TikTok, le compte] : [détail vrai]. Je développe un truc différent de ce qu'on voit d'habitude sur les réseaux, et vu ton profil je pense que ça peut te parler. Dis-moi si t'es ouvert à ce qu'on en discute.</span></div>
+    <div class="msg"><span class="lab">Déjà dans le trading</span><button>Copier</button><span class="txt" data-id="m21">Hello [prénom], j'espère que tu vas bien. Je suis tombé sur [ton commentaire, ton TikTok, ton profil] via [source]. J'ai vu que tu t'intéressais aux marchés, c'est top. Tu trades toujours ? Ça se passe comment de ton côté ?</span></div>
+    <div class="msg"><span class="lab">Créateur ou communauté</span><button>Copier</button><span class="txt" data-id="m22">Hello [prénom], j'espère que tu vas bien. J'ai regardé ce que tu construis autour de ta communauté sur [sujet], bravo. Je développe un partenariat qui peut être pertinent pour ton activité. T'es ouvert à en discuter ?</span></div>
+    <div class="msg"><span class="lab">S'il répond oui, pour les trois</span><button>Copier</button><span class="txt" data-id="m23">Top. Le plus simple : regarde ça 3 minutes, tout est expliqué dedans, et pose-moi toutes tes questions après. [ton lien]</span></div>
   </div>
   <div class="carte">
     <h3>Ceux qui prospectent pour toi</h3>
     <p class="obj">Pour chaque client qui signe grâce à lui, tu lui donnes 25 % de tes rebates sur ce client pendant 3 mois.</p>
-    <div class="msg"><span class="lab">L'offre, à envoyer à un pote motivé</span><button>Copier</button>Coucou, j'ai un truc pour toi si tu veux te faire un complément sans rien vendre. Tu parles de ce que je fais aux gens autour de toi, tu leur envoies ma page, et pour chaque personne qui ouvre son compte grâce à toi, je te reverse 25 % de ce que je touche sur cette personne pendant 3 mois. Zéro engagement, je te forme en 20 minutes. Ça te parle ?</div>
-    <div class="msg"><span class="lab">Ce qu'il envoie pour te passer la main</span><button>Copier</button>Top. Je bosse avec [ton prénom], c'est lui qui porte le projet et qui répond à tout. Regarde sa page 3 minutes, et écris-lui directement, je le préviens que tu viens de ma part : [ton lien]?s=[son prénom]</div>
+    <div class="msg"><span class="lab">L'offre, à envoyer à un pote motivé</span><button>Copier</button><span class="txt" data-id="m24">Coucou, j'ai un truc pour toi si tu veux te faire un complément sans rien vendre. Tu parles de ce que je fais aux gens autour de toi, tu leur envoies ma page, et pour chaque personne qui ouvre son compte grâce à toi, je te reverse 25 % de ce que je touche sur cette personne pendant 3 mois. Zéro engagement, je te forme en 20 minutes. Ça te parle ?</span></div>
+    <div class="msg"><span class="lab">Ce qu'il envoie pour te passer la main</span><button>Copier</button><span class="txt" data-id="m25">Top. Je bosse avec [ton prénom], c'est lui qui porte le projet et qui répond à tout. Regarde sa page 3 minutes, et écris-lui directement, je le préviens que tu viens de ma part : [ton lien]?s=[son prénom]</span></div>
     <p class="note"><b>Il ne fait jamais :</b> expliquer le projet en DM, donner un chiffre, dire le nom du broker, insister après deux messages. 18 ans minimum. Ses messages et son lien sont dans <a id="lienSetters" href="setters.html">l'espace setter</a>.</p>
   </div>
   <div class="carte">
     <h3>Tes clients qui ramènent des clients</h3>
     <p class="obj">Dans l'appli, chaque membre a sa page de parrainage et gagne de l'XP quand il ramène quelqu'un. Le lien du filleul, c'est le tien.</p>
-    <div class="msg"><span class="lab">Au client bien installé, J+14</span><button>Copier</button>Tu connais quelqu'un à qui ça ferait du bien ? Tu as ta page de parrainage dans l'appli, tu la lui envoies, et ça te fait de l'XP pour la boutique.</div>
+    <div class="msg"><span class="lab">Au client bien installé, J+14</span><button>Copier</button><span class="txt" data-id="m26">Tu connais quelqu'un à qui ça ferait du bien ? Tu as ta page de parrainage dans l'appli, tu la lui envoies, et ça te fait de l'XP pour la boutique.</span></div>
   </div>
   <details class="rep"><summary>Les réponses aux questions</summary><div id="rep2"></div></details>
   <details class="rep"><summary>Après l'ouverture du compte</summary><div id="apres2"></div></details>
   <details class="rep"><summary>Après l'event</summary>
-    <div class="msg"><span class="lab">Il avait dit qu'il ouvrait son compte</span><button>Copier</button>On s'est vus à l'event, tu m'avais dit que tu ouvrais ton compte. On le fait ce soir 20 h ou demain 12 h ?</div>
-    <div class="msg"><span class="lab">Croisé à l'event, pas encore décidé</span><button>Copier</button>Content de t'avoir croisé. Regarde ça 3 minutes, c'est tout ce dont on a parlé, et écris-moi si tu veux qu'on avance : [ton lien]</div>
+    <div class="msg"><span class="lab">Il avait dit qu'il ouvrait son compte</span><button>Copier</button><span class="txt" data-id="m27">On s'est vus à l'event, tu m'avais dit que tu ouvrais ton compte. On le fait ce soir 20 h ou demain 12 h ?</span></div>
+    <div class="msg"><span class="lab">Croisé à l'event, pas encore décidé</span><button>Copier</button><span class="txt" data-id="m28">Content de t'avoir croisé. Regarde ça 3 minutes, c'est tout ce dont on a parlé, et écris-moi si tu veux qu'on avance : [ton lien]</span></div>
   </details>
   </div>
   <div class="niv" data-vue="prospection" data-n="2"><div class="carte vide"><h3>Niveau 2</h3><p class="obj">Bientôt.</p></div></div>
@@ -209,24 +214,24 @@ details.rep[open] summary::after{content:"–"}
 </section>
 
 <template id="reponses">
-    <div class="msg"><span class="lab">« C'est une arnaque ? »</span><button>Copier</button>Normal de te poser la question. Tu ne me donnes pas d'argent, ton compte est à ton nom, je ne peux ni y déposer ni en retirer. Regarde les résultats sur la page, ce sont les membres qui parlent.</div>
-    <div class="msg"><span class="lab">« C'est du MLM ? »</span><button>Copier</button>Non. Rien à acheter, rien à recruter. Tu ouvres un compte à ton nom et tu accèdes à l'écosystème.</div>
-    <div class="msg"><span class="lab">« Combien je peux gagner ? »</span><button>Copier</button>Personne ne peut te le dire honnêtement, et si quelqu'un te donne un chiffre, fuis. Tu peux perdre de l'argent, c'est la première chose que je te dis.</div>
-    <div class="msg"><span class="lab">« Je n'ai pas d'argent. »</span><button>Copier</button>Pour regarder et comprendre, il ne faut rien. Le jour où tu ouvres ton compte, tu n'engages que ce que tu peux te permettre de perdre.</div>
-    <div class="msg"><span class="lab">« C'est quel broker ? »</span><button>Copier</button>Je te le dis en privé après la vidéo, pas par écrit.</div>
-    <div class="msg"><span class="lab">« J'ai déjà un compte ailleurs. »</span><button>Copier</button>Parfait, tu comprends déjà. Je t'explique en 3 minutes ce que l'écosystème ajoute.</div>
-    <div class="msg"><span class="lab">« Je peux perdre de l'argent ? »</span><button>Copier</button>Oui. Le trading comporte un risque de perte en capital, et le levier l'amplifie. Personne ici ne te garantira un résultat. La seule règle : tu n'engages que ce que tu peux te permettre de perdre.</div>
-    <div class="msg"><span class="lab">« Je suis mineur. »</span><button>Copier</button>Alors pas de compte, c'est impossible et je ne le ferai pas. Reviens me voir à 18 ans, la page sera toujours là.</div>
-    <div class="msg"><span class="lab">Pour conclure, toujours</span><button>Copier</button>Tout est prêt de mon côté. On ouvre ton compte ce soir 20 h ou demain 12 h ?</div>
-    <div class="msg"><span class="lab">Il repousse</span><button>Copier</button>Pas de souci. Dis-moi juste une date, comme ça je te bloque le créneau et on n'en parle plus d'ici là.</div>
-    <div class="msg"><span class="lab">Juste avant l'ouverture</span><button>Copier</button>Prépare ta pièce d'identité et 15 minutes tranquille. Je reste avec toi jusqu'à ce que tout soit installé.</div>
+    <div class="msg"><span class="lab">« C'est une arnaque ? »</span><button>Copier</button><span class="txt" data-id="m29">Normal de te poser la question. Tu ne me donnes pas d'argent, ton compte est à ton nom, je ne peux ni y déposer ni en retirer. Regarde les résultats sur la page, ce sont les membres qui parlent.</span></div>
+    <div class="msg"><span class="lab">« C'est du MLM ? »</span><button>Copier</button><span class="txt" data-id="m30">Non. Rien à acheter, rien à recruter. Tu ouvres un compte à ton nom et tu accèdes à l'écosystème.</span></div>
+    <div class="msg"><span class="lab">« Combien je peux gagner ? »</span><button>Copier</button><span class="txt" data-id="m31">Personne ne peut te le dire honnêtement, et si quelqu'un te donne un chiffre, fuis. Tu peux perdre de l'argent, c'est la première chose que je te dis.</span></div>
+    <div class="msg"><span class="lab">« Je n'ai pas d'argent. »</span><button>Copier</button><span class="txt" data-id="m32">Pour regarder et comprendre, il ne faut rien. Le jour où tu ouvres ton compte, tu n'engages que ce que tu peux te permettre de perdre.</span></div>
+    <div class="msg"><span class="lab">« C'est quel broker ? »</span><button>Copier</button><span class="txt" data-id="m33">Je te le dis en privé après la vidéo, pas par écrit.</span></div>
+    <div class="msg"><span class="lab">« J'ai déjà un compte ailleurs. »</span><button>Copier</button><span class="txt" data-id="m34">Parfait, tu comprends déjà. Je t'explique en 3 minutes ce que l'écosystème ajoute.</span></div>
+    <div class="msg"><span class="lab">« Je peux perdre de l'argent ? »</span><button>Copier</button><span class="txt" data-id="m35">Oui. Le trading comporte un risque de perte en capital, et le levier l'amplifie. Personne ici ne te garantira un résultat. La seule règle : tu n'engages que ce que tu peux te permettre de perdre.</span></div>
+    <div class="msg"><span class="lab">« Je suis mineur. »</span><button>Copier</button><span class="txt" data-id="m36">Alors pas de compte, c'est impossible et je ne le ferai pas. Reviens me voir à 18 ans, la page sera toujours là.</span></div>
+    <div class="msg"><span class="lab">Pour conclure, toujours</span><button>Copier</button><span class="txt" data-id="m37">Tout est prêt de mon côté. On ouvre ton compte ce soir 20 h ou demain 12 h ?</span></div>
+    <div class="msg"><span class="lab">Il repousse</span><button>Copier</button><span class="txt" data-id="m38">Pas de souci. Dis-moi juste une date, comme ça je te bloque le créneau et on n'en parle plus d'ici là.</span></div>
+    <div class="msg"><span class="lab">Juste avant l'ouverture</span><button>Copier</button><span class="txt" data-id="m39">Prépare ta pièce d'identité et 15 minutes tranquille. Je reste avec toi jusqu'à ce que tout soit installé.</span></div>
 </template>
 <template id="apres">
-    <div class="msg"><span class="lab">J+2, témoignage contre XP</span><button>Copier</button>Deux jours que tu es là. Si tu veux, tu m'envoies un témoignage écrit, vocal ou vidéo sur ce que ça t'apporte, ça te fait de l'XP pour la boutique. Sans chiffre, juste ton ressenti.</div>
-    <div class="msg"><span class="lab">J+7</span><button>Copier</button>Une semaine. Tu bloques sur quoi en ce moment ? Une question, une réponse, on avance.</div>
-    <div class="msg"><span class="lab">J+14, témoignage et parrainage</span><button>Copier</button>Tu m'écris deux phrases sur ce que ça t'a apporté ? Avec ton accord je les mets sur ma page. Et si tu connais quelqu'un à qui ça ferait du bien, tu as ta page de parrainage dans l'appli, ça te fait de l'XP.</div>
-    <div class="msg"><span class="lab">Silence depuis 7 jours</span><button>Copier</button>Ça fait une semaine que je ne te vois plus dans l'appli. Tout va bien ? Dis-moi ce qui coince, c'est souvent un truc simple.</div>
-    <div class="msg"><span class="lab">Compte proche de son seuil</span><button>Copier</button>On fait un point sur ton compte ce soir ? 10 minutes, je regarde avec toi la taille de tes positions.</div>
+    <div class="msg"><span class="lab">J+2, témoignage contre XP</span><button>Copier</button><span class="txt" data-id="m40">Deux jours que tu es là. Si tu veux, tu m'envoies un témoignage écrit, vocal ou vidéo sur ce que ça t'apporte, ça te fait de l'XP pour la boutique. Sans chiffre, juste ton ressenti.</span></div>
+    <div class="msg"><span class="lab">J+7</span><button>Copier</button><span class="txt" data-id="m41">Une semaine. Tu bloques sur quoi en ce moment ? Une question, une réponse, on avance.</span></div>
+    <div class="msg"><span class="lab">J+14, témoignage et parrainage</span><button>Copier</button><span class="txt" data-id="m42">Tu m'écris deux phrases sur ce que ça t'a apporté ? Avec ton accord je les mets sur ma page. Et si tu connais quelqu'un à qui ça ferait du bien, tu as ta page de parrainage dans l'appli, ça te fait de l'XP.</span></div>
+    <div class="msg"><span class="lab">Silence depuis 7 jours</span><button>Copier</button><span class="txt" data-id="m43">Ça fait une semaine que je ne te vois plus dans l'appli. Tout va bien ? Dis-moi ce qui coince, c'est souvent un truc simple.</span></div>
+    <div class="msg"><span class="lab">Compte proche de son seuil</span><button>Copier</button><span class="txt" data-id="m44">On fait un point sur ton compte ce soir ? 10 minutes, je regarde avec toi la taille de tes positions.</span></div>
 </template>
 </div>
 <script>
@@ -237,11 +242,30 @@ if (r) { const p = r.charAt(0).toUpperCase() + r.slice(1); document.getElementBy
 const tpl = document.getElementById("reponses").innerHTML; document.getElementById("rep1").innerHTML = tpl; document.getElementById("rep2").innerHTML = tpl;
 const tpa = document.getElementById("apres").innerHTML; document.getElementById("apres1").innerHTML = tpa; document.getElementById("apres2").innerHTML = tpa;
 if (r) document.getElementById("lienSetters").href = "setters.html?r=" + r;
+const edit = new URLSearchParams(location.search).get("edit") === "1";
 const femme = ["mila", "ilona"].includes(r);
-document.querySelectorAll(".msg").forEach((m) => { m.childNodes.forEach((n) => { if (n.nodeType === 3) { let t = n.textContent.replace(/\[ton lien\]/g, lien); if (r && !femme) t = t.replace("je me suis lancée", "je me suis lancé"); if (femme) t = t.replace("c'est lui qui porte le projet", "c'est elle qui porte le projet").replace("je le préviens", "je la préviens"); n.textContent = t; } }); });
+let donnees = {};
+const appliquer = () => { document.querySelectorAll(".txt[data-id]").forEach((t) => { if (donnees[t.dataset.id] != null) t.textContent = donnees[t.dataset.id]; }); };
+const personnaliser = () => { document.querySelectorAll(".txt").forEach((t) => { let x = t.textContent.replace(/\[ton lien\]/g, lien); if (r && !femme) x = x.replace("je me suis lancée", "je me suis lancé"); if (femme) x = x.replace("c'est lui qui porte le projet", "c'est elle qui porte le projet").replace("je le préviens", "je la préviens"); t.textContent = x; }); };
+const modifier = () => {
+  document.body.classList.add("edit"); document.querySelectorAll("details").forEach((d) => d.open = true);
+  document.querySelectorAll(".txt[data-id]").forEach((t) => { t.contentEditable = "true"; t.spellcheck = false; t.dataset.orig = t.textContent; });
+  const barre = document.createElement("div"); barre.className = "barre"; barre.innerHTML = '<span id="etat">Mode modification. Clique sur un message, corrige, puis enregistre. Garde [ton lien] et [prénom] tels quels.</span><button id="save">Enregistrer et publier</button>'; document.body.appendChild(barre);
+  const etat = barre.querySelector("#etat"), bouton = barre.querySelector("#save");
+  bouton.addEventListener("click", () => {
+    const obj = { ...donnees };
+    document.querySelectorAll(".txt[data-id]").forEach((t) => { const v = t.innerText.replace(/\u00a0/g, " ").trim(); if (v !== t.dataset.orig) obj[t.dataset.id] = v; });
+    bouton.disabled = true; etat.textContent = "Publication en cours…";
+    fetch("/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(obj) }).then((x) => x.json()).then((x) => {
+      if (!x.ok) throw 0; donnees = obj; document.querySelectorAll(".txt[data-id]").forEach((t) => { t.dataset.orig = t.innerText.replace(/\u00a0/g, " ").trim(); });
+      etat.textContent = "Enregistré. En ligne pour tout le monde dans une minute."; bouton.disabled = false;
+    }).catch(() => { etat.textContent = "Échec de la publication. Vérifie que la fenêtre « Modifier les messages » est ouverte et réessaie."; bouton.disabled = false; });
+  });
+};
+fetch("messages.json?t=" + Date.now(), { cache: "no-store" }).then((x) => x.json()).then((d) => { donnees = d; }).catch(() => {}).then(() => { appliquer(); if (edit) modifier(); else personnaliser(); });
 document.querySelectorAll(".msg button").forEach((b) => b.addEventListener("click", () => {
-  const m = b.closest(".msg"); const t = [...m.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim();
-  navigator.clipboard.writeText(t).then(() => { b.textContent = "Copié"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copier"; b.classList.remove("ok"); }, 1600); });
+  const b2 = b; const t = b2.closest(".msg").querySelector(".txt").textContent.trim();
+  navigator.clipboard.writeText(t).then(() => { b2.textContent = "Copié"; b2.classList.add("ok"); setTimeout(() => { b2.textContent = "Copier"; b2.classList.remove("ok"); }, 1600); });
 }));
 document.querySelectorAll("#tabs button").forEach((b) => b.addEventListener("click", () => { document.querySelectorAll("#tabs button").forEach((x) => x.classList.toggle("on", x === b)); document.querySelectorAll(".bloc").forEach((x) => x.classList.toggle("on", x.id === b.dataset.t)); }));
 const montre = (vue) => { document.getElementById("accueil").classList.toggle("off", !!vue); document.querySelectorAll(".vue").forEach((v) => v.classList.toggle("on", v.id === vue)); document.getElementById("retour").hidden = !vue; window.scrollTo(0, 0); if (vue) history.replaceState(null, "", "#" + vue); else history.replaceState(null, "", location.pathname + location.search); };
