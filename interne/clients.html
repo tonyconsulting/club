@@ -237,7 +237,8 @@ if (r) { const p = r.charAt(0).toUpperCase() + r.slice(1); document.getElementBy
 const tpl = document.getElementById("reponses").innerHTML; document.getElementById("rep1").innerHTML = tpl; document.getElementById("rep2").innerHTML = tpl;
 const tpa = document.getElementById("apres").innerHTML; document.getElementById("apres1").innerHTML = tpa; document.getElementById("apres2").innerHTML = tpa;
 if (r) document.getElementById("lienSetters").href = "setters.html?r=" + r;
-document.querySelectorAll(".msg").forEach((m) => { m.childNodes.forEach((n) => { if (n.nodeType === 3) n.textContent = n.textContent.replace(/\[ton lien\]/g, lien); }); });
+const femme = ["mila", "ilona"].includes(r);
+document.querySelectorAll(".msg").forEach((m) => { m.childNodes.forEach((n) => { if (n.nodeType === 3) { let t = n.textContent.replace(/\[ton lien\]/g, lien); if (r && !femme) t = t.replace("je me suis lancée", "je me suis lancé"); if (femme) t = t.replace("c'est lui qui porte le projet", "c'est elle qui porte le projet").replace("je le préviens", "je la préviens"); n.textContent = t; } }); });
 document.querySelectorAll(".msg button").forEach((b) => b.addEventListener("click", () => {
   const m = b.closest(".msg"); const t = [...m.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim();
   navigator.clipboard.writeText(t).then(() => { b.textContent = "Copié"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copier"; b.classList.remove("ok"); }, 1600); });
