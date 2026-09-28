@@ -150,7 +150,7 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    andre: { prenom: "André", nom: "André", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo et photo HD attendus
+    andre: { prenom: "André", nom: "André", handle: "andre.mne_", abonnes: "", certifie: true, photo: "", lien: "https://ig.me/m/andre.mne_",   // pseudo reçu le 28/09 ; Tony : pas le nombre d'abonnés, juste la certification (comme Pierre) ; photo HD à venir
              video: "8WPaa4pOSVM",                                   // sa VSL « VSL 1 » (reçue le 26/09)
              faqVideos: ["oVzck38eCP0", "i76fRVD3R9g", "BjdqUyWn8gY", "yIElg3DnpcM"],   // piège, pour qui, peu de temps, compétences (identifiées par les sous-titres, titres identiques sur YouTube)
              accent: "#1F9D68", accent2: "#7BD3A1",                 // vert un peu plus foncé que Pierre (demande Tony 26/09)
