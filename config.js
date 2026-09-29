@@ -51,7 +51,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // captures de Maxim, avec les versions pour Mila d'Antoine (mila-3, sans « merci Maxim ») et d'Amin (mila-4), reçues le 21/09 (cite Maxim ; retirée le 21/09 sur demande de Tony, une version sans « merci Maxim » est attendue)
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // captures de Maxim ; Antoine (mila-3) et Amin (mila-4) retirés de toutes les pages sauf celle de Maxim le 30/09 à la demande de Tony (cite Maxim ; retirée le 21/09 sur demande de Tony, une version sans « merci Maxim » est attendue)
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     sacha: { prenom: "Sacha", nom: "Sacha Amoyel",  handle: "sachaamoyel",   abonnes: "17K", photo: "sacha.jpg", lien: "https://ig.me/m/sachaamoyel" },
@@ -84,7 +84,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     pierre: { prenom: "Pierre", nom: "Pierre Barrillon", handle: "pierre.barrillon_", abonnes: "", certifie: true, photo: "pierre.jpg?v=93", lien: "https://ig.me/m/pierre.barrillon_",   // pseudo reçu le 21/09 ; Tony : pas le nombre d'abonnés, juste la certification ; photo HD à venir
@@ -101,7 +101,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, 4 FAQ et couleurs à venir ; DA par défaut en attendant
@@ -117,7 +117,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     ilona: { prenom: "Ilona", nom: "Ilona Bessire", handle: "ilona.bessire", abonnes: "37K", certifie: true, photo: "ilona.jpg?v=105", photoGrande: "ilona-grande.jpg", lien: "https://ig.me/m/ilona.bessire",   // pseudo et photo reçus le 22/09 ; nom déduit du pseudo ; 37K d'après la note du 17/09, à confirmer ; certification à confirmer
@@ -134,7 +134,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) : pseudo, photo HD, VSL, 4 FAQ et couleurs attendus ; DA par défaut en attendant
@@ -147,7 +147,7 @@ window.CLUB = {
                { prenom: "Ilona", sous: "Membre Unlock", fichier: "temoignages/ilona-t1.mp4?v=96" },
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     andre: { prenom: "André", nom: "André", handle: "andre.mne_", abonnes: "", certifie: true, photo: "", lien: "https://ig.me/m/andre.mne_",   // pseudo reçu le 28/09 ; Tony : pas le nombre d'abonnés, juste la certification (comme Pierre) ; photo HD à venir
@@ -164,7 +164,7 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/mila-3.jpg?v=85", "resultats/mila-4.jpg?v=85", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
+             resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     tony:  { prenom: "Tony",  nom: "Tony Rande",    handle: "",              abonnes: "",    photo: "",          lien: "https://ig.me/m/tonyconsulting.fr", mlm: "" },   // handle, abonnés, photo et lien MLM à compléter
