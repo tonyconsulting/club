@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Support vidéo Unlock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--ink:#f4f6fb;--dim:#a9b2c8;--faint:#76809a;--accent:#6E9BFF;--accent2:#B9D0FF;--vert:#4ade80;--rouge:#ff6b6b;--jaune:#ffc857;--line:rgba(255,255,255,.12);--surface:rgba(255,255,255,.045)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+#piste{display:flex;height:100vh;transition:transform .8s cubic-bezier(.65,0,.2,1);will-change:transform}
+.zone{flex:0 0 100vw;height:100vh;padding:8vh 0 8vh 8vw;position:relative;display:flex;flex-direction:column;justify-content:center}
+.in{width:68vw}
+.kick{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(11px,1vw,15px);letter-spacing:.22em;text-transform:uppercase;color:var(--accent2);margin:0 0 1.6vh}
+h1{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(30px,4.2vw,68px);line-height:1.06;letter-spacing:-.02em;margin:0 0 3.2vh}
+h1 em{font-style:normal;background:linear-gradient(90deg,#6E9BFF,#B9D0FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(24px,3vw,48px);line-height:1.1;letter-spacing:-.015em;margin:0 0 3.4vh}
+p.lead{font-size:clamp(15px,1.5vw,24px);color:var(--dim);margin:0 0 3vh;line-height:1.45}
+.row{display:flex;align-items:stretch;gap:1.2vw;flex-wrap:nowrap}
+.box{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:1.2vw;padding:2.2vh 1.4vw;min-width:0}
+.box b{display:block;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(16px,1.8vw,29px);margin-bottom:.8vh;letter-spacing:-.01em}
+.box span{display:block;color:var(--dim);font-size:clamp(13px,1.3vw,21px);line-height:1.4}
+.box .n{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(11px,.95vw,15px);color:var(--accent2);letter-spacing:.14em;margin-bottom:1vh}
+.fl{align-self:center;color:var(--faint);font-size:clamp(18px,2vw,32px);flex:0 0 auto}
+.box.a{border-color:rgba(110,155,255,.55);background:rgba(110,155,255,.1)}
+.box.v{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.09)}
+.box.r{border-color:rgba(255,107,107,.5);background:rgba(255,107,107,.08)}
+.box.v b{color:#9df0bb}.box.r b{color:#ffb3b3}
+.puces{display:flex;gap:1vw;flex-wrap:wrap;margin-top:3vh}
+.puce{border:1px solid var(--line);border-radius:99px;padding:1.1vh 1.3vw;font-size:clamp(13px,1.15vw,19px);font-weight:600;color:#dfe5f3;background:rgba(255,255,255,.03)}
+.stat{background:#10131d;border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:1.2vw;padding:3.2vh 2vw;margin-bottom:3vh}
+.stat .g{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,88px);line-height:1;letter-spacing:-.03em}
+.stat .g i{font-style:normal;color:var(--accent2)}
+.stat .t{font-size:clamp(15px,1.5vw,24px);color:#dfe5f3;margin-top:1.4vh}
+.stat .s{font-size:clamp(11px,.9vw,14px);color:var(--faint);margin-top:1vh;letter-spacing:.06em;text-transform:uppercase}
+.chem{display:flex;align-items:center;gap:.9vw;font-size:clamp(14px,1.3vw,21px);font-weight:600;margin:1.3vh 0}
+.chem .et{border-radius:.8vw;padding:1.1vh 1.1vw;border:1px solid var(--line)}
+.chem.r .et{border-color:rgba(255,107,107,.5);background:rgba(255,107,107,.08);color:#ffb3b3}
+.chem.v .et{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.09);color:#9df0bb}
+.chem .lab{flex:0 0 9.5vw;color:var(--faint);font-size:clamp(11px,.95vw,15px);text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.gros{font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,40px);line-height:1.2;letter-spacing:-.015em;margin:3.4vh 0 0}
+.gros em{font-style:normal;color:var(--accent2)}
+.grille{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1vw}
+.grille .box{padding:2vh 1.2vw}
+.note{color:var(--faint);font-size:clamp(12px,1vw,16px);margin-top:2.4vh}
+[contenteditable]{outline:none;border-bottom:1px dashed rgba(255,255,255,.22)}
+[contenteditable]:focus{border-bottom-color:var(--accent)}
+.num{position:absolute;right:4vw;top:6vh;font-family:Manrope,Inter,sans-serif;font-weight:800;font-size:clamp(11px,.95vw,15px);letter-spacing:.2em;color:var(--faint)}
+.logo{position:fixed;left:8vw;top:5vh;height:clamp(12px,1.5vh,18px);opacity:.9;z-index:3}
+#nav{position:fixed;left:8vw;bottom:4vh;display:flex;gap:8px;align-items:center;z-index:3}
+#nav i{width:22px;height:4px;border-radius:9px;background:rgba(255,255,255,.16);transition:background .3s}
+#nav i.on{background:var(--accent2)}
+#nav button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:99px;width:30px;height:30px;font-size:15px;cursor:pointer;margin-right:4px}
+body.propre #nav button{display:none}
+</style>
+</head>
+<body>
+<img class="logo" src="../logo.jpg" alt="Unlock">
+<div id="piste">
+
+<section class="zone"><div class="num">01</div><div class="in">
+  <p class="kick">Unlock</p>
+  <h1>En deux mots,<br><em>comment ça marche ?</em></h1>
+  <div class="puces"><span class="puce">Si je rejoins, il se passe quoi ?</span><span class="puce">J'ai accès à quoi ?</span><span class="puce">Si c'est gratuit, tu gagnes quoi ?</span></div>
+</div></section>
+
+<section class="zone"><div class="num">02</div><div class="in">
+  <p class="kick">Comment ça marche</p>
+  <h2>Trois étapes. Le dépôt vient après, ou jamais.</h2>
+  <div class="row">
+    <div class="box a"><div class="n">1</div><b>Tu rejoins l'appli</b><span>Unlock. Accès gratuit.</span></div><div class="fl">→</div>
+    <div class="box a"><div class="n">2</div><b>Tu te formes</b><span>Les bases, sans rien déposer.</span></div><div class="fl">→</div>
+    <div class="box a"><div class="n">3</div><b>Tu t'entraînes</b><span>Compte démo, argent fictif.</span></div><div class="fl">→</div>
+    <div class="box"><div class="n">ENSUITE</div><b>Le réel, ou pas</b><span>Quand toi tu te sens prêt.</span></div>
+  </div>
+  <div class="puces"><span class="puce">Rien à acheter</span><span class="puce">Pas d'abonnement</span><span class="puce">Pas de dépôt pour commencer</span></div>
+</div></section>
+
+<section class="zone"><div class="num">03</div><div class="in">
+  <p class="kick">Pourquoi dans cet ordre</p>
+  <div class="stat"><div class="g">Près de <i>9 sur 10</i></div><div class="t">particuliers perdent de l'argent sur ces marchés.</div><div class="s">Étude de l'AMF, l'Autorité des marchés financiers</div></div>
+  <div class="chem r"><span class="lab">À l'envers</span><span class="et">Dépôt</span><span class="fl">→</span><span class="et">Apprendre avec son argent, sous pression</span></div>
+  <div class="chem v"><span class="lab">Dans l'ordre</span><span class="et">Formation</span><span class="fl">→</span><span class="et">Démo</span><span class="fl">→</span><span class="et">Réel</span></div>
+  <p class="gros">Le compte démo, c'est <em>ta salle</em>.</p>
+</div></section>
+
+<section class="zone"><div class="num">04</div><div class="in">
+  <p class="kick">La différence</p>
+  <h2>Ce que tu connais déjà, et Unlock.</h2>
+  <div class="row">
+    <div class="box r"><b>Formations payantes</b><span>Tu paies avant d'avoir appris. Après, tu es seul.</span></div>
+    <div class="box r"><b>Signaux payants</b><span>Tu copies sans comprendre.</span></div>
+    <div class="box r"><b>Packs à recruter</b><span>Acheter, puis ramener du monde.</span></div>
+    <div class="fl">→</div>
+    <div class="box v"><b>Unlock</b><span>Formation, analyses, communauté. Rien à acheter, pas d'abonnement, personne à recruter.</span></div>
+  </div>
+</div></section>
+
+<section class="zone"><div class="num">05</div><div class="in">
+  <p class="kick">Si c'est gratuit, comment je suis payé</p>
+  <div class="row">
+    <div class="box"><b>Toi</b><span>Un compte à ton nom. Ton argent reste à toi. Mêmes frais qu'en direct.</span></div><div class="fl">→</div>
+    <div class="box"><b>Le broker partenaire</b><span>Il nous rémunère sur l'activité des comptes.</span></div><div class="fl">→</div>
+    <div class="box a"><b>Nous</b><span>Tu ne nous donnes jamais d'argent.</span></div>
+  </div>
+  <p class="gros">Payé sur ton <em>activité</em>.<br>Pas sur tes gains. Pas sur tes pertes.</p>
+  <p class="note">Tu ne passes jamais en réel ? Tu ne dois rien.</p>
+</div></section>
+
+<section class="zone"><div class="num">06</div><div class="in">
+  <p class="kick">Le risque, dit en face</p>
+  <h2>Tu peux pas boxer sans prendre des coups.</h2>
+  <div class="row">
+    <div class="box v"><b>Un SL, stop loss</b><span>Tu décides avant d'entrer. La perte est limitée. Tu restes debout, tu passes au suivant. Ça fait partie du jeu.</span></div>
+    <div class="box r"><b>Une liquidation</b><span>Pas de stop, ou une position trop grosse. Le broker coupe à ta place. C'est le KO.</span></div>
+  </div>
+  <div class="puces"><span class="puce">Aucun résultat garanti</span><span class="puce">N'engage que ce que tu peux perdre</span><span class="puce">18 ans minimum</span></div>
+</div></section>
+
+<section class="zone"><div class="num">07</div><div class="in">
+  <p class="kick">Ce que tu as dans Unlock</p>
+  <h2>On a tout construit pour toi.</h2>
+  <div class="grille">
+    <div class="box"><div class="n">1</div><b>Éducation</b><span>Des heures de formation ultra condensées.</span></div>
+    <div class="box"><div class="n">2</div><b>Analyses</b><span>Celles de nos traders partenaires, à suivre en démo.</span></div>
+    <div class="box"><div class="n">3</div><b>Scanners</b><span>Des setups, pour confirmer tes analyses.</span></div>
+    <div class="box"><div class="n">4</div><b>Lives éducatifs</b><span>En cours de mise en place.</span></div>
+    <div class="box"><div class="n">5</div><b>Gamifié</b><span>Tu avances, tu débloques, tu gagnes de l'XP.</span></div>
+    <div class="box"><div class="n">6</div><b>Support privé</b><span>Une question, un bug : réponse rapide.</span></div>
+    <div class="box"><div class="n">7</div><b>Communauté</b><span>Groupes d'entraide, membres et ambassadeurs.</span></div>
+    <div class="box v"><b>Gratuit</b><span>Tout.</span></div>
+  </div>
+</div></section>
+
+<section class="zone"><div class="num">08</div><div class="in">
+  <p class="kick">Des membres</p>
+  <h2>Le mieux, c'est eux.</h2>
+  <div class="row">
+    <div class="box"><b contenteditable data-k="m1n">Prénom</b><span contenteditable data-k="m1t">D'où il partait. Ce qu'il fait aujourd'hui dans l'appli. Ce que ça a changé.</span></div>
+    <div class="box"><b contenteditable data-k="m2n">Prénom</b><span contenteditable data-k="m2t">D'où il partait. Ce qu'il fait aujourd'hui dans l'appli. Ce que ça a changé.</span></div>
+  </div>
+</div></section>
+
+<section class="zone"><div class="num">09</div><div class="in">
+  <p class="kick">Qui je suis</p>
+  <h2 contenteditable data-k="nom">Tony</h2>
+  <div class="row">
+    <div class="box"><div class="n">1</div><b>D'où je viens</b><span contenteditable data-k="h1">À écrire</span></div><div class="fl">→</div>
+    <div class="box"><div class="n">2</div><b>Ce que j'ai raté</b><span contenteditable data-k="h2">À écrire</span></div><div class="fl">→</div>
+    <div class="box"><div class="n">3</div><b>Le déclic</b><span contenteditable data-k="h3">À écrire</span></div><div class="fl">→</div>
+    <div class="box a"><div class="n">4</div><b>Pourquoi je fais ça</b><span contenteditable data-k="h4">À écrire</span></div>
+  </div>
+</div></section>
+
+<section class="zone"><div class="num">10</div><div class="in">
+  <p class="kick">La suite</p>
+  <h1>Envoie <em>« go »</em> en DM.</h1>
+  <p class="lead">Je t'ouvre ton accès. Deux minutes. Tu commences à te former ce soir.</p>
+  <div class="puces"><span class="puce">Des questions ? Je réponds à tout.</span><span class="puce">Pas pour toi ? Aucun souci.</span></div>
+</div></section>
+
+</div>
+<div id="nav"><button id="prev" aria-label="Précédent">‹</button><button id="next" aria-label="Suivant">›</button></div>
+<script>
+const piste = document.getElementById("piste"), zones = [...document.querySelectorAll(".zone")], nav = document.getElementById("nav");
+zones.forEach(() => nav.appendChild(document.createElement("i")));
+const pts = [...nav.querySelectorAll("i")];
+let i = Math.min(zones.length - 1, Math.max(0, (parseInt(location.hash.replace("#", ""), 10) || 1) - 1));
+const va = (n) => { i = Math.min(zones.length - 1, Math.max(0, n)); piste.style.transform = "translateX(" + (-i * 100) + "vw)"; pts.forEach((p, k) => p.classList.toggle("on", k === i)); history.replaceState(null, "", "#" + (i + 1)); };
+document.getElementById("next").addEventListener("click", () => va(i + 1));
+document.getElementById("prev").addEventListener("click", () => va(i - 1));
+document.addEventListener("keydown", (e) => { if (document.activeElement && document.activeElement.isContentEditable) { if (e.key === "Escape") document.activeElement.blur(); return; }
+  if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); va(i + 1); }
+  if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); va(i - 1); }
+  if (e.key === "h") document.body.classList.toggle("propre"); });
+document.querySelectorAll("[contenteditable]").forEach((el) => { const k = "unlock-support-" + el.dataset.k; try { const v = localStorage.getItem(k); if (v) el.textContent = v; } catch (e) {}
+  el.addEventListener("input", () => { try { localStorage.setItem(k, el.textContent); } catch (e) {} }); });
+va(i);
+</script>
+</body>
+</html>
