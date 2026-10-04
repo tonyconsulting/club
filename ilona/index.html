@@ -5,7 +5,7 @@
 <base href="../">
 <script>window.CLUB_R = "ilona";</script>
 <script>/* Adresse d'affichage : depuis GitHub Pages, le visiteur passe sur Netlify si le témoin ok.js répond ; sinon il reste ici. ?gh=1 pour rester (essais). */
-(function(){var N="unlock-club.netlify.app",l=location,d=document.documentElement;if(l.hostname!=="tonyconsulting.github.io"||/[?&]gh=1(&|$)/.test(l.search))return;
+(function(){var N="by-unlock.netlify.app",l=location,d=document.documentElement;if(l.hostname!=="tonyconsulting.github.io"||/[?&]gh=1(&|$)/.test(l.search))return;
 var fini=0,montrer=function(){fini=1;d.style.visibility=""},t=setTimeout(montrer,2500),s=document.createElement("script");d.style.visibility="hidden";
 s.src="https://"+N+"/ok.js?"+Date.now();s.onerror=function(){clearTimeout(t);montrer()};
 s.onload=function(){if(fini)return;clearTimeout(t);if(window.NETLIFY_OK)l.replace("https://"+N+l.pathname.replace(/^\/club/,"")+l.search+l.hash);else montrer()};
@@ -51,7 +51,7 @@ document.head.appendChild(s)})();</script>
   </section>
 
       <section class="etape" id="chiffresSection">
-    <p class="kicker reveal">Le club en chiffres</p>
+    <p class="kicker reveal">Unlock en chiffres</p>
     <div class="chiffres" id="chiffres"></div>
     <p class="cta-inline"><a class="cta cta-plus" data-pos="chiffres" href="#" target="_blank" rel="noopener"></a></p>
   </section>
