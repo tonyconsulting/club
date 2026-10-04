@@ -156,7 +156,7 @@
   if (!res.length) $("resultatsSection").remove();
   else {
     $("resultatsTitre").textContent = (resTest ? contact.resultatsTestTitre : resTous ? C.resultatsPourTousTitre : contact.resultats ? contact.resultatsTitre : "") || C.resultatsTitre || "Ce qui se passe dans le canal.";
-    $("resultatsSous").textContent = (resTest ? contact.resultatsTestSous : resTous ? C.resultatsPourTousSous : contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || "";
+    { const el = $("resultatsSous"), txt = resTous ? (C.resultatsPourTousSous || "") : ((resTest ? contact.resultatsTestSous : contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || ""); el.textContent = txt; if (!txt) el.remove(); }   // série commune : pas de phrase sous le titre si resultatsPourTousSous est vide
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     { const note = $("resultatsNote"); if (!APERCU && listeRes.slice(0, nb).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove(); }   // la note ne s'affiche que si une case à remplir est visible sans cliquer
