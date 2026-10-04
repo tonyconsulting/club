@@ -84,6 +84,7 @@ html.duo .icertif{color:var(--accent2,var(--accent))}
 .chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .chiffre{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;text-align:center}
 .chiffre b{display:block;font-family:Manrope,Inter,sans-serif;font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.1}
+.chiffre b.long{font-size:clamp(20px,2.5vw,28px);white-space:nowrap}
 .chiffre span{display:block;color:var(--accent);font-size:12px;margin-top:6px;font-weight:600}
 .chiffre{display:flex;flex-direction:column;justify-content:center}
 .stores{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
@@ -237,7 +238,7 @@ footer{max-width:var(--max);margin:0 auto;padding:44px 20px calc(40px + env(safe
   .grille{grid-template-columns:1fr}
   .chiffres{grid-template-columns:repeat(3,1fr);gap:8px}
   .chiffre{padding:12px 6px}
-  .chiffre b{font-size:21px}
+  .chiffre b{font-size:21px}.chiffre b.long{font-size:17px}
   .chiffre span{font-size:11px;margin-top:4px}
   .store{padding:5px 9px}
   .tcard{width:280px}
