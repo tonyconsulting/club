@@ -186,7 +186,7 @@ window.CLUB = {
       nouveau: true,                                                  // pastille « Nouveau » sur la carte (à retirer quand ce n'est plus nouveau)
       statut: "Sortie iOS le 22 septembre",                           // état réel et daté ; vide = rien
       preinscription: "Écris-moi « APP » et je te préviens le jour J." },   // la pré-inscription passe par la conversation, pas par un formulaire
-    { titre: "Le canal Insta", texte: "Les nouvelles du club et les preuves, en direct.", canal: true },
+    { titre: "Le canal Insta", texte: "Les nouvelles d'Unlock et les preuves, en direct.", canal: true },
     { titre: "Les témoignages", texte: "Ce que disent les membres, en captures et en vidéo.", lien: "preuves.html" },   // plus tard : le compte Insta témoignages ou les avis de l'appli
   ],
 
@@ -252,7 +252,7 @@ window.CLUB = {
   // photo de la section = photoGrande du contact du lien, sinon sa photo de profil, sinon pas de photo
   gratuitAffiche: false,           // section « Pourquoi c'est gratuit » retirée le 19/09 à la demande de Tony (true pour la remettre, les textes ci-dessous sont conservés)
   gratuitTextes: [
-    "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais au club, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
+    "Tu paies exactement les mêmes frais que si tu ouvrais ton compte en direct chez le broker partenaire. C'est lui qui reverse une partie de ses frais à Unlock, sur ton volume d'activité, que tu gagnes ou que tu perdes.",
     "Tu ne me verses rien. Ton compte est à ton nom, je ne peux ni y déposer ni en retirer.",
     "Ce que j'y gagne : un membre bien installé, qui comprend ce qu'il fait, reste. J'ai donc intérêt à prendre le temps avec toi.",
   ],
@@ -261,7 +261,7 @@ window.CLUB = {
   faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
   faqTextes: false,                // pas de résumé écrit sous la vidéo de chaque question (retiré le 19/09 à la demande de Tony ; true pour le remettre, les textes « r » ci-dessous sont conservés)
   faq: [   // 4 questions fixées par Tony le 19/09/2026. Les 6 anciennes sont gardées en commentaire sous la liste.
-    { q: "Où est le piège ?", r: "Il n'y en a pas : tu n'achètes rien et tu ne me verses rien. C'est le broker partenaire qui rémunère le club sur l'activité des comptes.", video: "" },
+    { q: "Où est le piège ?", r: "Il n'y en a pas : tu n'achètes rien et tu ne me verses rien. C'est le broker partenaire qui rémunère Unlock sur l'activité des comptes.", video: "" },
     { q: "Pour qui est fait Unlock ?", r: "Pour celui qui débute et veut comprendre avant de se lancer, et pour celui qui a déjà un compte et se sent seul. Pas pour celui qui cherche de l'argent facile.", video: "" },
     { q: "J'ai peu de temps libre, je vais y arriver ?", r: "Vingt minutes le soir suffisent pour suivre et apprendre à ton rythme. Personne ne peut te promettre un résultat, mais le temps n'est pas ce qui bloque.", video: "" },
     { q: "Est-ce que j'ai besoin de compétences techniques ou d'expérience ?", r: "Non. Je t'installe pas à pas et tout est expliqué depuis zéro. Il te faut un téléphone et l'envie d'apprendre.", video: "" },
@@ -282,7 +282,7 @@ window.CLUB = {
 
   // --- Mentions légales (obligatoire en France) ---
   editeur: "",   // vide = rien ne s'affiche. À remplir plus tard : nom de la structure, statut, adresse, e-mail de contact
-  legal1: "Le club n'est pas un conseiller financier et ne fournit aucune recommandation d'investissement personnalisée. Il est rémunéré par le broker partenaire au titre d'apporteur d'affaires, sur le volume d'activité, et n'exécute aucune opération pour ton compte.",
+  legal1: "Unlock n'est pas un conseiller financier et ne fournit aucune recommandation d'investissement personnalisée. Il est rémunéré par le broker partenaire au titre d'apporteur d'affaires, sur le volume d'activité, et n'exécute aucune opération pour ton compte.",
   legal2: "Le trading comporte un risque de perte en capital, notamment avec l'effet de levier. Les performances passées ne garantissent pas les performances futures. Les témoignages sont des expériences individuelles et ne constituent pas une promesse de résultat. Les informations de cette page sont fournies à titre informatif et éducatif uniquement. N'investis que des sommes que tu peux te permettre de perdre.",
 
   // --- Mesure (facultatif) : adresse GoatCounter, ex: "https://tony.goatcounter.com/count". Vide = rien. ---
