@@ -150,12 +150,13 @@
   // Résultats façon Kéo : grille de captures du canal, zoom au clic, « Voir plus » déplie le reste
   const tuileFictive = (n) => "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="440" height="550" viewBox="0 0 440 550"><rect width="440" height="550" fill="#13141b"/><rect x="24" y="24" width="392" height="502" rx="14" fill="#1a1b24" stroke="#2a2c38"/><circle cx="72" cy="80" r="20" fill="#2a2c38"/><rect x="104" y="66" width="140" height="12" rx="6" fill="#30323f"/><rect x="104" y="86" width="90" height="10" rx="5" fill="#262833"/><rect x="52" y="130" width="336" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="156" width="300" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="182" width="320" height="14" rx="7" fill="#2a2c38"/><rect x="52" y="208" width="200" height="14" rx="7" fill="#2a2c38"/><text x="220" y="330" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="22" fill="#6b6e7c">Capture du canal ${n}</text><text x="220" y="362" text-anchor="middle" font-family="Inter,Helvetica,Arial" font-size="14" fill="#4a4c58">exemple, à remplacer</text></svg>`);
   const resTest = new URLSearchParams(location.search).get("test") === "resultats" && contact.resultatsTest;   // ?test=resultats : aperçu d'une autre série de captures (contact.resultatsTest), invisible sans ce paramètre
-  const listeRes = (resTest || contact.resultats || C.resultats || []).filter((p) => !(APERCU && p === "placeholder"));   // contact.resultats = les captures des membres de cette personne, sinon la liste commune
+  const resTous = !resTest && C.resultatsPourTous && C.resultatsPourTous.length ? C.resultatsPourTous : null;   // C.resultatsPourTous : une même série de captures affichée sur toutes les pages, à la place des captures de chaque personne (vider la liste pour revenir en arrière)
+  const listeRes = (resTest || resTous || contact.resultats || C.resultats || []).filter((p) => !(APERCU && p === "placeholder"));   // contact.resultats = les captures des membres de cette personne, sinon la liste commune
   const res = listeRes.map((p, i) => (p === "placeholder" ? tuileFictive(i + 1) : p));
   if (!res.length) $("resultatsSection").remove();
   else {
-    $("resultatsTitre").textContent = (resTest ? contact.resultatsTestTitre : contact.resultats ? contact.resultatsTitre : "") || C.resultatsTitre || "Ce qui se passe dans le canal.";
-    $("resultatsSous").textContent = (resTest ? contact.resultatsTestSous : contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || "";
+    $("resultatsTitre").textContent = (resTest ? contact.resultatsTestTitre : resTous ? C.resultatsPourTousTitre : contact.resultats ? contact.resultatsTitre : "") || C.resultatsTitre || "Ce qui se passe dans le canal.";
+    $("resultatsSous").textContent = (resTest ? contact.resultatsTestSous : resTous ? C.resultatsPourTousSous : contact.resultats ? contact.resultatsSous : "") || C.resultatsSous || "";
     if (res.length < 4) $("resultats").classList.add("peu");
     const nb = C.resultatsVisibles || 8;
     { const note = $("resultatsNote"); if (!APERCU && listeRes.slice(0, nb).includes("placeholder") && C.resultatsNote) note.textContent = C.resultatsNote; else note.remove(); }   // la note ne s'affiche que si une case à remplir est visible sans cliquer
