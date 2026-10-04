@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <base href="../">
 <script>window.CLUB_R = "andre";</script>
+<script>/* Adresse d'affichage : depuis GitHub Pages, le visiteur passe sur Netlify si le témoin ok.js répond ; sinon il reste ici. ?gh=1 pour rester (essais). */
+(function(){var N="unlock-club.netlify.app",l=location,d=document.documentElement;if(l.hostname!=="tonyconsulting.github.io"||/[?&]gh=1(&|$)/.test(l.search))return;
+var fini=0,montrer=function(){fini=1;d.style.visibility=""},t=setTimeout(montrer,2500),s=document.createElement("script");d.style.visibility="hidden";
+s.src="https://"+N+"/ok.js?"+Date.now();s.onerror=function(){clearTimeout(t);montrer()};
+s.onload=function(){if(fini)return;clearTimeout(t);if(window.NETLIFY_OK)l.replace("https://"+N+l.pathname.replace(/^\/club/,"")+l.search+l.hash);else montrer()};
+document.head.appendChild(s)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Unlock</title>
