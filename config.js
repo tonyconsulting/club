@@ -269,7 +269,7 @@ window.CLUB = {
   // Anciennes questions (avant le 19/09) : « Que se passe-t-il une fois que j'ai écrit ? », « Quelqu'un m'accompagne vraiment ? », « Comment je sais que ce n'est pas une arnaque ? », « Je peux perdre de l'argent ? », « Je débute, je vais suivre ? »
 
   // --- Bloc final ---
-  finalTitre: "On se voit dans le club.",
+  finalTitre: "Rejoins Unlock en m'envoyant un message.",   // demande Tony 04/10 : remplace « On se voit dans le club. »
   finalTexte: "Il ne te reste plus qu'à :",
   finalLignes: [
     "Regarder la vidéo jusqu'au bout",
