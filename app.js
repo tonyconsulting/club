@@ -193,7 +193,7 @@
   if (!chiffres.length) $("chiffresSection").remove();
   else {
     $("chiffres").innerHTML = chiffres.map((c) => {
-      const haut = c.texte != null ? `<b>${esc(c.texte)}</b>` : `<b data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-prefixe="${esc(c.prefixe || "")}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : esc(c.prefixe || "") + "0" + esc(c.suffixe || "")}</b>`;
+      const haut = c.texte != null ? `<b>${esc(c.texte)}</b>` : `<b${c.valeur != null && String(c.valeur).length + String(c.suffixe || "").length >= 6 ? ' class="long"' : ""} data-cible="${c.valeur == null ? "" : Number(c.valeur)}" data-prefixe="${esc(c.prefixe || "")}" data-suffixe="${esc(c.suffixe || "")}">${c.valeur == null ? "..." : esc(c.prefixe || "") + "0" + esc(c.suffixe || "")}</b>`;
       const stores = c.stores ? storesHTML() : "";
       return `<div class="chiffre reveal">${haut}<span>${esc(c.label)}</span>${stores}</div>`;
     }).join("");
