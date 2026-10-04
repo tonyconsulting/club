@@ -205,7 +205,7 @@ window.CLUB = {
   chiffres: [
     { valeur: 350, prefixe: "+", suffixe: "", label: "membres accompagnés" },   // chiffre donné par Tony le 19/09/2026
     { texte: "Gratuit", label: "aucun abonnement" },
-    { valeur: 6, prefixe: "+", suffixe: "", label: "lives par semaine" },   // exemple ; « 1 application iOS et Android » à remettre quand l'appli sort
+    { valeur: 20000, prefixe: "+", suffixe: "\u00a0€", label: "investis pour développer Unlock" },   // chiffre donné par Tony le 04/10/2026 (déclaration de l'équipe), remplace « +6 lives par semaine » qui était un exemple
   ],
   appStore: "",      // lien App Store quand l'appli est publiée (vide = badge sans lien)
   googlePlay: "",    // lien Google Play
