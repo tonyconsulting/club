@@ -71,9 +71,6 @@ window.CLUB = {
                { prenom: "Kélian", sous: "Membre Unlock", fichier: "temoignages/kelian-t1.mp4?v=97" },
                { prenom: "Jules", sous: "Membre Unlock", fichier: "temoignages/jules-t1.mp4?v=97" },
              ],
-             resultatsTest: ["resultats/maxim-r01.jpg?v=117", "resultats/maxim-r02.jpg?v=117", "resultats/maxim-r03.jpg?v=117", "resultats/maxim-r04.jpg?v=117", "resultats/maxim-r05.jpg?v=117", "resultats/maxim-r06.jpg?v=117", "resultats/maxim-r07.jpg?v=117", "resultats/maxim-r08.jpg?v=117", "resultats/maxim-r09.jpg?v=117", "resultats/maxim-r10.jpg?v=117", "resultats/maxim-r11.jpg?v=117", "resultats/maxim-r12.jpg?v=117", "resultats/maxim-r13.jpg?v=117", "resultats/maxim-r14.jpg?v=117", "resultats/maxim-r15.jpg?v=117", "resultats/maxim-r16.jpg?v=117", "resultats/maxim-r17.jpg?v=117", "resultats/maxim-r18.jpg?v=117", "resultats/maxim-r19.jpg?v=117", "resultats/maxim-r20.jpg?v=117"],   // 04/10, test demandé par Tony : 20 captures de comptes de membres (21 images uniques reçues par mail, 27 pièces dont 6 doublons ; une capture écartée car elle montre le nom d'une personne). Visible seulement avec ?test=resultats. Depuis le 04/10 au soir : loupe fixe sur le chiffre vert, incrustée dans chaque image par gen_loupe.py
-             resultatsTestTitre: "Les captures des membres.",
-             resultatsTestSous: "Touche une capture pour l'agrandir. Des résultats passés ne garantissent rien : le trading comporte un risque de perte.",
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
     loukas: { prenom: "Loukas", nom: "Loukas", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, VSL, 4 FAQ et couleurs à venir ; DA par défaut en attendant
@@ -243,6 +240,11 @@ window.CLUB = {
   resultatsSous: "Captures prises dans le canal, avec l'accord des membres.",
   resultatsNote: "Exemples pour le rendu, à remplacer par de vraies captures.",
   resultatsVisibles: 8,
+  // 04/10/2026, décision de Tony : les mêmes 20 captures de comptes de membres sur TOUTES les pages, à la place des captures de messages de chaque personne (qui restent dans chaque fiche, non affichées).
+  // Images préparées par gen_loupe.py : loupe fixe sur le chiffre vert, milieu de page légèrement flouté, barre du bas nette. Pour revenir aux captures de chaque personne : mettre resultatsPourTous: [].
+  resultatsPourTous: ["resultats/compte-01.jpg?v=118", "resultats/compte-02.jpg?v=118", "resultats/compte-03.jpg?v=118", "resultats/compte-04.jpg?v=118", "resultats/compte-05.jpg?v=118", "resultats/compte-06.jpg?v=118", "resultats/compte-07.jpg?v=118", "resultats/compte-08.jpg?v=118", "resultats/compte-09.jpg?v=118", "resultats/compte-10.jpg?v=118", "resultats/compte-11.jpg?v=118", "resultats/compte-12.jpg?v=118", "resultats/compte-13.jpg?v=118", "resultats/compte-14.jpg?v=118", "resultats/compte-15.jpg?v=118", "resultats/compte-16.jpg?v=118", "resultats/compte-17.jpg?v=118", "resultats/compte-18.jpg?v=118", "resultats/compte-19.jpg?v=118", "resultats/compte-20.jpg?v=118"],
+  resultatsPourTousTitre: "Les captures des membres.",
+  resultatsPourTousSous: "Touche une capture pour l'agrandir. Des résultats passés ne garantissent rien : le trading comporte un risque de perte.",
   resultats: ["placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],
 
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
