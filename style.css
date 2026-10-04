@@ -180,6 +180,7 @@ html.duo .icertif{color:var(--accent2,var(--accent))}
 .faq .rep{padding:0 20px 20px}
 .faq .rep .video{box-shadow:none}
 .faq .rep p{color:var(--dim);font-size:14px;text-align:center;margin-top:12px}
+#faq.texte .rep p{color:#dfe5f3;font-size:16px;line-height:1.6;text-align:left;margin:2px 4px 4px}
 
 /* final */
 .final{margin:56px 0 0;background:radial-gradient(120% 80% at 50% 0%,rgba(var(--accent-rgb),.14),transparent 60%),var(--surface);border:1px solid var(--line2);border-radius:20px;padding:44px 24px;text-align:center}
