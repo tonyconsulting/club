@@ -273,7 +273,7 @@ window.CLUB = {
   finalTexte: "Il ne te reste plus qu'à :",
   finalLignes: [
     "Regarder la vidéo jusqu'au bout",
-    "Écrire à ton contact avec tes questions",
+    "M'écrire avec tes questions",   // demande Tony 04/10 : « moi » à la place de « ton contact » (infinitif gardé, la liste suit « Il ne te reste plus qu'à : »)
     "N'engager que ce que tu peux te permettre de perdre",
   ],
   boutonTexte: "Écris-moi sur Insta",
