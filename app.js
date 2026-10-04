@@ -342,7 +342,9 @@
   } else rendreTemoignages(temoinsConfig);
 
   // Questions : dépliables (la question se déplie), la vidéo dans chaque réponse, une ligne de texte max
-  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep"><div class="video" id="faqVideo${i}"></div>${f.r && (C.faqTextes !== false || !((contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut)) ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");   // faqTextes: false = la vidéo seule ; le texte ne revient que si une question n'a aucune vidéo
+  $("faq").innerHTML = (C.faq || []).map((f, i) => `<details class="reveal"${i === 0 ? " open" : ""}><summary>${esc(avecPrenom(f.q))}<span class="chev"></span></summary><div class="rep">${contact.faqTexte ? "" : `<div class="video" id="faqVideo${i}"></div>`}${f.r && (contact.faqTexte || C.faqTextes !== false || !((contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut)) ? `<p>${esc(avecPrenom(f.r))}</p>` : ""}</div></details>`).join("");   // faqTextes: false = la vidéo seule ; le texte ne revient que si une question n'a aucune vidéo
+  // contact.faqTexte : réponses écrites seules, sans vidéo. Une seule question ouverte à la fois.
+  if (contact.faqTexte) { $("faq").classList.add("texte"); $("faq").querySelectorAll("details").forEach((det) => det.addEventListener("toggle", () => { if (det.open) $("faq").querySelectorAll("details[open]").forEach((o) => { if (o !== det) o.open = false; }); })); }
   (C.faq || []).forEach((f, i) => {
     const el = $("faqVideo" + i), det = el && el.closest("details");
     if (!el) return;
