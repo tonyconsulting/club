@@ -104,7 +104,8 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 21/09 (demande Tony) : pseudo, photo HD, abonnés, 4 FAQ et couleurs à venir ; DA par défaut en attendant
+    ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "ilhan__yukk", abonnes: "", photo: "", lien: "https://ig.me/m/ilhan__yukk",   // pseudo reçu le 04/10 ; photo HD toujours attendue
+             faqTexte: true,                                        // demande Tony 04/10 : pas de vidéo dans les questions, seulement la réponse écrite
              video: "b50NawqbWWU",                                   // sa VSL « Qu'est-ce que réellement Unlock » (reçue le 26/09, remplace hTTwMaFBteM « Vsl v2 »)
              accent: "#FF3B3B", accent2: "#FF8A80",                 // DA rouge et noir (demande Tony 21/09) : rouge vif + rouge clair en dégradé
              theme: { bg: "#0b0708", surface: "#150c0d", surface2: "#1d1012", line: "#33191c", line2: "#4a2226" },
@@ -255,7 +256,7 @@ window.CLUB = {
   faqVideoDefaut: "5Y6GerIb7lU",   // vidéo utilisée quand une question n'a pas la sienne (placeholder : vidéo de Sacha)
   faqTextes: false,                // pas de résumé écrit sous la vidéo de chaque question (retiré le 19/09 à la demande de Tony ; true pour le remettre, les textes « r » ci-dessous sont conservés)
   faq: [   // 4 questions fixées par Tony le 19/09/2026. Les 6 anciennes sont gardées en commentaire sous la liste.
-    { q: "Où est le piège ?", r: "Il n'y en a pas : tu paies les mêmes frais qu'en direct, c'est le broker partenaire qui reverse une part au club.", video: "" },
+    { q: "Où est le piège ?", r: "Il n'y en a pas : tu n'achètes rien et tu ne me verses rien. C'est le broker partenaire qui rémunère le club sur l'activité des comptes.", video: "" },
     { q: "Pour qui est fait Unlock ?", r: "Pour celui qui débute et veut comprendre avant de se lancer, et pour celui qui a déjà un compte et se sent seul. Pas pour celui qui cherche de l'argent facile.", video: "" },
     { q: "J'ai peu de temps libre, je vais y arriver ?", r: "Vingt minutes le soir suffisent pour suivre et apprendre à ton rythme. Personne ne peut te promettre un résultat, mais le temps n'est pas ce qui bloque.", video: "" },
     { q: "Est-ce que j'ai besoin de compétences techniques ou d'expérience ?", r: "Non. Je t'installe pas à pas et tout est expliqué depuis zéro. Il te faut un téléphone et l'envie d'apprendre.", video: "" },
