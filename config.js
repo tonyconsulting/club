@@ -104,7 +104,7 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "ilhan__yukk", abonnes: "", certifie: true, photo: "", lien: "https://ig.me/m/ilhan__yukk",   // pseudo reçu le 04/10 ; photo HD toujours attendue
+    ilhan: { prenom: "Ilhan", nom: "Ilhan", handle: "ilhan__yukk", abonnes: "", certifie: true, photo: "ilhan.jpg?v=115", lien: "https://ig.me/m/ilhan__yukk",   // pseudo et photo reçus le 04/10 (photo recadrée sur le visage, source 730 × 960)
              faqTexte: true,                                        // demande Tony 04/10 : pas de vidéo dans les questions, seulement la réponse écrite
              video: "b50NawqbWWU",                                   // sa VSL « Qu'est-ce que réellement Unlock » (reçue le 26/09, remplace hTTwMaFBteM « Vsl v2 »)
              accent: "#FF3B3B", accent2: "#FF8A80",                 // DA rouge et noir (demande Tony 21/09) : rouge vif + rouge clair en dégradé
