@@ -243,8 +243,8 @@ window.CLUB = {
   // 04/10/2026, décision de Tony : les mêmes 20 captures de comptes de membres sur TOUTES les pages, à la place des captures de messages de chaque personne (qui restent dans chaque fiche, non affichées).
   // Images préparées par gen_loupe.py : loupe fixe sur le chiffre vert, milieu de page légèrement flouté, barre du bas nette. Pour revenir aux captures de chaque personne : mettre resultatsPourTous: [].
   resultatsPourTous: ["resultats/compte-01.jpg?v=118", "resultats/compte-02.jpg?v=118", "resultats/compte-03.jpg?v=118", "resultats/compte-04.jpg?v=118", "resultats/compte-05.jpg?v=118", "resultats/compte-06.jpg?v=118", "resultats/compte-07.jpg?v=118", "resultats/compte-08.jpg?v=118", "resultats/compte-09.jpg?v=118", "resultats/compte-10.jpg?v=118", "resultats/compte-11.jpg?v=118", "resultats/compte-12.jpg?v=118", "resultats/compte-13.jpg?v=118", "resultats/compte-14.jpg?v=118", "resultats/compte-15.jpg?v=118", "resultats/compte-16.jpg?v=118", "resultats/compte-17.jpg?v=118", "resultats/compte-18.jpg?v=118", "resultats/compte-19.jpg?v=118", "resultats/compte-20.jpg?v=118"],
-  resultatsPourTousTitre: "Les captures des membres.",
-  resultatsPourTousSous: "Touche une capture pour l'agrandir. Des résultats passés ne garantissent rien : le trading comporte un risque de perte.",
+  resultatsPourTousTitre: "Les résultats des membres.",   // demande Tony 04/10 : « résultats », pas « captures »
+  resultatsPourTousSous: "",                              // demande Tony 04/10 : aucune phrase sous le titre (la mention de risque reste dans le pied de page, legal2)
   resultats: ["placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"],
 
   // --- Pourquoi c'est gratuit : section avec le visage de la personne qui envoie (façon Kéo « pourquoi je donne tout ça ») ---
