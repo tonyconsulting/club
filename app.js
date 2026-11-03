@@ -350,6 +350,7 @@
   (C.faq || []).forEach((f, i) => {
     const el = $("faqVideo" + i), det = el && el.closest("details");
     if (!el) return;
+    if (contact.faqVideos && !contact.faqVideos[i]) { det.remove(); return; }   // la personne a ses vidéos mais pas celle-ci : la question disparaît (Tony, 03/11, page de Jules : « retire juste la partie »)
     const id = (contact.faqVideos || [])[i] || f.video || C.faqVideoDefaut;   // contact.faqVideos = les réponses vidéo de la personne, dans l'ordre des questions
     if (!id) { el.remove(); return; }
     el.classList.add("auto");
