@@ -140,7 +140,7 @@ window.CLUB = {
              resultatsSous: "Touche une capture pour l'agrandir." },
     jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) ; VSL et 3 FAQ reçues le 03/11 ; pseudo Insta, photo HD, 4e FAQ (compétences) et couleurs attendus ; DA par défaut en attendant
              video: "HPh-_XmsxnU",                                   // sa VSL « Qu'est ce qu'Unlock ? » (reçue le 03/11)
-             faqVideos: ["fQeJSeA6_go", "hnJYM-WYgnc", "H4Whb8WI5RQ"],   // piège, pour qui, peu de temps (titres vérifiés le 03/11) ; compétences pas encore reçue : vidéo d'exemple en attendant
+             faqVideos: ["fQeJSeA6_go", "hnJYM-WYgnc", "H4Whb8WI5RQ"],   // piège, pour qui, peu de temps (titres vérifiés le 03/11) ; compétences pas reçue : question retirée de sa page (Tony, 03/11), elle revient dès que sa vidéo est ajoutée ici
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
                { prenom: "Mila", sous: "Membre Unlock", fichier: "temoignages/maxim-t1.mp4?v=75" },
