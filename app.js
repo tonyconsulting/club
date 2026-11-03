@@ -33,6 +33,9 @@
   // Marque
   const marque = $("marque");
   marque.innerHTML = C.logo ? `<img src="${esc(C.logo)}" alt="${esc(C.nom)}">` : `<span class="wordmark">${esc(String(C.nom || "").toUpperCase())}</span>`;
+  // Le logo ramène en haut de la page de la personne. Les pages /prenom/ ont <base href="../"> : le lien « # » ouvrait l'accueil, l'ancienne page de Tony (bug vu par Tony le 03/11).
+  marque.href = location.pathname + location.search;
+  marque.addEventListener("click", (e) => { if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
   document.title = C.nom || document.title;
 
   // Identité de la personne qui envoie (photo, nom, abonnés), façon Kéo
