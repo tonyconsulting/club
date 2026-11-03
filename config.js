@@ -138,8 +138,10 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) ; VSL et 3 FAQ reçues le 03/11 ; pseudo Insta, photo HD, 4e FAQ (compétences) et couleurs attendus ; DA par défaut en attendant
+    jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) ; VSL et 3 FAQ reçues le 03/11 ; couleurs choisies le 03/11 ; pseudo Insta, photo HD et 4e FAQ (compétences) attendus
              video: "HPh-_XmsxnU",                                   // sa VSL « Qu'est ce qu'Unlock ? » (reçue le 03/11)
+             accent: "#4F7CFF", accent2: "#5CE1E6",                 // DA bleu + cyan (Tony 03/11 : « le bleu comme ça c'est pas beau », palette B choisie parmi cuivre, bleu + cyan, or)
+             theme: { bg: "#060A14", surface: "#0C1220", surface2: "#111A2C", line: "#1C2840", line2: "#283A5C" },
              faqVideos: ["fQeJSeA6_go", "hnJYM-WYgnc", "H4Whb8WI5RQ"],   // piège, pour qui, peu de temps (titres vérifiés le 03/11) ; compétences pas reçue : question retirée de sa page (Tony, 03/11), elle revient dès que sa vidéo est ajoutée ici
              temoignages: [
                { prenom: "Maxim", sous: "Membre Unlock", fichier: "temoignages/mila-t1.mp4?v=75" },
