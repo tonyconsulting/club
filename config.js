@@ -138,7 +138,7 @@ window.CLUB = {
              resultats: ["resultats/maxim-1.jpg?v=66", "resultats/maxim-2.jpg?v=66", "resultats/maxim-5.jpg?v=65", "resultats/maxim-6.jpg?v=65", "resultats/maxim-7.jpg?v=65", "resultats/maxim-8.jpg?v=65", "resultats/maxim-9.jpg?v=68", "resultats/maxim-10.jpg?v=68", "resultats/thomas-2.jpg?v=98", "resultats/maxim-membre.jpg?v=98"],   // mêmes captures que la page de Mila
              resultatsTitre: "Ce que les membres m'écrivent.",
              resultatsSous: "Touche une capture pour l'agrandir." },
-    jules: { prenom: "Jules", nom: "Jules", handle: "", abonnes: "", photo: "", lien: "",   // page créée le 26/09 (demande Tony) ; VSL et 3 FAQ reçues le 03/11 ; couleurs choisies le 03/11 ; pseudo Insta, photo HD et 4e FAQ (compétences) attendus
+    jules: { prenom: "Jules", nom: "Jules", handle: "julespeccatte", abonnes: "", photo: "", lien: "https://ig.me/m/julespeccatte",   // page créée le 26/09 (demande Tony) ; VSL et 3 FAQ reçues le 03/11 ; couleurs choisies le 03/11 ; pseudo Insta donné par Tony le 03/11 (profil vérifié : « Jules Peccatte (@julespeccatte) ») ; photo HD et 4e FAQ (compétences) attendues
              video: "HPh-_XmsxnU",                                   // sa VSL « Qu'est ce qu'Unlock ? » (reçue le 03/11)
              accent: "#4F7CFF", accent2: "#5CE1E6",                 // DA bleu + cyan (Tony 03/11 : « le bleu comme ça c'est pas beau », palette B choisie parmi cuivre, bleu + cyan, or)
              theme: { bg: "#060A14", surface: "#0C1220", surface2: "#111A2C", line: "#1C2840", line2: "#283A5C" },
